@@ -1,24 +1,18 @@
 #include <iostream>
+#include "Point.h"
 
 using namespace std;
 
-class Point {
+Point::Point() {};
 
-	int X;
+Point::Point(int x, int y, int z)
+{
+	X = x;
+	Y = y;
+	Z = z;
+};
 
-	int Y;
-
-	int Z;
-
-public:
-	Point(int x, int y, int z) {
-		X = x;
-		Y = y;
-		Z = z;
-	}
-
-public:
-	bool IsEqual(int x, int y, int z) {
-		return (x == X) && (y == Y) && (z == Z);
-	}
+bool Point::operator==(Point point)
+{
+	return (point.X == X && point.Y == Y && point.Z == Z);
 };
