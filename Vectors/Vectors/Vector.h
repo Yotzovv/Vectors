@@ -14,6 +14,7 @@ public:
 	Point B;
     Vector(double X, double Y, double Z);
 	Vector(Point x, Point y); 
+	bool is_vector_null();
 };
 
 #endif 
