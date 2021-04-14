@@ -15,6 +15,7 @@ public:
     Vector(double X, double Y, double Z);
 	Vector(Point x, Point y);
 	double get_vector_length(double X, double Y, double Z);
+	bool is_vector_null();
 };
 
 #endif 
