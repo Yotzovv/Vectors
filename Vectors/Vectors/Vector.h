@@ -13,7 +13,8 @@ public:
 	Point A;
 	Point B;
     Vector(double X, double Y, double Z);
-	Vector(Point x, Point y); 
+	Vector(Point x, Point y);
+	double get_vector_length(double X, double Y, double Z);
 };
 
 #endif 
