@@ -3,6 +3,7 @@
 #pragma once
 #include <iostream>
 #include "Point.h"
+#include <vector>
 
 class Vector
 {
@@ -15,6 +16,10 @@ public:
     Vector(double X, double Y, double Z);
 	Vector(Point x, Point y); 
 	bool is_vector_null();
+	double vector_direction();
+	vector<double> get_direction();
+
+
 };
 
 #endif 
