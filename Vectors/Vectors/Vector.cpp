@@ -125,6 +125,13 @@ bool Vector::is_parallel(Vector v) {
 		if (is_vector_null()) {
 			throw VectorLengthException();
 		}
+bool Vector::is_vector_perpendicullar(int x, int y, int z)
+{
+	if (is_vector_null()) {
+		//vector length exception
+	}
+	return x*n1 + y*n2 + z*n3 == 0;
+}
 
 		if (is_vector_null(v.n1, v.n2, v.n3)) {
 			throw VectorLengthException();

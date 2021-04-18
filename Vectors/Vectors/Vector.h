@@ -24,6 +24,7 @@ public:
 	vector<double> get_direction();
 	bool is_parallel(Vector v);
 	double operator*(const Vector& v); //Returns the scalar product of 2 vectors
+	bool is_vector_perpendicullar(int x, int y, int z);
 };
 
 #endif 
