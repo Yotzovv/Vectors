@@ -13,8 +13,6 @@ Vector::Vector(double x, double y, double z)
 	n1 = x;
 	n2 = y;
 	n3 = z;
-
-	
 };
 
 Vector::Vector(Point x, Point y)
@@ -34,8 +32,8 @@ bool Vector::is_vector_null()
 {
 	return n1 == n2 == n3;
 }
-double Vector::get_vector_length(double x, double y, double z) {
-	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
+double Vector::get_vector_length() {
+	return sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 }
 
 // Uses Points

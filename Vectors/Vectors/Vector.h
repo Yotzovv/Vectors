@@ -17,7 +17,7 @@ public:
 	Point B;
     Vector(double X, double Y, double Z);
 	Vector(Point x, Point y);
-	double get_vector_length(double X, double Y, double Z);
+	double get_vector_length();
 	bool is_vector_null();
 	double vector_direction();
 	vector<double> get_direction();
