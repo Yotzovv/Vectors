@@ -23,7 +23,7 @@ public:
 	double vector_direction();
 	vector<double> get_direction();
 	bool is_parallel(Vector v);
-
+	double operator*(const Vector& v); //Returns the scalar product of 2 vectors
 };
 
 #endif 
