@@ -69,8 +69,14 @@ double Vector::get_vector_length() {
 /// <returns></returns>
 double Vector::vector_direction() {
 
-	return acos(sqrt(pow((A.X - B.X), 2) + pow((A.Y - B.Y), 2))); // formula for 2 variables
 
+	if (is_vector_null()) {
+
+		throw VectorLengthException();
+	
+	}
+	return acos(atan((A.X - A.Y) / (B.X - B.Y))); // direction of a vector.
+			
 }
 
 /// <summary>
