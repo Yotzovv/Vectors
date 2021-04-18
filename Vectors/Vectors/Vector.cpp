@@ -146,4 +146,17 @@ double Vector::operator*(const Vector& v) {
 	return v.n1 * n1 + v.n2 * n2 + v.n3 * n3;
 }
 
-
+bool Vector::is_vector_perpendicullar(int x, int y, int z)
+{
+	try
+	{
+		if (is_vector_null()) {
+			throw VectorLengthException();
+		}
+		return x * n1 + y * n2 + z * n3 == 0;
+	}
+	catch (const std::exception& e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
