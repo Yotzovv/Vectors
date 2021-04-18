@@ -1,8 +1,11 @@
+using namespace std;
 #ifndef VECTOR_H
 #define VECTOR_H
 #pragma once
 #include <iostream>
 #include "Point.h"
+#include <vector>
+
 
 class Vector
 {
@@ -16,6 +19,9 @@ public:
 	Vector(Point x, Point y);
 	double get_vector_length(double X, double Y, double Z);
 	bool is_vector_null();
+	double vector_direction();
+	vector<double> get_direction();
+
 };
 
 #endif 
