@@ -8,14 +8,14 @@
 
 using namespace std;
 
-Vector::Vector(double x, double y, double z)
+Vector::Vector(double x, double y, double z) 
 {
 	n1 = x;
 	n2 = y;
 	n3 = z;
 };
 
-Vector::Vector(Point x, Point y)
+Vector::Vector(Point x, Point y) 
 {
 	A = x;
 	B = y;
@@ -25,11 +25,12 @@ Vector::Vector(Point x, Point y)
 /// Custom Exception class
 /// TODO: Put it in a separate file
 /// </summary>
-class VectorLengthException : public exception {
-
-public: virtual const char* what() const throw() {
-	return "Vector length exception thrown";
-}
+class VectorLengthException : public exception
+{
+public:
+	virtual const char* what() const throw() {
+		return "Vector length exception thrown";
+	}
 };
 
 /// <summary>
@@ -58,7 +59,8 @@ bool Vector::is_vector_null(int x, int y, int z)
 /// Uses n1,n2,n3
 /// </summary>
 /// <returns></returns>
-double Vector::get_vector_length() {
+double Vector::get_vector_length()
+{
 	return sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 }
 
@@ -67,16 +69,13 @@ double Vector::get_vector_length() {
 /// TODO: Merge with get_direction
 /// </summary>
 /// <returns></returns>
-double Vector::vector_direction() {
-
-
+double Vector::vector_direction()
+{
 	if (is_vector_null()) {
-
 		throw VectorLengthException();
-	
 	}
-	return acos(atan((A.X - A.Y) / (B.X - B.Y))); // direction of a vector.
-			
+
+	return acos(atan((A.X - A.Y) / (B.X - B.Y))); // direction of a vector.		
 }
 
 /// <summary>
@@ -84,8 +83,8 @@ double Vector::vector_direction() {
 /// TODO: Merge with vector_direction
 /// </summary>
 /// <returns></returns>
-vector<double> Vector::get_direction() {
-
+vector<double> Vector::get_direction()
+{
 	try {
 
 		if (is_vector_null()) {
@@ -115,7 +114,7 @@ vector<double> Vector::get_direction() {
 		vector<double> result = { directionthree.at(0), directionthree.at(1), directionthree.at(2) };
 		return result;
 	}
-	catch (const exception &e) {
+	catch (const exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
@@ -125,7 +124,8 @@ vector<double> Vector::get_direction() {
 /// </summary>
 /// <param name="v"></param>
 /// <returns></returns>
-bool Vector::is_parallel(Vector v) {
+bool Vector::is_parallel(Vector v)
+{
 	try {
 
 		if (is_vector_null()) {
@@ -148,10 +148,18 @@ bool Vector::is_parallel(Vector v) {
 /// </summary>
 /// <param name="v"></param>
 /// <returns></returns>
-double Vector::operator*(const Vector& v) {
+double Vector::operator*(const Vector& v)
+{
 	return v.n1 * n1 + v.n2 * n2 + v.n3 * n3;
 }
 
+/// <summary>
+/// Checks if 2 vectors are perpendicullar
+/// </summary>
+/// <param name="x"></param>
+/// <param name="y"></param>
+/// <param name="z"></param>
+/// <returns></returns>
 bool Vector::is_vector_perpendicullar(int x, int y, int z)
 {
 	try
