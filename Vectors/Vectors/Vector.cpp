@@ -4,6 +4,7 @@
 #include <cmath>
 #include <exception>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ Vector::Vector(double x, double y, double z)
 	n2 = y;
 	n3 = z;
 
-
+	
 };
 
 Vector::Vector(Point x, Point y)
@@ -32,6 +33,9 @@ public: virtual const char* what() const throw() {
 bool Vector::is_vector_null()
 {
 	return n1 == n2 == n3;
+}
+double Vector::get_vector_length(double x, double y, double z) {
+	return sqrt(pow(x, 2) + pow(y, 2) + pow(z, 2));
 }
 
 // Uses Points
