@@ -19,8 +19,10 @@ public:
 	Vector(Point x, Point y);
 	double get_vector_length();
 	bool is_vector_null();
+	bool is_vector_null(int x, int y, int z);
 	double vector_direction();
 	vector<double> get_direction();
+	bool is_parallel(Vector v);
 
 };
 

@@ -19,7 +19,7 @@ Vector::Vector(Point x, Point y)
 {
 	A = x;
 	B = y;
-}
+};
 
 class VectorLengthException : public exception {
 
@@ -28,10 +28,17 @@ public: virtual const char* what() const throw() {
 }
 };
 
+
 bool Vector::is_vector_null()
 {
 	return n1 == n2 == n3;
 }
+
+bool Vector::is_vector_null(int x, int y, int z)
+{
+	return n1 == n2 == n3;
+}
+
 double Vector::get_vector_length() {
 	return sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 }
@@ -78,6 +85,24 @@ vector<double> Vector::get_direction() {
 		return result;
 	}
 	catch (const exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+}
+
+bool Vector::is_parallel(Vector v) {
+	try {
+
+		if (is_vector_null()) {
+			throw VectorLengthException();
+		}
+
+		if (is_vector_null(v.n1, v.n2, v.n3)) {
+			throw VectorLengthException();
+		}
+
+		return (v.n1 / n1 == v.n2 / n2 == v.n3 / n3);
+	}
+	catch (const exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
