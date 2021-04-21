@@ -8,14 +8,14 @@
 
 using namespace std;
 
-Vector::Vector(double x, double y, double z) 
+Vector::Vector(double x, double y, double z)
 {
 	n1 = x;
 	n2 = y;
 	n3 = z;
 };
 
-Vector::Vector(Point x, Point y) 
+Vector::Vector(Point x, Point y)
 {
 	A = x;
 	B = y;
@@ -173,4 +173,15 @@ bool Vector::is_vector_perpendicullar(int x, int y, int z)
 	{
 		std::cout << e.what() << std::endl;
 	}
+}
+//a + v = (x, y, z) + (v1, v2, v3) = (x + v1, y + v2, z + v3);
+
+Vector Vector::operator+(const Vector& v)
+{
+	Vector result(0, 0, 0);
+	result.n1 = n1 + v.n1;
+	result.n2 = n2 + v.n2;
+	result.n3 = n3 + v.n3;
+
+	return result; 
 }

@@ -25,6 +25,7 @@ public:
 	bool is_parallel(Vector v);
 	double operator*(const Vector& v); //Returns the scalar product of 2 vectors
 	bool is_vector_perpendicullar(int x, int y, int z);
+	Vector operator+(const Vector& v);
 };
 
 #endif 
