@@ -48,11 +48,3 @@ Thumbs.db
 *.mov
 *.wmv
 
-/Vectors/.vs/Vectors/v16/Browse.VC.opendb
-/Vectors/.vs/Vectors/v16/Browse.VC.db-wal
-/Vectors/.vs/Vectors/v16/Browse.VC.db-shm
-/Vectors/.vs/Vectors/v16/Browse.VC.db
-/Vectors/.vs/Vectors/v16/.suo
-/Vectors/.vs/Vectors/v16/ipch/AutoPCH/d27ad9b0359209dc/VECTOR.ipch
-/Vectors/.vs/Vectors/v16/ipch/AutoPCH/17987d94e9980135/POINT.ipch
-/Vectors/.vs/Vectors/v16/ipch/AutoPCH/845920235e65ce76/STARTUP.ipch
