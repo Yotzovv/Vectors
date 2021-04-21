@@ -1,4 +1,4 @@
-#include "Vector.h"
+﻿#include "Vector.h"
 #include "Point.h"
 #include <iostream>
 #include <cmath>
@@ -20,6 +20,10 @@ Vector::Vector(Point x, Point y)
 	A = x;
 	B = y;
 };
+
+Vector::Vector() {
+};
+
 
 /// <summary>
 /// Custom Exception class
@@ -173,4 +177,15 @@ bool Vector::is_vector_perpendicullar(int x, int y, int z)
 	{
 		std::cout << e.what() << std::endl;
 	}
+}
+
+// substracting 2 vectors // a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
+
+Vector Vector::operator-(const Vector& v){
+	Vector result;
+	result.n1 = n1 - v.n1;
+	result.n2 = n2 - v.n2;
+	result.n3 = n3 - v.n3;
+	
+	return result;
 }
