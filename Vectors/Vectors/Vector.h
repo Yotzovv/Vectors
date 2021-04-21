@@ -28,6 +28,7 @@ public:
 	bool is_vector_perpendicullar(int x, int y, int z);
 	Vector operator+(const Vector& v);
 	Vector operator-(const Vector& v);
+	double operator()(const Vector& v1, const Vector v2);
 };
 
 #endif 

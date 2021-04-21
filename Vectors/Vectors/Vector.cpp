@@ -178,8 +178,8 @@ bool Vector::is_vector_perpendicullar(int x, int y, int z)
 		std::cout << e.what() << std::endl;
 	}
 }
-//a + v = (x, y, z) + (v1, v2, v3) = (x + v1, y + v2, z + v3);
 
+//a + v = (x, y, z) + (v1, v2, v3) = (x + v1, y + v2, z + v3);
 Vector Vector::operator+(const Vector& v)
 {
 	Vector result(0, 0, 0);
@@ -190,8 +190,8 @@ Vector Vector::operator+(const Vector& v)
 	return result; 
 }
 
-// substracting 2 vectors // a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
-
+// substracting 2 vectors 
+// a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
 Vector Vector::operator-(const Vector& v){
 	Vector result;
 	result.n1 = n1 - v.n1;
@@ -199,4 +199,14 @@ Vector Vector::operator-(const Vector& v){
 	result.n3 = n3 - v.n3;
 	
 	return result;
+}
+
+// x1, y1, z1
+// x2, y2, z2
+// x3, y3, z3
+//
+// x1(y2*z3 - z2*y3) - y1(x2*z3 - z2*x3) + z1(x2*y3 - y2*x3)
+double Vector::operator()(const Vector& v2, const Vector v3)
+{
+	return n1*(v2.n2*v3.n3 - v2.n3*v3.n2) - n2*(v2.n1*v3.n3 - v2.n3*v3.n1) + n3*(v2.n1*v3.n2 - v2.n2*v3.n1);
 }
