@@ -210,3 +210,18 @@ double Vector::operator()(const Vector& v2, const Vector v3)
 {
 	return n1*(v2.n2*v3.n3 - v2.n3*v3.n2) - n2*(v2.n1*v3.n3 - v2.n3*v3.n1) + n3*(v2.n1*v3.n2 - v2.n2*v3.n1);
 }
+
+/// <summary>
+/// Multiplies vector by a real number
+/// </summary>
+/// <param name="v"></param>
+/// <returns>Vector</returns>
+Vector operator*(double num, const Vector& v)
+{
+	Vector result;
+	result.n1 = v.n1 * num;
+	result.n2 = v.n2 * num;
+	result.n3 = v.n3 * num;
+
+	return result;
+}
