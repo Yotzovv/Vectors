@@ -10,18 +10,22 @@
 
 using namespace std;
 
-Vector::Vector(double x, double y, double z) 
+Vector::Vector(double x, double y, double z)
 {
 	n1 = x;
 	n2 = y;
 	n3 = z;
 };
 
-Vector::Vector(Point x, Point y) 
+Vector::Vector(Point x, Point y)
 {
 	A = x;
 	B = y;
 };
+
+Vector::Vector() {
+};
+
 
 /// <summary>
 /// Custom Exception class
@@ -173,4 +177,36 @@ bool Vector::is_vector_perpendicullar(int x, int y, int z)
 	{
 		std::cout << e.what() << std::endl;
 	}
+}
+
+//a + v = (x, y, z) + (v1, v2, v3) = (x + v1, y + v2, z + v3);
+Vector Vector::operator+(const Vector& v)
+{
+	Vector result(0, 0, 0);
+	result.n1 = n1 + v.n1;
+	result.n2 = n2 + v.n2;
+	result.n3 = n3 + v.n3;
+
+	return result; 
+}
+
+// substracting 2 vectors 
+// a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
+Vector Vector::operator-(const Vector& v){
+	Vector result;
+	result.n1 = n1 - v.n1;
+	result.n2 = n2 - v.n2;
+	result.n3 = n3 - v.n3;
+	
+	return result;
+}
+
+// x1, y1, z1
+// x2, y2, z2
+// x3, y3, z3
+//
+// x1(y2*z3 - z2*y3) - y1(x2*z3 - z2*x3) + z1(x2*y3 - y2*x3)
+double Vector::operator()(const Vector& v2, const Vector v3)
+{
+	return n1*(v2.n2*v3.n3 - v2.n3*v3.n2) - n2*(v2.n1*v3.n3 - v2.n3*v3.n1) + n3*(v2.n1*v3.n2 - v2.n2*v3.n1);
 }
