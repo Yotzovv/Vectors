@@ -5,7 +5,7 @@ using namespace std;
 
 Point::Point() {};
 
-Point::Point(int x, int y, int z)
+Point::Point(double x, double y, double z)
 {
 	X = x;
 	Y = y;

@@ -1,10 +1,12 @@
-#include "Vector.h"
+﻿#include "Vector.h"
 #include "Point.h"
 #include <iostream>
 #include <cmath>
 #include <exception>
 #include <vector>
 #include <math.h>
+#define PI 3.14159265
+
 
 using namespace std;
 
@@ -66,16 +68,18 @@ double Vector::get_vector_length()
 
 /// <summary>
 /// Uses Point classess
-/// TODO: Merge with get_direction
-/// </summary>
+/// TODO: Merge with get_direction 
+/// // tanθ=y2 − y1x2 − x1
+/// </summary//>
 /// <returns></returns>
+
 double Vector::vector_direction()
 {
 	if (is_vector_null()) {
 		throw VectorLengthException();
 	}
 
-	return acos(atan((A.X - A.Y) / (B.X - B.Y))); // direction of a vector.		
+	return atan((B.Y - A.Y) / (B.X - A.X)) *180 / PI; // direction of a vector.		
 }
 
 /// <summary>
@@ -94,18 +98,14 @@ vector<double> Vector::get_direction()
 
 		double v{}; //magnitude
 
-		v = sqrt(pow((n1 + n2 + n3), 2)); // magnitude
 
 		vector<double> directionthree;
 
-		n1 = n1 / v;
-		n1 = acos(n1);
+		n1 = n1 / sqrt(pow(n1,2) + pow(n2,2) + pow(n3,2));
 
-		n2 = n2 / v;
-		n2 = acos(n2);
+		n2 = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n3 = n3 / v;
-		n3 = acos(n3);
+		n3 = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
 		directionthree.push_back(n1);
 		directionthree.push_back(n2);

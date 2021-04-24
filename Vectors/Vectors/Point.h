@@ -7,11 +7,11 @@
 class Point
 {
 public:
-	int X;
-	int Y;
-	int Z;
+	double X;
+	double Y;
+	double Z;
 	Point();
-	Point(int x, int y, int z);
+	Point(double x, double y, double z);
 	bool operator==(Point point);
 };
 
