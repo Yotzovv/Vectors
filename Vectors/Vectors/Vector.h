@@ -30,6 +30,7 @@ public:
 	Vector operator-(const Vector& v);
 	double operator()(const Vector& v1, const Vector v2);
 	friend Vector operator*(double num, const Vector& v); // Multiplies vector by a real number
+	friend Vector operator^(const Vector& v1, const Vector& v2); // Multiplies two vectors
 };
 
 #endif 
