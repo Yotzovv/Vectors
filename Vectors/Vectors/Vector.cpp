@@ -164,14 +164,14 @@ double Vector::operator*(const Vector& v)
 /// <param name="y"></param>
 /// <param name="z"></param>
 /// <returns></returns>
-bool Vector::is_vector_perpendicullar(int x, int y, int z)
+bool Vector::is_vector_perpendicullar(const Vector& v)
 {
 	try
 	{
 		if (is_vector_null()) {
 			throw VectorLengthException();
 		}
-		return x * n1 + y * n2 + z * n3 == 0;
+		return v.n1 * n1 + v.n2 * n2 + v.n3 * n3 == 0;
 	}
 	catch (const std::exception& e)
 	{
