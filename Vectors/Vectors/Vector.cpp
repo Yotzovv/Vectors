@@ -83,7 +83,7 @@ double Vector::vector_direction()
 		throw VectorLengthException();
 	}
 
-	return atan((B.Y - A.Y) / (B.X - A.X)) *180 / PI; // direction of a vector.		
+	return atan((B.Y - A.Y) / (B.X - A.X)) * 180 / PI; // direction of a vector.		
 }
 
 /// <summary>
@@ -105,7 +105,7 @@ vector<double> Vector::get_direction()
 
 		vector<double> directionthree;
 
-		n1 = n1 / sqrt(pow(n1,2) + pow(n2,2) + pow(n3,2));
+		n1 = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
 		n2 = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
@@ -187,17 +187,17 @@ Vector Vector::operator+(const Vector& v)
 	result.n2 = n2 + v.n2;
 	result.n3 = n3 + v.n3;
 
-	return result; 
+	return result;
 }
 
 // substracting 2 vectors 
 // a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
-Vector Vector::operator-(const Vector& v){
+Vector Vector::operator-(const Vector& v) {
 	Vector result;
 	result.n1 = n1 - v.n1;
 	result.n2 = n2 - v.n2;
 	result.n3 = n3 - v.n3;
-	
+
 	return result;
 }
 
@@ -208,7 +208,7 @@ Vector Vector::operator-(const Vector& v){
 // x1(y2*z3 - z2*y3) - y1(x2*z3 - z2*x3) + z1(x2*y3 - y2*x3)
 double Vector::operator()(const Vector& v2, const Vector v3)
 {
-	return n1*(v2.n2*v3.n3 - v2.n3*v3.n2) - n2*(v2.n1*v3.n3 - v2.n3*v3.n1) + n3*(v2.n1*v3.n2 - v2.n2*v3.n1);
+	return n1 * (v2.n2 * v3.n3 - v2.n3 * v3.n2) - n2 * (v2.n1 * v3.n3 - v2.n3 * v3.n1) + n3 * (v2.n1 * v3.n2 - v2.n2 * v3.n1);
 }
 
 /// <summary>
@@ -222,6 +222,22 @@ Vector operator*(double num, const Vector& v)
 	result.n1 = v.n1 * num;
 	result.n2 = v.n2 * num;
 	result.n3 = v.n3 * num;
+
+	return result;
+}
+
+/// <summary>
+/// Multiplies two vectors
+/// </summary>
+/// <param name="First Vector"></param>
+/// <param name="Second Vector"></param>
+/// <returns>Vector object</returns>
+Vector operator^(const Vector& v1, const Vector& v2)
+{
+	Vector result;
+	result.n1 = v1.n2 * v2.n3 - v1.n3 * v2.n2;
+	result.n2 = v1.n1 * (-1) * v2.n3 + v1.n3 * v2.n1;
+	result.n3 = v1.n1 * v2.n2 - v1.n2 * v2.n1;
 
 	return result;
 }
