@@ -7,17 +7,17 @@
 #include <vector>
 #include <math.h>
 
-Line::Line(Point X, Point Y):Vector(X,Y)
+Line::Line(Point X, Point Y) :Vector(X, Y)
 {
 
 }
 
-Line::Line(Vector vec, Point A):Vector(vec)
-{ 
+Line::Line(Vector vec, Point A) : Vector(vec)
+{
 	this->A = A;
 }
 
-Line::Line(Vector vec) : Vector(vec) 
+Line::Line(Vector vec) : Vector(vec)
 {
 
 }
@@ -29,44 +29,18 @@ Line::Line(Vector vec) : Vector(vec)
 /// <returns>Vector</returns>
 Vector Line::FindNormalVector(Line l)
 {
-	/// <summary>
-	/// Value X of point A of the vector
-	/// </summary>
-	double vecX = l.n1;
-	/// <summary>
-	/// Value Y of point A of the vector
-	/// </summary>
-	double vecY = l.n2;
-	/// <summary>
-	/// Value Z of point A of the vector
-	/// </summary>
-	double vecZ = l.n3;
-
-	/// <summary>
-	/// Value X of point A
-	/// </summary>
-	double pointA_X = l.A.X;
-	/// <summary>
-	/// Value Y of point A
-	/// </summary>
-	double pointA_Y = l.A.Y;
-	/// <summary>
-	/// Value Z of point A
-	/// </summary>
-	double pointA_Z = l.A.Z;
-
-	double k = -
-		(vecX * pointA_X
-			+ vecY * pointA_Y
-			+ vecZ * pointA_Z)
+	double k =
+		-(this->n1 * this->A.X
+			+ this->n2 * this->A.Y
+			+ this->n3 * this->A.Z)
 		/
-		(pow(vecX, 2)
-			+ pow(vecY, 2)
-			+ pow(vecZ, 2));
+		(pow(this->n1, 2)
+			+ pow(this->n2, 2)
+			+ pow(this->n3, 2));
 
-	double resX = (vecX * k) + pointA_X;
-	double resY = (vecY * k) + pointA_Y;
-	double resZ = (vecZ * k) + pointA_Z;
+	double resX = (this->n1 * k) + this->A.X;
+	double resY = (this->n2 * k) + this->A.Y;
+	double resZ = (this->n3 * k) + this->A.Z;
 
 	return Vector(resX, resY, resZ);
 }
