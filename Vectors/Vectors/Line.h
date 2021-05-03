@@ -15,4 +15,5 @@ public:
 	Line(Vector vec);
 	Vector FindNormalVector(Line l);
 };
+
 #endif
