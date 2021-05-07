@@ -17,6 +17,8 @@ public:
 	Vector get_line_direction();
 	bool get_parallel_line(Vector v1);
 	bool operator||(Vector v1);
+	Vector find_normal_vector(Line l);
+	friend bool operator==(const Line&, const Line&);//Checks if lines are equal
 };
 
 #endif
