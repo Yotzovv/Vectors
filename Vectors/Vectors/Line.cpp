@@ -27,7 +27,7 @@ Line::Line(Vector vec) : Vector(vec)
 /// </summary>
 /// <param name="line l"></param>
 /// <returns>Vector</returns>
-Vector Line::FindNormalVector(Line l)
+Vector Line::find_normal_vector(Line l)
 {
 	double k = -(n1 * A.X + n2 * A.Y + n3 * A.Z) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
@@ -36,4 +36,12 @@ Vector Line::FindNormalVector(Line l)
 	double resZ = (this->n3 * k) + this->A.Z;
 
 	return Vector(resX, resY, resZ);
+}
+
+Vector Line::get_line_direction()
+{
+	vector<double> v1 = this->get_direction();
+	Vector result(v1[0],v1[1],v1[2]);
+
+	return result;
 }
