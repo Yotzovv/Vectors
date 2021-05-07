@@ -29,14 +29,7 @@ Line::Line(Vector vec) : Vector(vec)
 /// <returns>Vector</returns>
 Vector Line::FindNormalVector(Line l)
 {
-	double k =
-		-(this->n1 * this->A.X
-			+ this->n2 * this->A.Y
-			+ this->n3 * this->A.Z)
-		/
-		(pow(this->n1, 2)
-			+ pow(this->n2, 2)
-			+ pow(this->n3, 2));
+	double k = -(n1 * A.X + n2 * A.Y + n3 * A.Z) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
 	double resX = (this->n1 * k) + this->A.X;
 	double resY = (this->n2 * k) + this->A.Y;
