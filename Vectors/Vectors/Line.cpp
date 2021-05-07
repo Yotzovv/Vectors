@@ -54,7 +54,7 @@ bool Line::operator||(Vector v1)
 
 	return slope1 == slope2;
 }
-}
+
 
 bool operator==(const Line& l, const Line& l2)
 {
