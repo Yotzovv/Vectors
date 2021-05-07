@@ -17,6 +17,7 @@ public:
 	Vector get_line_direction();
 	bool get_parallel_line(Vector v1);
 	bool operator||(Vector v1);
+	double find_angle_line(Vector v1);
 };
 
 #endif

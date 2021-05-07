@@ -54,3 +54,11 @@ bool Line::operator||(Vector v1)
 
 	return slope1 == slope2;
 }
+double Line::find_angle_line(Vector v1)
+{
+	double cos_of_angle =((A.X * v1.A.X) + (B.X * v1.B.Y) /
+		                 (sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
+		                 (sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
+
+	return (acos(cos_of_angle) * 180.0 / 3.14);
+}
