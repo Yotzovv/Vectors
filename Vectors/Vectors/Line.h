@@ -13,12 +13,7 @@ public:
 	Line(Point X, Point Y);
 	Line(Vector vec, Point X);
 	Line(Vector vec);
-
+	Vector FindNormalVector(Line l);
 };
-
-//Line (Point A, Point B);
-
-
-
 
 #endif
