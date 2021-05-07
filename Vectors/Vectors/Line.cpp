@@ -38,6 +38,24 @@ Vector Line::find_normal_vector(Line l)
 	return Vector(resX, resY, resZ);
 }
 
+Vector Line::get_line_direction()
+{
+	vector<double> v1 = this->get_direction();
+	Vector result(v1[0],v1[1],v1[2]);
+
+	return result;
+}
+
+bool Line::operator||(Vector v1)
+{
+	//(y1-y2)/(x1-x2)
+	double slope1 = (A.Y - B.Y) / (A.X - B.X);
+	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+
+	return slope1 == slope2;
+}
+}
+
 bool operator==(const Line& l, const Line& l2)
 {
 	double x = (double)(l.n1 / l2.n1);
