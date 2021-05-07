@@ -104,3 +104,11 @@ bool Line::operator|(const Line& l)
 	bool res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
 	return res;
 }
+double Line::find_angle_line(Vector v1)
+{
+	double cos_of_angle =((A.X * v1.A.X) + (B.X * v1.B.Y) /
+		                 (sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
+		                 (sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
+
+	return (acos(cos_of_angle) * 180.0 / 3.14);
+}
