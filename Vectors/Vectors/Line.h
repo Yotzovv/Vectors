@@ -13,7 +13,8 @@ public:
 	Line(Point X, Point Y);
 	Line(Vector vec, Point X);
 	Line(Vector vec);
-	Vector FindNormalVector(Line l);
+	Vector find_normal_vector(Line l);
+	friend bool operator==(const Line&, const Line&);//Checks if lines are equal
 };
 
 #endif
