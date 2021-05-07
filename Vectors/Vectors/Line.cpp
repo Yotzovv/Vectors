@@ -64,3 +64,38 @@ bool operator==(const Line& l, const Line& l2)
 	bool res = (x == y) == (x == z) == (y == z);
 	return res;
 }
+
+int orientation(Point p, Point q, Point r)
+{
+	int val = (q.Y - p.Y) * (r.X - q.X) -
+		(q.X - p.X) * (r.Y - q.Y);
+
+	if (val == 0) return 0;  // colinear
+
+	return (val > 0) ? 1 : 2; // clock or counterclock wise
+}
+
+bool isIntersecting(Point& p1, Point& p2, Point& q1, Point& q2) {
+	return (((q1.X - p1.X) * (p2.Y - p1.Y) - (q1.Y - p1.Y) * (p2.X - p1.X))
+		* ((q2.X - p1.X) * (p2.Y - p1.Y) - (q2.Y - p1.Y) * (p2.X - p1.X)) < 0)
+		&&
+		(((p1.X - q1.X) * (q2.Y - q1.Y) - (p1.Y - q1.Y) * (q2.X - q1.X))
+			* ((p2.X - q1.X) * (q2.Y - q1.Y) - (p2.Y - q1.Y) * (q2.X - q1.X)) < 0);
+}
+
+bool Line::operator&&(Vector v1)
+{
+	//(y1-y2)/(x1-x2)
+	double slope1 = (A.Y - B.Y) / (A.X - B.X);
+	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+
+	//Equal swopes don't mean lines intersect for sure
+	if (slope1 != slope2)
+	{
+		return false;
+	}
+
+	bool result = isIntersecting(A, B, v1.A, v1.B);
+
+	return result;
+}
