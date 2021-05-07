@@ -55,17 +55,12 @@ bool Line::operator||(Vector v1)
 	return slope1 == slope2;
 }
 
+
 bool operator==(const Line& l, const Line& l2)
 {
 	double x = (double)(l.n1 / l2.n1);
 	double y = (double)(l.n2 / l2.n2);
 	double z = (double)(l.n3 / l2.n3);
 	bool res = (x == y) == (x == z) == (y == z);
-	return res;
-}
-
-bool Line::operator|(const Line& l)
-{
-	bool res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
 	return res;
 }
