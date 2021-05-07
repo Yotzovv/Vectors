@@ -45,3 +45,12 @@ Vector Line::get_line_direction()
 
 	return result;
 }
+
+bool Line::operator||(Vector v1)
+{
+	//(y1-y2)/(x1-x2)
+	double slope1 = (A.Y - B.Y) / (A.X - B.X);
+	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+
+	return slope1 == slope2;
+}

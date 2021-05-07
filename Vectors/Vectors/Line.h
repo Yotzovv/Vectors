@@ -15,6 +15,8 @@ public:
 	Line(Vector vec);
 	Vector find_normal_vector(Line l);
 	Vector get_line_direction();
+	bool get_parallel_line(Vector v1);
+	bool operator||(Vector v1);
 };
 
 #endif
