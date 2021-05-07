@@ -17,7 +17,8 @@ public:
 	Vector get_line_direction();
 	bool operator||(Vector v1);
 	friend bool operator==(const Line&, const Line&);//Checks if lines are equal
-	bool operator |(const Line&);
+	bool operator&&(Vector v1);
+	bool operator|(const Line&);
 };
 
 #endif
