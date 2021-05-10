@@ -121,3 +121,11 @@ bool Line::operator!=(Vector v1)
 
 	return slope1 == slope2;
 }
+
+bool Line::operator+(Point pt) 
+{
+	bool is_point_on_line = ((pt.X >= this->A.X && this->B.X >= pt.X) || (pt.X >= this->B.X && this->A.X >= pt.X))
+		&& (pt.Y >= this->A.Y && this->B.Y >= pt.Y) || (pt.Y >= this->B.Y && this->A.Y >= pt.Y);
+	
+	return is_point_on_line;
+}

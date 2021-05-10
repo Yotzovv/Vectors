@@ -16,3 +16,4 @@ bool Point::operator==(Point point)
 {
 	return (point.X == X && point.Y == Y && point.Z == Z);
 };
+

@@ -21,6 +21,7 @@ public:
 	bool operator|(const Line&);
 	double find_angle_line(Vector v1);
 	bool operator!=(Vector v1);
+	bool operator+(Point pt);
 };
 
 #endif
