@@ -10,6 +10,7 @@ class Line : public Vector
 {
 
 public: 	
+	Line();
 	Line(Point X, Point Y);
 	Line(Vector vec, Point X);
 	Line(Vector vec);

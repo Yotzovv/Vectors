@@ -33,10 +33,10 @@
     <ClCompile Include="Line.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
-    <ClCompile Include="EqualPointException.cpp">
-      <Filter>Resource Files\Exceptions</Filter>
-    </ClCompile>
     <ClCompile Include="Triangle.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClInclude Include="Line.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EqualPointException.h">
-      <Filter>Header Files\Exceptions</Filter>
-    </ClInclude>
     <ClInclude Include="Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Segment.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
