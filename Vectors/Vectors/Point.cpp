@@ -12,6 +12,12 @@ Point::Point(double x, double y, double z)
 	Z = z;
 };
 
+Point::Point(double x, double y)
+{
+	X = x;
+	Y = y;
+};
+
 bool Point::operator==(Point point)
 {
 	return (point.X == X && point.Y == Y && point.Z == Z);

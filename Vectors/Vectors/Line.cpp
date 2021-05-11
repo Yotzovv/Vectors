@@ -7,6 +7,10 @@
 #include <vector>
 #include <math.h>
 
+Line::Line()
+{
+}
+
 Line::Line(Point X, Point Y) :Vector(X, Y)
 {
 
