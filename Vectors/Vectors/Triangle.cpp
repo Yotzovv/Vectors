@@ -1,5 +1,4 @@
 #include "Triangle.h"
-#include "EqualPointException.h"
 #include "Vector.h"
 #pragma once
 
