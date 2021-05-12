@@ -89,6 +89,17 @@ void Triangle::setZ(Point z)
 	Z = z;
 }
 
+Point Triangle::get_centroid(Point x, Point y, Point z)
+{
+	Point centroid;
+
+	centroid.X = (x.X + y.X + z.X) / 3;
+	centroid.Y = (x.Y + y.Y + z.Y) / 3;
+
+	return centroid;
+}
+}
+
 double Triangle::area_of_triangle()
 {
 	Segment x(X, Y);
