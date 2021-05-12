@@ -44,3 +44,9 @@ Point Segment::find_segment_middle()
 	return middle;
 }
 
+bool Segment::operator==(Point point)
+{
+	//(x - x1) / (x2 - x1) = (y - y1) / (y2 - y1)
+	return (point.X - Start_pt.X) / (get_endPt().X - get_startPt().X) == (point.Y - get_startPt().Y) / (get_endPt().Y - get_startPt().Y);
+}
+
