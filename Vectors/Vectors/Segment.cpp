@@ -21,7 +21,7 @@ Point Segment::get_endPt()
 {
 	return End_pt;
 }
-
+ 
 Segment::Segment()
 {
 }
@@ -36,3 +36,11 @@ double Segment::find_segment_length()
 {
 	return (double)sqrt(pow(get_endPt().X - get_startPt().X, 2) + pow(get_endPt().Y - get_startPt().Y, 2));
 }
+
+Point Segment::find_segment_middle()
+{
+	Point middle((Start_pt.X + End_pt.X) / 2, (Start_pt.Y + End_pt.Y) / 2);
+
+	return middle;
+}
+

@@ -21,6 +21,7 @@ public:
 	Segment();
 	Segment(Point start_pt, Point end_pt);
 	double find_segment_length();
+	Point find_segment_middle();
 };
 
 #endif
