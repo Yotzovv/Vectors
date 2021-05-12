@@ -9,6 +9,7 @@ public:
 	void setX(Point x);
 	void setY(Point y);
 	void setZ(Point z);
+	Point get_centroid(Point x, Point y, Point z); // medicentyr
 private:
 	Point X;
 	Point Y;
