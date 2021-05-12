@@ -98,7 +98,6 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 
 	return centroid;
 }
-}
 
 double Triangle::area_of_triangle()
 {
