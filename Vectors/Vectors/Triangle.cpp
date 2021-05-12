@@ -1,5 +1,6 @@
-#include "Triangle.h"
+﻿#include "Triangle.h"
 #include "Vector.h"
+#include "Segment.h"
 #pragma once
 
 Triangle::Triangle(Point x, Point y, Point z)
@@ -96,4 +97,23 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 	centroid.Y = (x.Y + y.Y + z.Y) / 3;
 
 	return centroid;
+}
+}
+
+double Triangle::area_of_triangle()
+{
+	Segment x(X, Y);
+	Segment y(Y, Z);
+	Segment z(Z, X);
+
+	double a = x.find_segment_length();
+	double b = y.find_segment_length();
+	double c = z.find_segment_length();
+
+	//S = √p(p - a)(p - b)(p - c)
+
+	double p = (a + b + c) / 2;
+	double area = (double)sqrt(p*(p - a) * (p - b) * (p - c));
+	
+	return area;
 }
