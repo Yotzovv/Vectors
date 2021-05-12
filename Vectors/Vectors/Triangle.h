@@ -9,6 +9,7 @@ public:
 	void setX(Point x);
 	void setY(Point y);
 	void setZ(Point z);
+	double area_of_triangle();
 private:
 	Point X;
 	Point Y;
