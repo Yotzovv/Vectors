@@ -11,6 +11,7 @@ public:
 	void setZ(Point z);
 	Point get_centroid(Point x, Point y, Point z); // medicentyr
 	double area_of_triangle();
+	double get_perimeter();
 private:
 	Point X;
 	Point Y;
