@@ -144,7 +144,7 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 }
 
 
-double Triangle::area_of_triangle()
+double Triangle::get_area()
 {
 	Segment x(X, Y);
 	Segment y(Y, Z);
@@ -155,10 +155,26 @@ double Triangle::area_of_triangle()
 	double c = z.find_segment_length();
 
 	//S = √p(p - a)(p - b)(p - c)
-
 	double p = (a + b + c) / 2;
 	double area = (double)sqrt(p*(p - a) * (p - b) * (p - c));
 	
+	return area;
+}
+
+double Triangle::get_area(Point x, Point y, Point z)
+{
+	Segment s1(x, y);
+	Segment s2(y, z);
+	Segment s3(z, x);
+
+	double a = s1.find_segment_length();
+	double b = s2.find_segment_length();
+	double c = s3.find_segment_length();
+			   
+	//S = √p(p - a)(p - b)(p - c)
+	double p = (a + b + c) / 2;
+	double area = (double)sqrt(p * (p - a) * (p - b) * (p - c));
+
 	return area;
 }
 
@@ -280,4 +296,26 @@ void Triangle::get_triangle_type(Point x, Point y, Point z)
 		cout << "the triangle is obtuse." << endl;
 	}
 
+}
+
+//Checks if Point is inside triangle
+bool Triangle::operator<(Point pt)
+{
+	float total_area = get_area(this->X, this->Y, this->Z);
+	float area1 = get_area(pt, this->Y, this->Z);
+	float area2 = get_area(pt, this->X, this->Z);
+	float area3 = get_area(pt, this->X, this->Y);
+
+	cout << area1 << endl;
+	cout << area2 << endl;
+	cout << area3 << endl;
+	cout << (area1 + area2 + area3) << endl;
+	cout << total_area << endl;
+
+	if ((area1 + area2 + area3) <= total_area)
+	{
+		return true;
+	}
+
+	return false;
 }
