@@ -11,6 +11,7 @@ public:
 	void setZ(Point z);
 	Point get_centroid(Point x, Point y, Point z); // medicentyr
 	double area_of_triangle();
+	double get_perimeter();
 	bool is_point_valid();
 	double get_mid_side(double a, double b, double c);
 	bool is_triangle_iscoleses(Point x, Point y, Point z); // ravnobedren

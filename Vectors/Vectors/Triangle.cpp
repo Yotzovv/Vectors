@@ -162,6 +162,21 @@ double Triangle::area_of_triangle()
 	return area;
 }
 
+double Triangle::get_perimeter()
+{
+	Segment x(X, Y);
+	Segment y(Y, Z);
+	Segment z(Z, X);
+
+	double a = x.find_segment_length();
+	double b = y.find_segment_length();
+	double c = z.find_segment_length();
+
+	double perimeter = (a + b + c);
+
+	return perimeter;
+}
+
 
 bool Triangle::is_triangle_equilateral(Point x, Point y, Point z) {
 
