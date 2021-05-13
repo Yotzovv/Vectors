@@ -341,3 +341,16 @@ bool Triangle::operator>(Point pt)
 
 	return true;
 }
+
+bool Triangle::operator==(Point point)
+{
+	Segment seg(X, Y);
+	Segment seg1(Z, Y);
+	Segment seg2(X, Z);
+
+	double a = seg.find_segment_length();
+	double b = seg1.find_segment_length();
+	double c = seg2.find_segment_length();
+
+	return (seg == point) || (seg1 == point) || (seg2 == point);
+}
