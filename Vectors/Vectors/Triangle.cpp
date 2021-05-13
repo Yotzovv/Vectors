@@ -98,7 +98,7 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 
 	return centroid;
 }
-
+}
 
 double Triangle::area_of_triangle()
 {
@@ -116,19 +116,4 @@ double Triangle::area_of_triangle()
 	double area = (double)sqrt(p*(p - a) * (p - b) * (p - c));
 	
 	return area;
-}
-
-double Triangle::perimeter_of_triangle()
-{
-	Segment x(X, Y);
-	Segment y(Y, Z);
-	Segment z(Z, X);
-
-	double a = x.find_segment_length();
-	double b = y.find_segment_length();
-	double c = z.find_segment_length();
-
-	double perimeter = (a + b + c);
-
-	return perimeter; 
 }
