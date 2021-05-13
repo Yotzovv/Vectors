@@ -22,6 +22,7 @@ public:
 	bool is_triangle_obtuse(Point x, Point y, Point z);
 	void get_triangle_type(Point x, Point y, Point z); // dali e ostrougulen, tupougulen ili pravougulen
 	bool operator<(Point point);
+	bool operator>(Point point);
 private:
 	Point X;
 	Point Y;

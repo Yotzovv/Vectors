@@ -319,3 +319,25 @@ bool Triangle::operator<(Point pt)
 
 	return false;
 }
+
+//Checks if Point is outside triangle
+bool Triangle::operator>(Point pt)
+{
+	float total_area = get_area(this->X, this->Y, this->Z);
+	float area1 = get_area(pt, this->Y, this->Z);
+	float area2 = get_area(pt, this->X, this->Z);
+	float area3 = get_area(pt, this->X, this->Y);
+
+	cout << area1 << endl;
+	cout << area2 << endl;
+	cout << area3 << endl;
+	cout << (area1 + area2 + area3) << endl;
+	cout << total_area << endl;
+
+	if ((area1 + area2 + area3) <= total_area)
+	{
+		return false;
+	}
+
+	return true;
+}
