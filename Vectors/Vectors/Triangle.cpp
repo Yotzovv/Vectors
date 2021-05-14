@@ -247,7 +247,6 @@ bool Triangle::is_triangle_acute(Point x, Point y, Point z) {
 	mid = this->get_mid_side(a, b, c);
 
 	sum = (pow(mid, 2) + pow(min(min(a, b), c), 2));
-
 	
 	if (pow(max(max(a, b), c), 2) < sum) {
 		return true;
@@ -295,7 +294,6 @@ void Triangle::get_triangle_type(Point x, Point y, Point z)
 	{
 		cout << "the triangle is obtuse." << endl;
 	}
-
 }
 
 //Checks if Point is inside triangle
@@ -305,12 +303,6 @@ bool Triangle::operator<(Point pt)
 	float area1 = get_area(pt, this->Y, this->Z);
 	float area2 = get_area(pt, this->X, this->Z);
 	float area3 = get_area(pt, this->X, this->Y);
-
-	cout << area1 << endl;
-	cout << area2 << endl;
-	cout << area3 << endl;
-	cout << (area1 + area2 + area3) << endl;
-	cout << total_area << endl;
 
 	if ((area1 + area2 + area3) <= total_area)
 	{
@@ -327,12 +319,6 @@ bool Triangle::operator>(Point pt)
 	float area1 = get_area(pt, this->Y, this->Z);
 	float area2 = get_area(pt, this->X, this->Z);
 	float area3 = get_area(pt, this->X, this->Y);
-
-	cout << area1 << endl;
-	cout << area2 << endl;
-	cout << area3 << endl;
-	cout << (area1 + area2 + area3) << endl;
-	cout << total_area << endl;
 
 	if ((area1 + area2 + area3) <= total_area)
 	{
