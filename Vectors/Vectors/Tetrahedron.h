@@ -12,8 +12,10 @@ public:
 	void setB(Point b);
 	void setC(Point c);
 	void setD(Point d);
+	bool is_tetrahedron_regular();
 	bool operator<(Point point);
 	bool operator>(Point point);
+	bool operator==(Point point);
 private:
 	Point A;
 	Point B;
