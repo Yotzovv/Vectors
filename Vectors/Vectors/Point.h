@@ -16,5 +16,4 @@ public:
 	bool operator==(Point point);
 };
 
-
 #endif
