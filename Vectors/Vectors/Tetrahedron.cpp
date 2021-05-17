@@ -1,6 +1,7 @@
 #include "Tetrahedron.h"
 #include <vector>
 #include <string>
+#include "Triangle.h"
 using namespace std;
 
 class EqualPointException : public std::exception {
@@ -97,4 +98,16 @@ void Tetrahedron::setC(Point c)
 void Tetrahedron::setD(Point d)
 {
 	D = d;
+}
+
+//Divide Tetrahedron on 4 Triangles
+//Check if Point is in any of the Triangles
+bool Tetrahedron::operator<(Point pt)
+{
+	Triangle adc(getA(), getD(), getC());
+	Triangle adb(getA(), getD(), getB());
+	Triangle bdc(getB(), getD(), getC());
+	Triangle abc(getA(), getB(), getC());
+
+	return adc < pt || adb < pt || bdc < pt || abc < pt;
 }
