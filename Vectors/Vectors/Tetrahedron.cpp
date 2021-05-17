@@ -111,3 +111,15 @@ bool Tetrahedron::operator<(Point pt)
 
 	return adc < pt || adb < pt || bdc < pt || abc < pt;
 }
+
+//Divide Tetrahedron on 4 Triangles
+//Check if Point is outside of all triangles
+bool Tetrahedron::operator>(Point pt)
+{
+	Triangle adc(getA(), getD(), getC());
+	Triangle adb(getA(), getD(), getB());
+	Triangle bdc(getB(), getD(), getC());
+	Triangle abc(getA(), getB(), getC());
+
+	return adc > pt || adb > pt || bdc > pt || abc > pt;
+}

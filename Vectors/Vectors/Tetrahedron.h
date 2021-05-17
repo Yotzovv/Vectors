@@ -13,6 +13,7 @@ public:
 	void setC(Point c);
 	void setD(Point d);
 	bool operator<(Point point);
+	bool operator>(Point point);
 private:
 	Point A;
 	Point B;
