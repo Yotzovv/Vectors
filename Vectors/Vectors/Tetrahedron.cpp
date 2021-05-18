@@ -2,6 +2,9 @@
 #include <vector>
 #include <string>
 #include "Triangle.h"
+#include "Segment.h"
+#include <math.h>
+
 using namespace std;
 
 class EqualPointException : public std::exception {
@@ -100,6 +103,26 @@ void Tetrahedron::setD(Point d)
 	D = d;
 }
 
+bool Tetrahedron::is_ortogonal()
+{
+	//AB2+ CD’2 = AC’2 + BD’2 = AD’2 + BC’2
+	Segment s_ab(A, B);
+	Segment s_cd(C, D);
+	Segment s_bd(B, D);
+	Segment s_ac(A, C);
+	Segment s_bc(B, C);
+	Segment s_ad(A, D);
+    
+	double ab = s_ab.find_segment_length();
+	double cd = s_cd.find_segment_length();
+	double bd = s_bd.find_segment_length();
+	double ac = s_ac.find_segment_length();
+	double bc = s_bc.find_segment_length();
+	double ad = s_ad.find_segment_length();
+
+	return pow(ab, 2) + pow(cd, 2) == pow(ac, 2) + pow(bd, 2) == pow(ad, 2) + pow(bc, 2); 
+}
+
 //Divide Tetrahedron on 4 Triangles
 //Check if Point is in any of the Triangles
 bool Tetrahedron::operator<(Point pt)
@@ -123,3 +146,5 @@ bool Tetrahedron::operator>(Point pt)
 
 	return adc > pt || adb > pt || bdc > pt || abc > pt;
 }
+
+
