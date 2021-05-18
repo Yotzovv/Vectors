@@ -100,6 +100,15 @@ void Tetrahedron::setD(Point d)
 	D = d;
 }
 
+double Tetrahedron::find_surrounding_surface()
+{
+	Triangle acd(getA(), getC(), getD());
+	Triangle abd(getA(), getB(), getD());
+	Triangle bcd(getB(), getC(), getD());
+
+	return acd.get_area() + abd.get_area() + bcd.get_area();
+}
+
 //Divide Tetrahedron on 4 Triangles
 //Check if Point is in any of the Triangles
 bool Tetrahedron::operator<(Point pt)

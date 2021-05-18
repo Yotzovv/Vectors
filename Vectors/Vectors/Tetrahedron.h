@@ -14,6 +14,7 @@ public:
 	void setD(Point d);
 	bool operator<(Point point);
 	bool operator>(Point point);
+	double find_surrounding_surface();
 private:
 	Point A;
 	Point B;
