@@ -121,6 +121,15 @@ bool Tetrahedron::is_tetrahedron_regular()
 	return result;
 }
 
+double Tetrahedron::get_volume()
+{
+	Vector ab(A, B);
+	Vector ac(A, C);
+	Vector ad(A, D);
+
+	return ((ab ^ ac) * ad) / 6;
+}
+
 //Divide Tetrahedron on 4 Triangles
 //Check if Point is in any of the Triangles
 bool Tetrahedron::operator<(Point pt)
