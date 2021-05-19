@@ -19,6 +19,12 @@
     <Filter Include="Resource Files\Exceptions">
       <UniqueIdentifier>{d4e7f6d2-0cd1-4330-b06b-465bc7c756d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Menu">
+      <UniqueIdentifier>{dd44c885-6a4a-42cc-a94a-1b089d6a2612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{9ea0075f-0f42-4863-ba5c-f6a4ac1f5501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Point.cpp">
@@ -42,6 +48,9 @@
     <ClCompile Include="Tetrahedron.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
@@ -61,6 +70,9 @@
     </ClInclude>
     <ClInclude Include="Tetrahedron.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
