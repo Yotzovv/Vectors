@@ -143,6 +143,15 @@ bool Tetrahedron::is_ortogonal()
 	return pow(ab, 2) + pow(cd, 2) == pow(ac, 2) + pow(bd, 2) == pow(ad, 2) + pow(bc, 2); 
 }
 
+double Tetrahedron::find_surrounding_surface()
+{
+	Triangle acd(getA(), getC(), getD());
+	Triangle abd(getA(), getB(), getD());
+	Triangle bcd(getB(), getC(), getD());
+
+	return acd.get_area() + abd.get_area() + bcd.get_area();
+}
+
 //Divide Tetrahedron on 4 Triangles
 //Check if Point is in any of the Triangles
 bool Tetrahedron::operator<(Point pt)
