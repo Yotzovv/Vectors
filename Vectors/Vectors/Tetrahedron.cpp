@@ -152,6 +152,15 @@ double Tetrahedron::find_surrounding_surface()
 	return acd.get_area() + abd.get_area() + bcd.get_area();
 }
 
+double Tetrahedron::get_volume()
+{
+	Vector ab(A, B);
+	Vector ac(A, C);
+	Vector ad(A, D);
+
+	return ((ab ^ ac) * ad) / 6;
+}
+
 //Divide Tetrahedron on 4 Triangles
 //Check if Point is in any of the Triangles
 bool Tetrahedron::operator<(Point pt)
