@@ -3,7 +3,8 @@
 
 using namespace std;
 
-int redirect(int chose) {
+int MainMenu::redirect(int chose)
+{
 	switch (chose)
 	{
 	case 1:
@@ -27,7 +28,7 @@ int redirect(int chose) {
 	}
 }
 
-int print_main_menu()
+int MainMenu::print_main_menu()
 {
 	cout << "Choose a figure" << endl;
 	cout << "1.Point" << endl;
