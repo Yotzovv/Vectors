@@ -5,8 +5,8 @@
 class MainMenu
 {
 public:
-	int redirect(int chose);
-	int print_main_menu();
+	void redirect(int chose);
+	void print_main_menu();
 };
 
 #endif

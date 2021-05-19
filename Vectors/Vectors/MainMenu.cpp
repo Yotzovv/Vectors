@@ -1,14 +1,15 @@
 #include "MainMenu.h"
 #include <iostream>
+#include "PointMenu.h"
 
 using namespace std;
 
-int MainMenu::redirect(int chose)
+void MainMenu::redirect(int chose)
 {
 	switch (chose)
 	{
 	case 1:
-		//PointMenu
+		PointMenu().print_point_menu();
 		break;
 	case 2:
 		//VectorMenu
@@ -28,16 +29,17 @@ int MainMenu::redirect(int chose)
 	}
 }
 
-int MainMenu::print_main_menu()
+void MainMenu::print_main_menu()
 {
-	cout << "Choose a figure" << endl;
+	cout << "Main Menu" << endl;
 	cout << "1.Point" << endl;
 	cout << "2.Vector" << endl;
 	cout << "3.Line" << endl;
 	cout << "4.Segment" << endl;
 	cout << "5.Triangle" << endl;
-	cout << "6.Tetrahedron" << endl;
+	cout << "6.Tetrahedron" << endl << endl;
 
+	cout << ">: ";
 	int chose;
 	cin >> chose;
 
