@@ -13,6 +13,7 @@ public:
 	void setC(Point c);
 	void setD(Point d);
 	bool is_tetrahedron_regular();
+	bool is_ortogonal();
 	bool operator<(Point point);
 	bool operator>(Point point);
 	bool operator==(Point point);
