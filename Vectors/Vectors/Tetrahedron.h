@@ -13,6 +13,8 @@ public:
 	void setC(Point c);
 	void setD(Point d);
 	bool is_tetrahedron_regular();
+	bool is_ortogonal();
+	double find_surrounding_surface();
 	double get_volume();
 	bool operator<(Point point);
 	bool operator>(Point point);

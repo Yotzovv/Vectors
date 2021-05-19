@@ -3,6 +3,8 @@
 #include <string>
 #include "Triangle.h"
 #include "Segment.h"
+#include <math.h>
+
 using namespace std;
 
 class EqualPointException : public std::exception {
@@ -119,6 +121,35 @@ bool Tetrahedron::is_tetrahedron_regular()
 	bool result = a1.is_triangle_equilateral(A, B, D) && a2.is_triangle_equilateral(B, C, D) && a3.is_triangle_equilateral(C, A, D);
 
 	return result;
+}
+
+bool Tetrahedron::is_ortogonal()
+{
+	//AB2+ CD’2 = AC’2 + BD’2 = AD’2 + BC’2
+	Segment s_ab(A, B);
+	Segment s_cd(C, D);
+	Segment s_bd(B, D);
+	Segment s_ac(A, C);
+	Segment s_bc(B, C);
+	Segment s_ad(A, D);
+    
+	double ab = s_ab.find_segment_length();
+	double cd = s_cd.find_segment_length();
+	double bd = s_bd.find_segment_length();
+	double ac = s_ac.find_segment_length();
+	double bc = s_bc.find_segment_length();
+	double ad = s_ad.find_segment_length();
+
+	return pow(ab, 2) + pow(cd, 2) == pow(ac, 2) + pow(bd, 2) == pow(ad, 2) + pow(bc, 2); 
+}
+
+double Tetrahedron::find_surrounding_surface()
+{
+	Triangle acd(getA(), getC(), getD());
+	Triangle abd(getA(), getB(), getD());
+	Triangle bcd(getB(), getC(), getD());
+
+	return acd.get_area() + abd.get_area() + bcd.get_area();
 }
 
 double Tetrahedron::get_volume()
