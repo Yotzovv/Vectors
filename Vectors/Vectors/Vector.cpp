@@ -241,3 +241,46 @@ Vector operator^(const Vector& v1, const Vector& v2)
 
 	return result;
 }
+
+//Overlaods >> opeartor
+std::istream& Vector::ext(std::istream& in) { 
+	cout << endl << "Create Vector Menu" << endl;
+	cout << endl << "Choose method of creation:" << endl;
+	cout << "1. Using 3 numbers" << endl;
+	cout << "2. Using cordinates" << endl; 
+	cout << ">: " << endl;
+
+	int option;
+	cin >> option;
+
+	switch (option)
+	{
+	case 1:
+		double x, y, z;
+
+		cout << "x: ";
+		cin >> x;
+
+		cout << "y: ";
+		cin >> y;
+
+		cout << "z: ";
+		cin >> z;
+
+		this->n1 = x;
+		this->n2 = y;
+		this->n3 = z;
+		break;
+	case 2:
+		Point pt_x;
+		Point pt_y;
+
+		cin >> x >> y;
+
+		this->A = pt_x;
+		this->B = pt_y;
+		break;
+	}
+
+	return in;
+}

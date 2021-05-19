@@ -14,6 +14,7 @@ public:
 	Point(double x, double y, double z);
 	Point(double x, double y);
 	bool operator==(Point point);
+	std::istream& ext(std::istream& in);
 };
 
 

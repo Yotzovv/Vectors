@@ -54,6 +54,9 @@
     <ClCompile Include="PointMenu.cpp">
       <Filter>Resource Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="VectorMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
@@ -78,6 +81,9 @@
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
     <ClInclude Include="PointMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorMenu.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
