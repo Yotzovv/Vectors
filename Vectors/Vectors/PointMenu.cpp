@@ -7,8 +7,15 @@ using namespace std;
 void PointMenu::instantiate_point()
 {
 	double x, y, z;
+
+	cout << "Your point" << endl;
+	cout << "x: ";
 	cin >> x;
+
+	cout << "y: ";
 	cin >> y;
+
+	cout << "z: ";
 	cin >> z;
 
 	this->_Point = Point(x, y, z);
@@ -17,13 +24,20 @@ void PointMenu::instantiate_point()
 void PointMenu::check_if_equal()
 {
 	double x, y, z;
+
+	cout << "Your New Point: " << endl;
+	cout << "x: ";
 	cin >> x;
+
+	cout << "y: ";
 	cin >> y;
+
+	cout << "z: ";
 	cin >> z;
 
 	bool are_point_equal = this->_Point == Point(x, y, z);
 
-	cout << are_point_equal ? "Points are equal!" : "Points are not equal!";
+	cout << endl << (are_point_equal ? "Points are equal!" : "Points are not equal!");
 }
 
 void PointMenu::redirect_point_menu(int option)
@@ -40,10 +54,12 @@ void PointMenu::redirect_point_menu(int option)
 
 void PointMenu::print_point_menu()
 {
-	cout << "Chose an option:" << endl;
+	instantiate_point();
+
+	cout << endl << "Point Menu" << endl;
 	cout << "1.Check if points are equal" << endl;
 
-	cout << "option: ";
+	cout << endl << ">: ";
 
 	int option;
 	cin >> option;
