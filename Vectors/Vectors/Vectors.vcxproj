@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Element.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Point.cpp" />
@@ -148,8 +149,10 @@
     <ClCompile Include="Tetrahedron.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="VectorMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Element.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="Point.h" />
@@ -158,6 +161,7 @@
     <ClInclude Include="Tetrahedron.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -44,7 +44,7 @@ Vector Line::find_normal_vector(Line l)
 
 Vector Line::get_line_direction()
 {
-	vector<double> v1 = this->get_direction();
+	vector<double> v1 = this->get_direction_by_nums();
 	Vector result(v1[0],v1[1],v1[2]);
 
 	return result;
