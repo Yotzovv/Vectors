@@ -7,7 +7,7 @@
 class VectorMenu
 {
 public:
-	void instantiate_vector();
+	VectorMenu();
 	void redirect_vector_menu(int option);
 	void print_vector_menu();
 

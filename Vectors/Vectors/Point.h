@@ -3,8 +3,9 @@
 #pragma once
 
 #include <iostream>
+#include "Element.h"
 
-class Point
+class Point : public Element
 {
 public:
 	double X;
@@ -14,7 +15,8 @@ public:
 	Point(double x, double y, double z);
 	Point(double x, double y);
 	bool operator==(Point point);
-	std::istream& ext(std::istream& in);
+	std::ostream& ins(std::ostream&) const;
+	std::istream& ext(std::istream&);
 };
 
 

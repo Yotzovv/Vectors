@@ -39,23 +39,23 @@ std::istream& Point::ext(std::istream& in) {
 		double q, f;
 
 		cout << "X: ";
-		cin >> q;
+		in >> q;
 
 		cout << "Y: ";
-		cin >> f;
+		in >> f;
 		this->X = q;
 		this->Y = f;
 		break;
 	case 2:
 		double a, b, c;
 		cout << "X: ";
-		cin >> a;
+		in >> a;
 
 		cout << "Y: ";
-		cin >> b;
+		in >> b;
 
 		cout << "Z: ";
-		cin >> c;
+		in >> c;
 
 		this->X = a;
 		this->Y = b;
@@ -66,4 +66,14 @@ std::istream& Point::ext(std::istream& in) {
 	}
 
 	return in;
+}
+
+//prints Point with << operator
+std::ostream& Point::ins(std::ostream& print) const 
+{
+	print << "X: " << X;
+	print << "Y: " << Y;
+	print << "Z: " << Z;
+
+	return print;
 }
