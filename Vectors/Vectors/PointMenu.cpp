@@ -23,19 +23,10 @@ void PointMenu::instantiate_point()
 
 void PointMenu::check_if_equal()
 {
-	double x, y, z;
+	Point newP;
+	cin >> newP;
 
-	cout << "Your New Point: " << endl;
-	cout << "x: ";
-	cin >> x;
-
-	cout << "y: ";
-	cin >> y;
-
-	cout << "z: ";
-	cin >> z;
-
-	bool are_point_equal = this->_Point == Point(x, y, z);
+	bool are_point_equal = this->_Point == newP;
 
 	cout << endl << (are_point_equal ? "Points are equal!" : "Points are not equal!");
 }
