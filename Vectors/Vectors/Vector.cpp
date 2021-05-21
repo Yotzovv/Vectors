@@ -260,49 +260,7 @@ Vector operator^(const Vector& v1, const Vector& v2)
 	return result;
 }
 
-//Overlaods >> opeartor
-istream& operator >> (istream& in, Vector& vec) {
-	cout << endl << "Create Vector Menu" << endl;
-	cout << endl << "Choose method of creation:" << endl;
-	cout << "1. Using 3 numbers" << endl;
-	cout << "2. Using cordinates" << endl;
-	cout << ">: " << endl;
-
-	int option;
-	cin >> option;
-
-	switch (option)
-	{
-	case 1:
-		double x, y, z;
-
-		cout << "x: ";
-		cin >> x;
-
-		cout << "y: ";
-		cin >> y;
-
-		cout << "z: ";
-		cin >> z;
-
-		vec.n1 = x;
-		vec.n2 = y;
-		vec.n3 = z;
-		break;
-	case 2:
-		Point pt_x;
-		Point pt_y;
-
-		in >> x >> y;
-
-		vec.A = pt_x;
-		vec.B = pt_y;
-		break;
-	}
-
-	return in;
-}
-
+//overloads << operator
 ostream& Vector::ins(ostream& print) const
 {
 	if (n1 == n2 == n3 == 0)
@@ -319,13 +277,14 @@ ostream& Vector::ins(ostream& print) const
 	return print;
 }
 
+//Overlaods >> opeartor
 istream& Vector::ext(istream& in)
 {
 	cout << endl << "Create Vector Menu" << endl;
 	cout << endl << "Choose method of creation:" << endl;
 	cout << "1. Using 3 numbers" << endl;
 	cout << "2. Using cordinates" << endl;
-	cout << ">: " << endl;
+	cout << endl << ">: ";
 
 	int option;
 	cin >> option;
@@ -333,6 +292,7 @@ istream& Vector::ext(istream& in)
 	switch (option)
 	{
 	case 1:
+		cout << endl << "You chose 3 numbers initialization!" << endl;
 		double x, y, z;
 
 		cout << "x: ";
@@ -349,6 +309,7 @@ istream& Vector::ext(istream& in)
 		n3 = z;
 		break;
 	case 2:
+		cout << endl << "You chose point initializaiton!" << endl;
 		Point pt_x;
 		Point pt_y;
 

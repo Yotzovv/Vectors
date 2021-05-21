@@ -42,14 +42,27 @@ Vector Line::find_normal_vector(Line l)
 	return Vector(resX, resY, resZ);
 }
 
+Vector Line::find_normal_vector()
+{
+	double k = -(n1 * A.X + n2 * A.Y + n3 * A.Z) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+
+	double resX = (this->n1 * k) + this->A.X;
+	double resY = (this->n2 * k) + this->A.Y;
+	double resZ = (this->n3 * k) + this->A.Z;
+
+	return Vector(resX, resY, resZ);
+}
+
+
 Vector Line::get_line_direction()
 {
 	vector<double> v1 = this->get_direction_by_nums();
-	Vector result(v1[0],v1[1],v1[2]);
+	Vector result(v1[0], v1[1], v1[2]);
 
 	return result;
 }
 
+//Checks if 2 lines are parallel
 bool Line::operator||(Vector v1)
 {
 	//(y1-y2)/(x1-x2)
@@ -110,9 +123,9 @@ bool Line::operator|(const Line& l)
 }
 double Line::find_angle_line(Vector v1)
 {
-	double cos_of_angle =((A.X * v1.A.X) + (B.X * v1.B.Y) /
-		                 (sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
-		                 (sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
+	double cos_of_angle = ((A.X * v1.A.X) + (B.X * v1.B.Y) /
+		(sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
+			(sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
 
 	return (acos(cos_of_angle) * 180.0 / 3.14);
 }
@@ -126,10 +139,68 @@ bool Line::operator!=(Vector v1)
 	return slope1 == slope2;
 }
 
-bool Line::operator+(Point pt) 
+//Checks if a point lies on a line
+bool Line::operator+(Point pt)
 {
 	bool is_point_on_line = ((pt.X >= this->A.X && this->B.X >= pt.X) || (pt.X >= this->B.X && this->A.X >= pt.X))
 		&& (pt.Y >= this->A.Y && this->B.Y >= pt.Y) || (pt.Y >= this->B.Y && this->A.Y >= pt.Y);
-	
+
 	return is_point_on_line;
+}
+
+std::ostream& Line::ins(std::ostream& print) const
+{
+	print << "Print Line" << endl;
+
+	print << "Lines Vector" << endl;
+	Vector::ins(print);
+
+	print << "Lines Point" << endl;
+	print << A;
+
+	return print;
+}
+
+std::istream& Line::ext(std::istream& in)
+{
+	cout << endl << "Create Line Menu" << endl;
+	cout << endl << "Choose method of creation:" << endl;
+	cout << "1. Using vector and point" << endl;
+	cout << "2. Using cordinates" << endl;
+	cout << endl << ">: ";
+
+	int option;
+	cin >> option;
+
+	switch (option)
+	{
+		case 1:
+		{
+			cout << endl << "You chose vector and point initialization!" << endl;
+			Vector v1;
+			cin >> v1;
+
+			Point p1;
+			cin >> p1;
+
+			Line(v1, p1);
+			//TODO:
+
+			break;
+		}
+		case 2:
+		{
+			cout << endl << "You chose point initializaiton!" << endl;
+			Point pt_x;
+			Point pt_y;
+
+			in >> pt_x >> pt_y;
+
+			A = pt_x;
+			B = pt_y;
+			break;
+		}
+	}
+
+	return in;
 }

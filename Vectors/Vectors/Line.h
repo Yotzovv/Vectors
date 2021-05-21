@@ -15,6 +15,7 @@ public:
 	Line(Vector vec, Point X);
 	Line(Vector vec);
 	Vector find_normal_vector(Line l);
+	Vector find_normal_vector();
 	Vector get_line_direction();
 	bool operator||(Vector v1);
 	friend bool operator==(const Line&, const Line&);//Checks if lines are equal
@@ -23,6 +24,8 @@ public:
 	double find_angle_line(Vector v1);
 	bool operator!=(Vector v1);
 	bool operator+(Point pt);
+	std::ostream& ins(std::ostream&) const;
+	std::istream& ext(std::istream&);
 };
 
 #endif

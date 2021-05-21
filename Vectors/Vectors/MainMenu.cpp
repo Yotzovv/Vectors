@@ -1,6 +1,8 @@
 #include "MainMenu.h"
 #include <iostream>
 #include "PointMenu.h"
+#include "VectorMenu.h"
+#include "LineMenu.h"
 
 using namespace std;
 
@@ -12,10 +14,10 @@ void MainMenu::redirect(int chose)
 		PointMenu().print_point_menu();
 		break;
 	case 2:
-		//VectorMenu
+		VectorMenu().print_vector_menu();
 		break;
 	case 3:
-		//LineMenu
+		LineMenu().print_line_menu();
 		break;
 	case 4:
 		//Segment
