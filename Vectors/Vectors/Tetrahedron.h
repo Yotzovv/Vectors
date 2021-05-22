@@ -1,8 +1,9 @@
 #include "Point.h"
 
-class Tetrahedron {
+class Tetrahedron : public Element {
 public:
 	bool is_point_valid();
+	Tetrahedron();
 	Tetrahedron(Point a, Point b, Point c, Point d);
 	Point getA();
 	Point getB();
@@ -19,6 +20,8 @@ public:
 	bool operator<(Point point);
 	bool operator>(Point point);
 	bool operator==(Point point);
+	std::ostream& ins(std::ostream&) const;
+	std::istream& ext(std::istream&);
 private:
 	Point A;
 	Point B;

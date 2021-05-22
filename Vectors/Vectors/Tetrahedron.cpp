@@ -53,6 +53,10 @@ bool Tetrahedron::is_point_valid()
 	}
 }
 
+Tetrahedron::Tetrahedron()
+{
+}
+
 
 Tetrahedron::Tetrahedron(Point a, Point b, Point c, Point d)
 {
@@ -199,4 +203,28 @@ bool Tetrahedron::operator==(Point pt)
 	bool result = s1 == pt && s2 == pt && s3 == pt && s4 == pt;
 
 	return result;
+}
+
+std::ostream& Tetrahedron::ins(std::ostream& print) const
+{
+	print << endl << "--- Tetrahedron Specifics ---" << endl;
+	print << A, B, C, D;
+
+	return print;
+}
+
+std::istream& Tetrahedron::ext(std::istream& in)
+{
+	Point x, y, z, d;
+	cin >> x;
+	cin >> y;
+	cin >> z;
+	cin >> d;
+
+	A = x;
+	B = y;
+	C = z;
+	D = d;
+
+	return in;
 }
