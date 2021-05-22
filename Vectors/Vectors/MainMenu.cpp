@@ -4,6 +4,8 @@
 #include "VectorMenu.h"
 #include "LineMenu.h"
 #include "SegmentMenu.h"
+#include "TriangleMenu.h"
+
 using namespace std;
 
 void MainMenu::redirect(int chose)
@@ -23,7 +25,7 @@ void MainMenu::redirect(int chose)
 		SegmentMenu().print_segment_menu();
 		break;
 	case 5:
-		//Triangle
+		TriangleMenu().print_triangle_menu();
 		break;
 	case 6:
 		//Tetrahedron

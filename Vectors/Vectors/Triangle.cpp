@@ -5,6 +5,10 @@
 #include <math.h>
 #pragma once
 
+Triangle::Triangle()
+{
+}
+
 Triangle::Triangle(Point x, Point y, Point z)
 {
 	setX(x);
@@ -133,7 +137,7 @@ void Triangle::setZ(Point z)
 	Z = z;
 }
 
-Point Triangle::get_centroid(Point x, Point y, Point z)
+Point Triangle::get_incenter(Point x, Point y, Point z)
 {
 	Point centroid;
 
@@ -143,6 +147,16 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 	return centroid;
 }
 
+
+Point Triangle::get_incenter()
+{
+	Point centroid;
+
+	centroid.X = (X.X + Y.X + Z.X) / 3;
+	centroid.Y = (X.Y + Y.Y + Z.Y) / 3;
+
+	return centroid;
+}
 
 double Triangle::get_area()
 {
@@ -296,6 +310,25 @@ void Triangle::get_triangle_type(Point x, Point y, Point z)
 	}
 }
 
+
+void Triangle::get_triangle_type()
+{
+	if (is_triangle_right(X, Y, Z))
+	{
+		cout << "the triangle is right." << endl;
+	}
+
+	if (this->is_triangle_acute(X, Y, Z))
+	{
+		cout << "the triagnle is acute." << endl;
+	}
+
+	if (this->is_triangle_obtuse(X, Y, Z))
+	{
+		cout << "the triangle is obtuse." << endl;
+	}
+}
+
 //Checks if Point is inside triangle
 bool Triangle::operator<(Point pt)
 {
@@ -339,4 +372,29 @@ bool Triangle::operator==(Point point)
 	double c = seg2.find_segment_length();
 
 	return (seg == point) || (seg1 == point) || (seg2 == point);
+}
+
+std::ostream& Triangle::ins(std::ostream& print) const
+{
+	print << "-- Triangle Specifics --" << endl;
+	print << "X: " << X;
+	print << "Y: " << Y;
+	print << "Z: " << Z;
+
+	return print;
+}
+
+std::istream& Triangle::ext(std::istream& in)
+{
+	Point x;
+	Point y;
+	Point z;
+
+	cout << endl << "--- Triangle Menu ---" << endl;
+	cout << ">Enter triangle cordinates (X,Y,Z)" << endl;
+	cin >> x;
+	cin >> y;
+	cin >> z;
+
+	return in;
 }

@@ -1,7 +1,8 @@
 #include "Point.h"
 
-class Triangle {
+class Triangle : public Point {
 public:
+	Triangle();
 	Triangle(Point x, Point y, Point z);
 	Point getX();
 	Point getY();
@@ -9,7 +10,8 @@ public:
 	void setX(Point x);
 	void setY(Point y);
 	void setZ(Point z);
-	Point get_centroid(Point x, Point y, Point z); // medicentyr
+	Point get_incenter(Point x, Point y, Point z); // medicentyr
+	Point get_incenter(); // medicentyr
 	double get_area();
 	double get_area(Point x, Point y, Point z);
 	double get_perimeter();
@@ -21,9 +23,12 @@ public:
 	bool is_triangle_acute(Point x, Point y, Point z);
 	bool is_triangle_obtuse(Point x, Point y, Point z);
 	void get_triangle_type(Point x, Point y, Point z); // dali e ostrougulen, tupougulen ili pravougulen
+	void get_triangle_type(); // dali e ostrougulen, tupougulen ili pravougulen
 	bool operator<(Point point);
 	bool operator>(Point point);
 	bool operator==(Point point);
+	std::ostream& ins(std::ostream&) const;
+	std::istream& ext(std::istream&);
 private:
 	Point X;
 	Point Y;

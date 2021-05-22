@@ -280,8 +280,8 @@ ostream& Vector::ins(ostream& print) const
 //Overlaods >> opeartor
 istream& Vector::ext(istream& in)
 {
-	cout << endl << "Create Vector Menu" << endl;
-	cout << endl << "Choose method of creation:" << endl;
+	cout << endl << "--- Create Vector Menu ---" << endl;
+	cout << endl << ">Choose method of creation:" << endl;
 	cout << "1. Using 3 numbers" << endl;
 	cout << "2. Using cordinates" << endl;
 	cout << endl << ">: ";
