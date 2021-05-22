@@ -69,6 +69,9 @@
     <ClCompile Include="TriangleMenu.cpp">
       <Filter>Resource Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="TetrahedronMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
@@ -108,6 +111,9 @@
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
     <ClInclude Include="TriangleMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrahedronMenu.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>

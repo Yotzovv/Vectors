@@ -149,6 +149,7 @@
     <ClCompile Include="SegmentMenu.cpp" />
     <ClCompile Include="StartUp.cpp" />
     <ClCompile Include="Tetrahedron.cpp" />
+    <ClCompile Include="TetrahedronMenu.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="TriangleMenu.cpp" />
     <ClCompile Include="Vector.cpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="Segment.h" />
     <ClInclude Include="SegmentMenu.h" />
     <ClInclude Include="Tetrahedron.h" />
+    <ClInclude Include="TetrahedronMenu.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TriangleMenu.h" />
     <ClInclude Include="Vector.h" />
