@@ -23,6 +23,8 @@ public:
 	double find_segment_length();
 	Point find_segment_middle();
 	bool operator==(Point point);
+	std::ostream& ins(std::ostream&) const;
+	std::istream& ext(std::istream&);
 };
 
 #endif

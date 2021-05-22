@@ -313,7 +313,7 @@ istream& Vector::ext(istream& in)
 		Point pt_x;
 		Point pt_y;
 
-		in >> x >> y;
+		in >> pt_x >> pt_y;
 
 		A = pt_x;
 		B = pt_y;

@@ -3,7 +3,7 @@
 #include "PointMenu.h"
 #include "VectorMenu.h"
 #include "LineMenu.h"
-
+#include "SegmentMenu.h"
 using namespace std;
 
 void MainMenu::redirect(int chose)
@@ -20,7 +20,7 @@ void MainMenu::redirect(int chose)
 		LineMenu().print_line_menu();
 		break;
 	case 4:
-		//Segment
+		SegmentMenu().print_segment_menu();
 		break;
 	case 5:
 		//Triangle
