@@ -76,7 +76,7 @@ void LineMenu::redirect_line_menu(int option)
 
 void LineMenu::print_line_menu()
 {
-	cout << endl << "Line Menu" << endl;
+	cout << endl << "--- Line Menu ---" << endl;
 
 	cout << "1. Calculate direction" << endl;
 	cout << "2. Calculate normal vector" << endl;

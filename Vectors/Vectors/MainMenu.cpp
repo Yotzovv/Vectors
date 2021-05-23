@@ -36,7 +36,7 @@ void MainMenu::redirect(int chose)
 
 void MainMenu::print_main_menu()
 {
-	cout << "Main Menu" << endl;
+	cout << endl << "--- Main Menu ---" << endl;
 	cout << "1.Point" << endl;
 	cout << "2.Vector" << endl;
 	cout << "3.Line" << endl;

@@ -94,7 +94,7 @@ void VectorMenu::redirect_vector_menu(int option)
 
 void VectorMenu::print_vector_menu()
 {
-	cout << endl << "Vector Menu" << endl;
+	cout << endl << "--- Vector Menu ---" << endl;
 
 	cout << "1. Calculate length" << endl;
 	cout << "2. Check for 0 vector" << endl;

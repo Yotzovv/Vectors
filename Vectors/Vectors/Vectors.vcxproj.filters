@@ -72,6 +72,12 @@
     <ClCompile Include="TetrahedronMenu.cpp">
       <Filter>Resource Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="IOMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="IOMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">

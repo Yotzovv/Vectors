@@ -25,13 +25,17 @@ bool Point::operator==(Point point)
 
 //Overlaods >> operator
 std::istream& Point::ext(std::istream& in) {
-	cout << "\nCreate Point Menu\n";
-	cout << "\nChoose method of creation:\n";
-	cout << "\n1. Usin 2 points (X,Y)";
+	cout << "\n--- Create Point Menu ---\n";
+	cout << ">Choose method of creation:\n";
+	cout << "\n1. Using cordinates (X,Y)";
 	cout << "\n2. Using 3 numbers (X,Y,Z)\n";
+
+	cout << endl << ">: ";
 
 	int option;
 	cin >> option;
+
+	cout << endl;
 	
 	switch (option)
 	{
