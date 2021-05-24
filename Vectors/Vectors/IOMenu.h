@@ -1,12 +1,13 @@
 #pragma once
-#ifndef FiguresMenu_H
-#define FiguresMenu_H
+#ifndef IOMenu_H
+#define IOMenu_H
 
 #include <iostream>
 #include <string>
 #include <vector>
+#include "MainMenu.h"
 
-class IOMenu
+class IOMenu : public MainMenu
 {
 public:
 	void input_from_file(std::string line);

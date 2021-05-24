@@ -1,12 +1,23 @@
 #include "PointMenu.h"
-#include <iostream>
 #include "Point.h"
+#include <iostream>
 
 using namespace std;
+
+PointMenu::PointMenu(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
 
 void PointMenu::instantiate_point()
 {
 	Point pt;
+
+	if (_Commands.size() > 0)
+	{
+		pt = Point(_Commands);
+	}
+
 	cin >> pt;
 
 	this->_Point = pt;
@@ -14,7 +25,8 @@ void PointMenu::instantiate_point()
 
 void PointMenu::check_if_equal()
 {
-	Point newP;
+	Point newP(_Commands);
+
 	cin >> newP;
 
 	bool are_point_equal = this->_Point == newP;
@@ -45,7 +57,18 @@ void PointMenu::print_point_menu()
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		_Commands = this->_Point._Commands;
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option;
+	}
 
 	redirect_point_menu(option);
 }

@@ -96,12 +96,6 @@ double Triangle::get_mid_side(double a, double b, double c)
 		mid = c;
 	}
 
-	/*cout << a << endl;
-	cout << b << endl;
-	cout << c << endl;
-	cout << mid << endl;
-	cout << "here is the mid" << endl;*/
-
 	return mid;
 }
 

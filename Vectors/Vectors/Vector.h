@@ -5,6 +5,8 @@ using namespace std;
 #include <iostream>
 #include "Point.h"
 #include <vector>
+#include <queue>
+#include <string>
 
 class Vector : public Point
 {
@@ -14,6 +16,7 @@ public:
 	double n3;
 	Point A;
 	Point B;
+	Vector(std::queue<std::string> cmds);
     Vector(double X, double Y, double Z);
 	Vector(Point x, Point y);
 	Vector();

@@ -4,10 +4,13 @@
 
 #include <iostream>
 #include "Element.h"
+#include <queue>
+#include <string>
 
 class Point : public Element
 {
 public:
+	Point(std::queue<std::string> cmds);
 	double X;
 	double Y;
 	double Z;
@@ -17,6 +20,7 @@ public:
 	bool operator==(Point point);
 	std::ostream& ins(std::ostream&) const;
 	std::istream& ext(std::istream&);
+	std::queue<std::string> _Commands;
 };
 
 

@@ -9,15 +9,17 @@
 
 using namespace std;
 
-void MainMenu::redirect(int chose)
+void MainMenu::redirectMain(int chose)
 {
 	switch (chose)
 	{
 	case 1:
-		PointMenu().print_point_menu();
+	{
+		PointMenu(_Commands).print_point_menu();
 		break;
+	}
 	case 2:
-		VectorMenu().print_vector_menu();
+		VectorMenu(_Commands).print_vector_menu();
 		break;
 	case 3:
 		LineMenu().print_line_menu();
@@ -46,7 +48,17 @@ void MainMenu::print_main_menu()
 
 	cout << ">: ";
 	int chose;
-	cin >> chose;
 
-	redirect(chose);
+	if (_Commands.size() < 1)
+	{
+		cin >> chose;
+	}
+	else
+	{
+		chose = stoi(_Commands.front());
+		_Commands.pop();
+		cout << chose;
+	}
+
+	redirectMain(chose);
 }

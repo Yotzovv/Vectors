@@ -78,6 +78,9 @@
     <ClCompile Include="IOMenu.h">
       <Filter>Header Files\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Point.h">
@@ -120,6 +123,9 @@
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
     <ClInclude Include="TetrahedronMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
       <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>

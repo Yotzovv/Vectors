@@ -18,10 +18,9 @@ namespace fs = std::filesystem;
 
 void IOMenu::input_from_file(string line)
 {
-	if (line == "hui s meso da qdesh govno")
-	{
-		cout << " FUCK Y E  A SS" << endl;
-	}
+	cout << "You chose " << line << endl;
+	//fputc(stoi(line), stdout);
+	//MainMenu().redirect(stoi(line));
 }
 
 vector<string> IOMenu::read_directory()
@@ -54,8 +53,8 @@ void IOMenu::read_file()
 	{
 		while (getline(myfile, line))
 		{
-			input_from_file(line);
-			cout << line << '\n';
+			_Commands.push(line);
+			//cout << line << '\n';
 		}
 		myfile.close();
 	}
@@ -63,6 +62,8 @@ void IOMenu::read_file()
 	{
 		cout << "Unable to open file";
 	}
+
+	this->print_main_menu();
 }
 
 void IOMenu::redirect(int chose)

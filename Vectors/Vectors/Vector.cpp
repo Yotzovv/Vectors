@@ -10,6 +10,11 @@
 
 using namespace std;
 
+Vector::Vector(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 Vector::Vector(double x, double y, double z)
 {
 	n1 = x;
@@ -287,7 +292,17 @@ istream& Vector::ext(istream& in)
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option;
+	}
 
 	switch (option)
 	{
@@ -296,13 +311,40 @@ istream& Vector::ext(istream& in)
 		double x, y, z;
 
 		cout << "x: ";
-		cin >> x;
+		if (_Commands.size() < 1)
+		{
+			cin >> x;
+		}
+		else
+		{
+			x = stoi(_Commands.front());
+			_Commands.pop();
+			cout << x << endl;
+		}
 
 		cout << "y: ";
-		cin >> y;
+		if (_Commands.size() < 1)
+		{
+			cin >> y;
+		}
+		else
+		{
+			y = stoi(_Commands.front());
+			_Commands.pop();
+			cout << y << endl;
+		}
 
 		cout << "z: ";
-		cin >> z;
+		if (_Commands.size() < 1)
+		{
+			cin >> z;
+		}
+		else
+		{
+			z = stoi(_Commands.front());
+			_Commands.pop();
+			cout << z << endl;
+		}
 
 		n1 = x;
 		n2 = y;
