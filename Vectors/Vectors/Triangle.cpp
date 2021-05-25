@@ -18,6 +18,11 @@ Triangle::Triangle(Point x, Point y, Point z)
 	is_point_valid();
 }
 
+Triangle::Triangle(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 Point Triangle::getX()
 {
 	return this->X;
@@ -380,9 +385,9 @@ std::ostream& Triangle::ins(std::ostream& print) const
 
 std::istream& Triangle::ext(std::istream& in)
 {
-	Point x;
-	Point y;
-	Point z;
+	Point x(_Commands);
+	Point y(_Commands);
+	Point z(_Commands);
 
 	cout << endl << "--- Triangle Menu ---" << endl;
 	cout << ">Enter triangle cordinates (X,Y,Z)" << endl;

@@ -28,7 +28,7 @@ void MainMenu::redirectMain(int chose)
 		SegmentMenu(_Commands).print_segment_menu();
 		break;
 	case 5:
-		TriangleMenu().print_triangle_menu();
+		TriangleMenu(_Commands).print_triangle_menu();
 		break;
 	case 6:
 		TetrahedronMenu().print_tetrahedron_menu();

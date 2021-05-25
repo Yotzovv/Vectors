@@ -4,9 +4,25 @@ using namespace std;
 
 TriangleMenu::TriangleMenu()
 {
+}
+
+TriangleMenu::TriangleMenu(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
+void TriangleMenu::instantiate_triangle()
+{
 	Triangle t;
+
+	if (_Commands.size() > 0)
+	{
+		t = Triangle(_Commands);
+	}
+
 	cin >> t;
 
+	_Commands = t._Commands;
 	_Triangle = t;
 }
 
@@ -36,21 +52,21 @@ void TriangleMenu::redirect_triangle_menu(int option)
 		}
 		case 5:
 		{
-			Point inside_pt;
+			Point inside_pt(_Commands);
 			cin >> inside_pt;
 			cout << (_Triangle < inside_pt);
 			break;
 		}
 		case 6:
 		{
-			Point outside_pt;
+			Point outside_pt(_Commands);
 			cin >> outside_pt;
 			cout << (_Triangle > outside_pt);
 			break;
 		}
 		case 7:
 		{
-			Point side_pt;
+			Point side_pt(_Commands);
 			cin >> side_pt;
 			cout << (_Triangle == side_pt);
 			break;
@@ -64,6 +80,8 @@ void TriangleMenu::redirect_triangle_menu(int option)
 
 void TriangleMenu::print_triangle_menu()
 {
+	instantiate_triangle();
+
 	cout << endl << "--- Triangle Menu ---" << endl;
 	cout << "1. Find Triangle Type" << endl;
 	cout << "2. Calculate area" << endl;
@@ -76,7 +94,17 @@ void TriangleMenu::print_triangle_menu()
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option << endl;
+	}
 
 	redirect_triangle_menu(option);
 }
