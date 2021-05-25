@@ -106,20 +106,22 @@ vector<double> Vector::get_direction_by_nums()
 			throw VectorLengthException();
 		}
 
-		double v{}; //magnitude
-
+		double v; //magnitude
+		double a;
+		double b;
+		double c;
 
 		vector<double> directionthree;
 
-		n1 = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		a = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n2 = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		b = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n3 = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		c = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		directionthree.push_back(n1);
-		directionthree.push_back(n2);
-		directionthree.push_back(n3);
+		directionthree.push_back(a);
+		directionthree.push_back(b);
+		directionthree.push_back(c);
 
 		vector<double> result = { directionthree.at(0), directionthree.at(1), directionthree.at(2) };
 		return result;
