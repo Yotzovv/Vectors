@@ -66,7 +66,7 @@ std::istream& Point::ext(std::istream& in) {
 		{
 			q = stoi(_Commands.front());
 			_Commands.pop();
-			cout << q;
+			cout << q << endl;
 		}
 
 		cout << "Y: ";
@@ -79,7 +79,7 @@ std::istream& Point::ext(std::istream& in) {
 		{
 			f = stoi(_Commands.front());
 			_Commands.pop();
-			cout << f;
+			cout << f << endl;
 		}
 
 		this->X = q;

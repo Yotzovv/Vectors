@@ -170,36 +170,68 @@ std::istream& Line::ext(std::istream& in)
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option;
+	}
 
 	switch (option)
 	{
-		case 1:
+	case 1:
+	{
+		cout << endl << "You chose vector and point initialization!" << endl;
+		Vector v1;
+
+		if (_Commands.size() > 0)
 		{
-			cout << endl << "You chose vector and point initialization!" << endl;
-			Vector v1;
-			cin >> v1;
-
-			Point p1;
-			cin >> p1;
-
-			Line(v1, p1);
-			//TODO:
-
-			break;
+			v1 = Vector(_Commands);
 		}
-		case 2:
+
+		cin >> v1;
+		_Commands = v1._Commands;
+
+		Point p1;
+
+		if (_Commands.size() > 0)
 		{
-			cout << endl << "You chose point initializaiton!" << endl;
-			Point pt_x;
-			Point pt_y;
-
-			in >> pt_x >> pt_y;
-
-			A = pt_x;
-			B = pt_y;
-			break;
+			p1 = Point(_Commands);
 		}
+
+		cin >> p1;
+		_Commands = p1._Commands;
+
+		Line(v1, p1);
+		//TODO:
+		break;
+	}
+	case 2:
+	{
+		cout << endl << "You chose point initializaiton!" << endl;
+		Point pt_x;
+		Point pt_y;
+
+		if (_Commands.size() > 0)
+		{
+			pt_x = Point(_Commands);
+			pt_y = Point(_Commands);
+		}
+
+		in >> pt_x;
+		_Commands = pt_x._Commands;
+		in >> pt_y;
+		_Commands = pt_y._Commands;
+
+		A = pt_x;
+		B = pt_y;
+		break;
+	}
 	}
 
 	return in;

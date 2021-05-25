@@ -22,7 +22,7 @@ void MainMenu::redirectMain(int chose)
 		VectorMenu(_Commands).print_vector_menu();
 		break;
 	case 3:
-		LineMenu().print_line_menu();
+		LineMenu(_Commands).print_line_menu();
 		break;
 	case 4:
 		SegmentMenu().print_segment_menu();

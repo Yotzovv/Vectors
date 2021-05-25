@@ -355,7 +355,16 @@ istream& Vector::ext(istream& in)
 		Point pt_x;
 		Point pt_y;
 
-		in >> pt_x >> pt_y;
+		if (_Commands.size() > 0)
+		{
+			pt_x = Point(_Commands);
+			pt_y = Point(_Commands);
+		}
+
+		in >> pt_x;
+		_Commands = pt_x._Commands;
+		in >> pt_y;
+		_Commands = pt_y._Commands;
 
 		A = pt_x;
 		B = pt_y;
