@@ -25,7 +25,7 @@ void MainMenu::redirectMain(int chose)
 		LineMenu(_Commands).print_line_menu();
 		break;
 	case 4:
-		SegmentMenu().print_segment_menu();
+		SegmentMenu(_Commands).print_segment_menu();
 		break;
 	case 5:
 		TriangleMenu().print_triangle_menu();

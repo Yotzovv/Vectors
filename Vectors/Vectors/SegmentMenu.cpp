@@ -1,10 +1,25 @@
 #include "SegmentMenu.h"
 
+SegmentMenu::SegmentMenu(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 SegmentMenu::SegmentMenu()
 {
+}
+
+void SegmentMenu::instantiate_segment()
+{
 	Segment segment;
+	if (_Commands.size() > 0)
+	{
+		segment = Segment(_Commands);
+	}
+
 	cin >> segment;
 
+	_Commands = segment._Commands;
 	_Segment = segment;
 }
 
@@ -12,28 +27,30 @@ void SegmentMenu::redirect_segment_menu(int option)
 {
 	switch (option)
 	{
-		case 1: 
-		{
-			cout << _Segment.find_segment_length();
-			break;
-		}
-		case 2:
-		{
-			cout << "Finding middle point..." << endl;
-			cout << _Segment.find_segment_middle();
-			break;
-		}
-		case 3:
-		{
-			Point pt;
-			cin >> pt;
-			cout << (_Segment == pt);
-		}
+	case 1:
+	{
+		cout << _Segment.find_segment_length();
+		break;
+	}
+	case 2:
+	{
+		cout << "Finding middle point..." << endl;
+		cout << _Segment.find_segment_middle();
+		break;
+	}
+	case 3:
+	{
+		Point pt(_Commands);
+		cin >> pt;
+		cout << (_Segment == pt);
+	}
 	}
 }
 
 void SegmentMenu::print_segment_menu()
 {
+	instantiate_segment();
+
 	cout << endl << "--- Segment Menu ---" << endl;
 	cout << "1. Calculate length" << endl;
 	cout << "2. Calculate middle point" << endl;
@@ -42,6 +59,17 @@ void SegmentMenu::print_segment_menu()
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option << endl;
+	}
+
 	redirect_segment_menu(option);
 }

@@ -26,6 +26,11 @@ Line::Line(Vector vec) : Vector(vec)
 
 }
 
+Line::Line(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 /// <summary>
 /// Returns a vector, perpendicular to the line
 /// </summary>
