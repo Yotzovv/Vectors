@@ -70,19 +70,20 @@ void IOMenu::redirect(int chose)
 {
 	switch (chose)
 	{
-	case 1:
-		read_file();
-		break;
-	case 2:
-	{
-		MainMenu().print_main_menu();
-		break;
-	}
-	case 3:
-	{
-		cout << endl << "> Choose the source of the input." << endl;
-		cout << "> Will you read input from file or the console?" << endl;
-	}
+		case 1:
+			read_file();
+			break;
+		case 2:
+		{
+			MainMenu().print_main_menu();
+			break;
+		}
+		case 3:
+		{
+			cout << endl << "> Choose the source of the input." << endl;
+			cout << "> Will you read input from file or the console?" << endl;
+			cout << "> For file input you will need to store your files in \"Input\" folder" << endl;
+		}
 	}
 }
 

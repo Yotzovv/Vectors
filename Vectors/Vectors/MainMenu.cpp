@@ -31,7 +31,7 @@ void MainMenu::redirectMain(int chose)
 		TriangleMenu(_Commands).print_triangle_menu();
 		break;
 	case 6:
-		TetrahedronMenu().print_tetrahedron_menu();
+		TetrahedronMenu(_Commands).print_tetrahedron_menu();
 		break;
 	}
 }
