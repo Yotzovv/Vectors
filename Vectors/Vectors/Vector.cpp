@@ -10,6 +10,11 @@
 
 using namespace std;
 
+Vector::Vector(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 Vector::Vector(double x, double y, double z)
 {
 	n1 = x;
@@ -289,7 +294,17 @@ istream& Vector::ext(istream& in)
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option;
+	}
 
 	switch (option)
 	{
@@ -298,13 +313,40 @@ istream& Vector::ext(istream& in)
 		double x, y, z;
 
 		cout << "x: ";
-		cin >> x;
+		if (_Commands.size() < 1)
+		{
+			cin >> x;
+		}
+		else
+		{
+			x = stoi(_Commands.front());
+			_Commands.pop();
+			cout << x << endl;
+		}
 
 		cout << "y: ";
-		cin >> y;
+		if (_Commands.size() < 1)
+		{
+			cin >> y;
+		}
+		else
+		{
+			y = stoi(_Commands.front());
+			_Commands.pop();
+			cout << y << endl;
+		}
 
 		cout << "z: ";
-		cin >> z;
+		if (_Commands.size() < 1)
+		{
+			cin >> z;
+		}
+		else
+		{
+			z = stoi(_Commands.front());
+			_Commands.pop();
+			cout << z << endl;
+		}
 
 		n1 = x;
 		n2 = y;
@@ -315,7 +357,16 @@ istream& Vector::ext(istream& in)
 		Point pt_x;
 		Point pt_y;
 
-		in >> pt_x >> pt_y;
+		if (_Commands.size() > 0)
+		{
+			pt_x = Point(_Commands);
+			pt_y = Point(_Commands);
+		}
+
+		in >> pt_x;
+		_Commands = pt_x._Commands;
+		in >> pt_y;
+		_Commands = pt_y._Commands;
 
 		A = pt_x;
 		B = pt_y;

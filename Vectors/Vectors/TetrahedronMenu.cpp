@@ -4,9 +4,26 @@ using namespace std;
 
 TetrahedronMenu::TetrahedronMenu()
 {
+
+}
+
+TetrahedronMenu::TetrahedronMenu(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
+void TetrahedronMenu::instantiate_tetrahedron()
+{
 	Tetrahedron th;
+
+	if (_Commands.size() > 0)
+	{
+		th = Tetrahedron(_Commands);
+	}
+
 	cin >> th;
 
+	_Commands = th._Commands;
 	_Tetrahedron = th;
 }
 
@@ -36,7 +53,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 		}
 		case 5:
 		{
-			Point th_inside;
+			Point th_inside(_Commands);
 			cin >> th_inside;
 
 			cout << (_Tetrahedron < th_inside);
@@ -44,7 +61,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 		}
 		case 6:
 		{
-			Point th_outside;
+			Point th_outside(_Commands);
 			cin >> th_outside;
 
 			cout << (_Tetrahedron > th_outside);
@@ -52,7 +69,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 		}
 		case 7:
 		{
-			Point th_side;
+			Point th_side(_Commands);
 			cin >> th_side;
 
 			cout << (_Tetrahedron == th_side);
@@ -63,6 +80,8 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 
 void TetrahedronMenu::print_tetrahedron_menu()
 {
+	instantiate_tetrahedron();
+
 	cout << endl << "--- Tetrahedron Menu ---" << endl;
 	cout << "1. Check if is right" << endl;
 	cout << "2. Check if is ortogonal" << endl;
@@ -76,7 +95,17 @@ void TetrahedronMenu::print_tetrahedron_menu()
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option << endl;
+	}
 
 	redirect_tetrahedron_menu(option);
 }

@@ -57,6 +57,11 @@ Tetrahedron::Tetrahedron()
 {
 }
 
+Tetrahedron::Tetrahedron(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 
 Tetrahedron::Tetrahedron(Point a, Point b, Point c, Point d)
 {
@@ -111,11 +116,11 @@ bool Tetrahedron::is_tetrahedron_regular()
 {
 	Segment s1(A, B);
 	double a = s1.find_segment_length();
-	Segment s2{ A, D };
+	Segment s2(A, D);
 	double b = s2.find_segment_length();
-	Segment s3{ B,C };
+	Segment s3(B, C);
 	double c = s3.find_segment_length();
-	Segment s4{ C,D };
+	Segment s4(C, D);
 	double d = s4.find_segment_length();
 
 	Triangle a1(A, B, D);
@@ -215,11 +220,21 @@ std::ostream& Tetrahedron::ins(std::ostream& print) const
 
 std::istream& Tetrahedron::ext(std::istream& in)
 {
-	Point x, y, z, d;
+	Point x(_Commands);
 	cin >> x;
+	_Commands = x._Commands;
+
+	Point y(x._Commands);
 	cin >> y;
+	_Commands = y._Commands;
+
+	Point z(y._Commands);
 	cin >> z;
+	_Commands = z._Commands;
+
+	Point d(z._Commands);
 	cin >> d;
+	_Commands = d._Commands;
 
 	A = x;
 	B = y;

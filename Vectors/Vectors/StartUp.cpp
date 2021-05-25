@@ -4,11 +4,35 @@
 #include "MainMenu.h"
 #include "Vector.h"
 #include "Line.h"
+#include "IOMenu.h"
 
 using namespace std;
 
 int main()
 {
-	//Empty for now
-	MainMenu().print_main_menu();
+	bool is_iterating = true;
+
+	while (is_iterating)
+	{
+		IOMenu().print_io_menu();
+
+		bool is_invalid_input = true;
+
+		while (is_invalid_input)
+		{
+			cout << endl << "Do you want to continue? (y/n)" << endl;
+			cout << ">: ";
+
+			char answer;
+			cin >> answer;
+
+			if (answer == 'y' || answer == 'n')
+			{
+				is_invalid_input = false;
+			}
+
+			is_iterating = answer == 'y';
+		}
+	}
+
 }

@@ -4,6 +4,7 @@ class Triangle : public Point {
 public:
 	Triangle();
 	Triangle(Point x, Point y, Point z);
+	Triangle(std::queue<std::string> cmds);
 	Point getX();
 	Point getY();
 	Point getZ();
