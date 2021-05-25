@@ -54,8 +54,8 @@ double Vector::vector_direction() {
 
 // Uses n1,n2,n3
 // TODO: Merge with vector_direction
-vector<double> Vector::get_direction() {
-
+vector<double> Vector::get_direction()
+{
 	try {
 
 		if (is_vector_null()) {
@@ -64,28 +64,26 @@ vector<double> Vector::get_direction() {
 		}
 
 		double v{}; //magnitude
-
-		v = sqrt(pow((n1 + n2 + n3), 2)); // magnitude
+		double n11;
+		double n22;
+		double n33;
 
 		vector<double> directionthree;
 
-		n1 = n1 / v;
-		n1 = acos(n1);
+		n11 = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n2 = n2 / v;
-		n2 = acos(n2);
+		n22 = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n3 = n3 / v;
-		n3 = acos(n3);
+		n33 = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		directionthree.push_back(n1);
-		directionthree.push_back(n2);
-		directionthree.push_back(n3);
+		directionthree.push_back(n11);
+		directionthree.push_back(n22);
+		directionthree.push_back(n33);
 
 		vector<double> result = { directionthree.at(0), directionthree.at(1), directionthree.at(2) };
 		return result;
 	}
-	catch (const exception &e) {
+	catch (const exception& e) {
 		std::cout << e.what() << std::endl;
 	}
 }
