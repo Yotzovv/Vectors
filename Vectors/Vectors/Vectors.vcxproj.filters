@@ -13,6 +13,18 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\Exceptions">
+      <UniqueIdentifier>{73f4f874-a4c5-47dc-880a-ace583ff26a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Exceptions">
+      <UniqueIdentifier>{d4e7f6d2-0cd1-4330-b06b-465bc7c756d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Menu">
+      <UniqueIdentifier>{dd44c885-6a4a-42cc-a94a-1b089d6a2612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{9ea0075f-0f42-4863-ba5c-f6a4ac1f5501}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Point.cpp">
@@ -24,8 +36,41 @@
     <ClCompile Include="Vector.cpp">
       <Filter>Resource Files</Filter>
     </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrahedron.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
     <ClCompile Include="Line.cpp">
       <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PointMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Element.cpp">
+      <Filter>Resource Files</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SegmentMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrahedronMenu.cpp">
+      <Filter>Resource Files\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -37,6 +82,39 @@
     </ClInclude>
     <ClInclude Include="Line.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Segment.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tetrahedron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="PointMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SegmentMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrahedronMenu.h">
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
