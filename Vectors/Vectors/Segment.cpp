@@ -39,7 +39,7 @@ Segment::Segment(Point start_pt, Point end_pt)
 
 double Segment::find_segment_length()
 {
-	return (double)sqrt(pow(get_endPt().X - get_startPt().X, 2) + pow(get_endPt().Y - get_startPt().Y, 2) + pow(get_endPt().Z - get_startPt().Z, 2));
+	return (double)sqrt(pow(get_endPt().X - get_startPt().X, 2) + pow(get_endPt().Y - get_startPt().Y, 2));
 }
 
 Point Segment::find_segment_middle()
