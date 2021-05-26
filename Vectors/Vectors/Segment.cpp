@@ -52,11 +52,38 @@ Point Segment::find_segment_middle()
 //Check if point lies on segment
 bool Segment::operator==(Point point)
 {
-	// float value = (int)(var * 100 + .5);
-	//return (float)value / 100;
+	//formula used:
 	//(x - x1) / (x2 - x1) = (y - y1) / (y2 - y1)
+
+	//in case the X coordinate of all three points is equal only the Y coordinate should be checked
+	if ((point.X == get_startPt().X) &&
+		(point.X == get_endPt().X) &&
+		(get_startPt().X == get_endPt().X))
+	{
+		if ((point.Y > get_startPt().Y && point.Y > get_endPt().Y) || (point.Y < get_startPt().Y && point.Y < get_endPt().Y))
+		{
+			return false;
+		}
+		return true;
+	}
 	double left_side_equation = (point.X - get_startPt().X) / (get_endPt().X - get_startPt().X);
+
+	//in case the Y coordinate of all three points is equal only the X coordinate should be checked
+	if ((point.Y == get_startPt().Y) &&
+		(point.Y == get_endPt().Y) &&
+		(get_startPt().Y == get_endPt().Y))
+	{
+		if ((point.X > get_startPt().X && point.X > get_endPt().X) || (point.X < get_startPt().X && point.X < get_endPt().X))
+		{
+			return false;
+		}
+		return true;
+	}
 	double right_side_equation = (point.Y - get_startPt().Y) / (get_endPt().Y - get_startPt().Y);
+
+	/*calculations used to round the doubles to a 'normal' state
+	float value = (int)(var * 100 + .5);
+	return (float)value / 100;*/
 
 	float left_side_result = (int)(left_side_equation * 100 + 0.5);
 	left_side_result /= 100;
