@@ -52,8 +52,19 @@ Point Segment::find_segment_middle()
 //Check if point lies on segment
 bool Segment::operator==(Point point)
 {
+	// float value = (int)(var * 100 + .5);
+	//return (float)value / 100;
 	//(x - x1) / (x2 - x1) = (y - y1) / (y2 - y1)
-	return (point.X - Start_pt.X) / (get_endPt().X - get_startPt().X) == (point.Y - get_startPt().Y) / (get_endPt().Y - get_startPt().Y);
+	double left_side_equation = (point.X - get_startPt().X) / (get_endPt().X - get_startPt().X);
+	double right_side_equation = (point.Y - get_startPt().Y) / (get_endPt().Y - get_startPt().Y);
+
+	float left_side_result = (int)(left_side_equation * 100 + 0.5);
+	left_side_result /= 100;
+
+	float right_side_result = (int)(right_side_equation * 100 + 0.5);
+	right_side_result /= 100;
+
+	return left_side_result == right_side_result;
 }
 
 std::ostream& Segment::ins(std::ostream& print) const
