@@ -9,34 +9,36 @@
 
 using namespace std;
 
-void MainMenu::redirect(int chose)
+void MainMenu::redirectMain(int chose)
 {
 	switch (chose)
 	{
 	case 1:
-		PointMenu().print_point_menu();
+	{
+		PointMenu(_Commands).print_point_menu();
 		break;
+	}
 	case 2:
-		VectorMenu().print_vector_menu();
+		VectorMenu(_Commands).print_vector_menu();
 		break;
 	case 3:
-		LineMenu().print_line_menu();
+		LineMenu(_Commands).print_line_menu();
 		break;
 	case 4:
-		SegmentMenu().print_segment_menu();
+		SegmentMenu(_Commands).print_segment_menu();
 		break;
 	case 5:
-		TriangleMenu().print_triangle_menu();
+		TriangleMenu(_Commands).print_triangle_menu();
 		break;
 	case 6:
-		TetrahedronMenu().print_tetrahedron_menu();
+		TetrahedronMenu(_Commands).print_tetrahedron_menu();
 		break;
 	}
 }
 
 void MainMenu::print_main_menu()
 {
-	cout << "Main Menu" << endl;
+	cout << endl << "--- Main Menu ---" << endl;
 	cout << "1.Point" << endl;
 	cout << "2.Vector" << endl;
 	cout << "3.Line" << endl;
@@ -46,7 +48,17 @@ void MainMenu::print_main_menu()
 
 	cout << ">: ";
 	int chose;
-	cin >> chose;
 
-	redirect(chose);
+	if (_Commands.size() < 1)
+	{
+		cin >> chose;
+	}
+	else
+	{
+		chose = stoi(_Commands.front());
+		_Commands.pop();
+		cout << chose;
+	}
+
+	redirectMain(chose);
 }

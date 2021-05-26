@@ -4,13 +4,29 @@
 
 using namespace std;
 
+VectorMenu::VectorMenu(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 VectorMenu::VectorMenu()
 {
+}
+
+void VectorMenu::instantiate_vector()
+{
 	Vector v;
+
+	if (_Commands.size() > 0)
+	{
+		v = Vector(_Commands);
+	}
+
 	cin >> v;
 
 	_Vector = v;
 }
+
 
 void VectorMenu::redirect_vector_menu(int option)
 {
@@ -94,7 +110,9 @@ void VectorMenu::redirect_vector_menu(int option)
 
 void VectorMenu::print_vector_menu()
 {
-	cout << endl << "Vector Menu" << endl;
+	instantiate_vector();
+
+	cout << endl << "--- Vector Menu ---" << endl;
 
 	cout << "1. Calculate length" << endl;
 	cout << "2. Check for 0 vector" << endl;
@@ -111,7 +129,18 @@ void VectorMenu::print_vector_menu()
 	cout << endl << ">: ";
 
 	int option;
-	cin >> option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		_Commands = this->_Vector._Commands;
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option << endl;
+	}
 
 	redirect_vector_menu(option);
 }

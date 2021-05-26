@@ -22,6 +22,11 @@ Point Segment::get_endPt()
 	return End_pt;
 }
 
+Segment::Segment(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 Segment::Segment()
 {
 }
@@ -62,10 +67,15 @@ std::istream& Segment::ext(std::istream& in)
 {
 	cout << endl << "--- Create Segment Menu ---" << endl;
 
-	Point pt_x;
-	Point pt_y;
+	Point pt_x(_Commands);
+	Point pt_y(_Commands);
 
-	in >> pt_x >> pt_y;
+	in >> pt_x;
+	_Commands = pt_x._Commands;
+	pt_y._Commands = _Commands;
+
+	in >> pt_y;
+	_Commands = pt_y._Commands;
 
 	Start_pt = pt_x;
 	End_pt = pt_y;

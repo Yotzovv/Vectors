@@ -7,6 +7,7 @@
 
 class Element {
 public:
+    std::string current_command;
     virtual std::ostream& ins(std::ostream&) const; 
     virtual std::istream& ext(std::istream&);
 };

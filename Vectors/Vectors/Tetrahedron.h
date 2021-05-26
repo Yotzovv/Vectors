@@ -4,6 +4,7 @@ class Tetrahedron : public Element {
 public:
 	bool is_point_valid();
 	Tetrahedron();
+	Tetrahedron(std::queue<std::string> cmds);
 	Tetrahedron(Point a, Point b, Point c, Point d);
 	Point getA();
 	Point getB();
@@ -22,6 +23,7 @@ public:
 	bool operator==(Point point);
 	std::ostream& ins(std::ostream&) const;
 	std::istream& ext(std::istream&);
+	std::queue<std::string> _Commands;
 private:
 	Point A;
 	Point B;
