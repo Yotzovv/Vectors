@@ -6,6 +6,7 @@
 #include <exception>
 #include <vector>
 #include <math.h>
+#include <optional>
 
 Line::Line()
 {
@@ -77,12 +78,29 @@ bool Line::operator||(Vector v1)
 	return slope1 == slope2;
 }
 
+
 bool operator==(const Line& l, const Line& l2)
 {
-	double x = (double)(l.n1 / l2.n1);
-	double y = (double)(l.n2 / l2.n2);
-	double z = (double)(l.n3 / l2.n3);
-	bool res = (x == y) == (x == z) == (y == z);
+	bool res;
+		
+	if (l.n1 && l.n2 && l.n3 && l2.n1 && l2.n2 && l2.n3 > -9999) 
+	{
+		double x = (double)(l.n1 / l2.n1);
+		double y = (double)(l.n2 / l2.n2);
+		double z = (double)(l.n3 / l2.n3);
+
+		res = (x == y) == (x == z) == (y == z);
+	}
+
+	else 
+	{
+	double A = (double)(l.A.X / l2.A.X);
+	double B = (double)(l.A.Y / l2.A.Y);
+	double C = (double)(l.B.X / l2.B.X);
+	double D = (double)(l.B.Y / l2.B.Y);
+
+	bool res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
+	}
 	return res;
 }
 
