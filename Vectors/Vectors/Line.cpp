@@ -141,9 +141,19 @@ bool Line::operator&&(Vector v1)
 
 bool Line::operator|(const Line& l)
 {
-	bool res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
+	bool res;
+	
+	if ((n1 && l.n1 && n2 && l.n2 && n3 && l.n3) == 0)
+	{
+		res = false;
+	}
+	else 
+	{ 
+	res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0; 	
+	}	
 	return res;
 }
+
 double Line::find_angle_line(Vector v1)
 {
 	double cos_of_angle = ((A.X * v1.A.X) + (B.X * v1.B.Y) /
