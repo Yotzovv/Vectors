@@ -18,10 +18,10 @@ public:
 	double get_perimeter();
 	bool is_point_valid();
 	double get_mid_side(double a, double b, double c);
-	bool is_triangle_iscoleses(Point x, Point y, Point z); // ravnobedren
-	bool is_triangle_equilateral(Point x, Point y, Point z); // ravnostranen
+	bool is_triangle_isosceles(); // ravnobedren
+	bool is_triangle_equilateral(); // ravnostranen
 	bool is_triangle_right(Point x, Point y, Point z);
-	bool is_triangle_acute(Point x, Point y, Point z);
+	bool is_triangle_acute();
 	bool is_triangle_obtuse(Point x, Point y, Point z);
 	void get_triangle_type(Point x, Point y, Point z); // dali e ostrougulen, tupougulen ili pravougulen
 	void get_triangle_type(); // dali e ostrougulen, tupougulen ili pravougulen

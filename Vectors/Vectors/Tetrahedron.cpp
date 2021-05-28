@@ -127,7 +127,7 @@ bool Tetrahedron::is_tetrahedron_regular()
 	Triangle a2(B, C, D);
 	Triangle a3(C, A, D);
 
-	bool result = a1.is_triangle_equilateral(A, B, D) && a2.is_triangle_equilateral(B, C, D) && a3.is_triangle_equilateral(C, A, D);
+	bool result = a1.is_triangle_equilateral() && a2.is_triangle_equilateral() && a3.is_triangle_equilateral();
 
 	return result;
 }
