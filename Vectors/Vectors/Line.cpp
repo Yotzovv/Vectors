@@ -5,8 +5,9 @@
 #include <cmath>
 #include <exception>
 #include <vector>
-#include <math.h>
 #include <optional>
+#include <math.h>
+#define PI 3.14159265;
 
 Line::Line()
 {
@@ -82,8 +83,8 @@ bool Line::operator||(Vector v1)
 bool operator==(const Line& l, const Line& l2)
 {
 	bool res;
-		
-	if (l.n1 && l.n2 && l.n3 && l2.n1 && l2.n2 && l2.n3 > -9999) 
+
+	if (l.n1 && l.n2 && l.n3 && l2.n1 && l2.n2 && l2.n3 > -9999)
 	{
 		double x = (double)(l.n1 / l2.n1);
 		double y = (double)(l.n2 / l2.n2);
@@ -92,14 +93,14 @@ bool operator==(const Line& l, const Line& l2)
 		res = (x == y) == (x == z) == (y == z);
 	}
 
-	else 
+	else
 	{
-	double A = (double)(l.A.X / l2.A.X);
-	double B = (double)(l.A.Y / l2.A.Y);
-	double C = (double)(l.B.X / l2.B.X);
-	double D = (double)(l.B.Y / l2.B.Y);
+		double A = (double)(l.A.X / l2.A.X);
+		double B = (double)(l.A.Y / l2.A.Y);
+		double C = (double)(l.B.X / l2.B.X);
+		double D = (double)(l.B.Y / l2.B.Y);
 
-	bool res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
+		res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
 	}
 	return res;
 }
@@ -141,16 +142,29 @@ bool Line::operator&&(Vector v1)
 
 bool Line::operator|(const Line& l)
 {
-	bool res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
+	bool res;
+
+	if ((n1 && l.n1 && n2 && l.n2 && n3 && l.n3) == 0)
+	{
+		res = false;
+	}
+	else
+	{
+		res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
+	}
 	return res;
 }
+
 double Line::find_angle_line(Vector v1)
 {
-	double cos_of_angle = ((A.X * v1.A.X) + (B.X * v1.B.Y) /
-		(sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
-			(sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
+	double slope1 = (A.Y - B.Y) / (A.X - B.X);
+	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
 
-	return (acos(cos_of_angle) * 180.0 / 3.14);
+	double theta1 = atan(slope1) * (180.0 / 3.14);
+	double theta2 = atan(slope2) * (180.0 / 3.14);
+
+	double angle = abs(max(theta1, theta2) - min(theta1, theta2));
+	return angle;
 }
 
 bool Line::operator!=(Vector v1)
@@ -165,10 +179,21 @@ bool Line::operator!=(Vector v1)
 //Checks if a point lies on a line
 bool Line::operator+(Point pt)
 {
-	bool is_point_on_line = ((pt.X >= this->A.X && this->B.X >= pt.X) || (pt.X >= this->B.X && this->A.X >= pt.X))
-		&& (pt.Y >= this->A.Y && this->B.Y >= pt.Y) || (pt.Y >= this->B.Y && this->A.Y >= pt.Y);
+	//formula used:
+	//(pt.X - A.X) / (B.X-A.X) = l
+	//(pt.Y - A.Y) / (B.Y-A.Y) = m
+	//(pt.Z - A.Z) / (B.Z - A.Z) = n
+	//l == m == n
 
-	return is_point_on_line;
+	double l = (pt.X - this->A.X) / (this->B.X - this->A.X);
+	double m = (pt.Y - this->A.Y) / (this->B.Y - this->A.Y);
+	double n = (pt.Z - this->A.Z) / (this->B.Z - this->A.Z);
+
+	if ((l == m) && (l == n) && (m == n))
+	{
+		return true;
+	}
+	return false;
 }
 
 std::ostream& Line::ins(std::ostream& print) const

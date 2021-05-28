@@ -27,9 +27,9 @@ bool Tetrahedron::is_point_valid()
 		vector<Point> pts = { A, B, C, D };
 		vector<string> pts_names = { "A", "B", "C", "D" };
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 4; i++)
 		{
-			for (int j = 0; j < 3; j++)
+			for (int j = 0; j < 4; j++)
 			{
 				if (i == j)
 				{
@@ -141,7 +141,7 @@ bool Tetrahedron::is_ortogonal()
 	Segment s_ac(A, C);
 	Segment s_bc(B, C);
 	Segment s_ad(A, D);
-    
+
 	double ab = s_ab.find_segment_length();
 	double cd = s_cd.find_segment_length();
 	double bd = s_bd.find_segment_length();
@@ -149,7 +149,14 @@ bool Tetrahedron::is_ortogonal()
 	double bc = s_bc.find_segment_length();
 	double ad = s_ad.find_segment_length();
 
-	return pow(ab, 2) + pow(cd, 2) == pow(ac, 2) + pow(bd, 2) == pow(ad, 2) + pow(bc, 2); 
+	if ((pow(ab, 2) + pow(cd, 2) == pow(ac, 2) + pow(bd, 2)) &&
+		(pow(ab, 2) + pow(cd, 2) == pow(ad, 2) + pow(bc, 2)) &&
+		(pow(ac, 2) + pow(bd, 2) == pow(ad, 2) + pow(bc, 2)))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 double Tetrahedron::find_surrounding_surface()
@@ -204,7 +211,7 @@ bool Tetrahedron::operator==(Point pt)
 	double c = s3.find_segment_length();
 	Segment s4{ C,D };
 	double d = s4.find_segment_length();
-	
+
 	bool result = s1 == pt && s2 == pt && s3 == pt && s4 == pt;
 
 	return result;

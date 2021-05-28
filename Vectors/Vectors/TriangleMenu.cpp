@@ -37,16 +37,17 @@ void TriangleMenu::redirect_triangle_menu(int option)
 		}
 		case 2:
 		{
-			cout << _Triangle.get_area();
+			cout << "Triangle area: " << _Triangle.get_area();
 			break;
 		}
 		case 3:
 		{
-			cout << _Triangle.get_perimeter();
+			cout << "Triangle perimeter: " << _Triangle.get_perimeter();
 			break;
 		}
 		case 4:
 		{
+			cout << "Triangle incenter: ";
 			cout << _Triangle.get_incenter();
 			break;
 		}
@@ -54,21 +55,21 @@ void TriangleMenu::redirect_triangle_menu(int option)
 		{
 			Point inside_pt(_Commands);
 			cin >> inside_pt;
-			cout << (_Triangle < inside_pt);
+			cout << ((_Triangle < inside_pt) ? "Point is inside triangle." : "Point is not inside triangle.");
 			break;
 		}
 		case 6:
 		{
 			Point outside_pt(_Commands);
 			cin >> outside_pt;
-			cout << (_Triangle > outside_pt);
+			cout << ((_Triangle > outside_pt) ? "Point is outside triangle." : "Point is not outside triangle.");
 			break;
 		}
 		case 7:
 		{
 			Point side_pt(_Commands);
 			cin >> side_pt;
-			cout << (_Triangle == side_pt);
+			cout << ((_Triangle == side_pt) ? "Point is on triangle side." : "Point is not triangle side.");
 			break;
 		}
 		case 8:
