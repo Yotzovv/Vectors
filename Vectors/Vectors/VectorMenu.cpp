@@ -33,16 +33,17 @@ void VectorMenu::redirect_vector_menu(int option)
 	switch (option) {
 		case 1:
 		{
-			cout << _Vector.get_vector_length();
+			cout << "Vector Length is: " << _Vector.get_vector_length();
 			break;
 		}
 		case 2:
 		{
-			cout << _Vector.is_vector_null();
+			cout << (_Vector.is_vector_null() ? "Vector is null." : "Vector is not null.");
 			break;
 		}
 		case 3:
 		{
+			cout << "Vector direciton: " << endl;
 			_Vector.print_direction();
 			break;
 		}
@@ -50,14 +51,14 @@ void VectorMenu::redirect_vector_menu(int option)
 		{
 			Vector parallelV;
 			cin >> parallelV;
-			cout << _Vector.is_parallel(parallelV);
+			cout << (_Vector.is_parallel(parallelV) ? "Vectors are parallel." : "Vectors are not parallel.");
 			break;
 		}
 		case 5:
 		{
 			Vector perpendicullarV;
 			cin >> perpendicullarV;
-			cout << _Vector.is_vector_perpendicullar(perpendicullarV);
+			cout << (_Vector.is_vector_perpendicullar(perpendicullarV) ? "Vectors are perpendicular." : "Vectors are not perpendicular.");
 			break;
 		}
 		case 6:
@@ -65,6 +66,7 @@ void VectorMenu::redirect_vector_menu(int option)
 			// this works with n1,n2,n3 only
 			Vector vec_to_add;
 			cin >> vec_to_add;
+			cout << "New vector: " << endl;
 			cout << _Vector + vec_to_add;
 			break;
 		}
@@ -72,6 +74,7 @@ void VectorMenu::redirect_vector_menu(int option)
 		{
 			Vector vec_to_sub;
 			cin >> vec_to_sub;
+			cout << "New vector: " << endl;
 			cout << _Vector - vec_to_sub;
 			break;
 		}
@@ -79,6 +82,7 @@ void VectorMenu::redirect_vector_menu(int option)
 		{
 			int n;
 			cin >> n;
+			cout << "New vector: " << endl;
 			cout << n * _Vector;
 			break;
 		}
@@ -86,6 +90,7 @@ void VectorMenu::redirect_vector_menu(int option)
 		{
 			Vector vec_to_multiply;
 			cin >> vec_to_multiply;
+			cout << "Scalar product: " << endl;
 			cout << _Vector * vec_to_multiply;
 			break;
 		}
@@ -93,6 +98,7 @@ void VectorMenu::redirect_vector_menu(int option)
 		{
 			Vector newV;
 			cin >> newV;
+			cout << "Vector product: " << endl;
 			cout << (_Vector ^ newV);
 			break;
 		}
@@ -102,6 +108,7 @@ void VectorMenu::redirect_vector_menu(int option)
 			Vector v2;
 			cin >> v1;
 			cin >> v2;
+			cout << "Mixed product: " << endl;
 			cout << v1(v2, _Vector);
 			break;
 		}

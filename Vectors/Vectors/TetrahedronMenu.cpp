@@ -33,30 +33,29 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 	{
 		case 1:
 		{
-			cout << _Tetrahedron.is_tetrahedron_regular();
+			cout << (_Tetrahedron.is_tetrahedron_regular() ? "Tetrahedron is regular." : "Tetrahedron is not regular.");
 			break;
 		}
 		case 2:
 		{
-			cout << _Tetrahedron.is_ortogonal();
+			cout << (_Tetrahedron.is_ortogonal() ? "Tetrahedron is ortogonal." : "Tetrahedron is not ortogonal.");
 			break;
 		}
 		case 3:
 		{
-			cout << _Tetrahedron.find_surrounding_surface();
+			cout << "Surrounding surface: " << _Tetrahedron.find_surrounding_surface();
 			break;
 		}
 		case 4:
 		{
-			cout << _Tetrahedron.get_volume();
+			cout << "Volume: " << _Tetrahedron.get_volume();
 			break;
 		}
 		case 5:
 		{
 			Point th_inside(_Commands);
 			cin >> th_inside;
-
-			cout << (_Tetrahedron < th_inside);
+			cout << ((_Tetrahedron < th_inside) ? "Point is inside Tetrahedron." : "Point is not inside Tetrahedron.");
 			break;
 		}
 		case 6:
@@ -64,7 +63,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 			Point th_outside(_Commands);
 			cin >> th_outside;
 
-			cout << (_Tetrahedron > th_outside);
+			cout << ((_Tetrahedron > th_outside) ? "Point is outside Tetrahedron." : "Point is not outside Tetrahedron.");
 			break;
 		}
 		case 7:
@@ -72,7 +71,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 			Point th_side(_Commands);
 			cin >> th_side;
 
-			cout << (_Tetrahedron == th_side);
+			cout << ((_Tetrahedron == th_side) ? "Point is on Tetrahedron side." : "Point is not on Tetrahedron side.");
 			break;
 		}
 	}
