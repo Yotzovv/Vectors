@@ -5,8 +5,9 @@
 #include <cmath>
 #include <exception>
 #include <vector>
-#include <math.h>
 #include <optional>
+#include <math.h>
+#define PI 3.14159265;
 
 Line::Line()
 {
@@ -156,11 +157,14 @@ bool Line::operator|(const Line& l)
 
 double Line::find_angle_line(Vector v1)
 {
-	double cos_of_angle = ((A.X * v1.A.X) + (B.X * v1.B.Y) /
-		(sqrt(pow(A.X, 2) + (sqrt(pow(B.X, 2) *
-			(sqrt(pow(v1.A.Y, 2) + (sqrt(pow(v1.B.Y, 2))))))))));
+	double slope1 = (A.Y - B.Y) / (A.X - B.X);
+	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
 
-	return (acos(cos_of_angle) * 180.0 / 3.14);
+	double theta1 = atan(slope1) * (180.0 / 3.14);
+	double theta2 = atan(slope2) * (180.0 / 3.14);
+
+	double angle = abs(max(theta1, theta2) - min(theta1, theta2));
+	return angle;
 }
 
 bool Line::operator!=(Vector v1)
