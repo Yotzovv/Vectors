@@ -99,7 +99,7 @@ bool operator==(const Line& l, const Line& l2)
 	double C = (double)(l.B.X / l2.B.X);
 	double D = (double)(l.B.Y / l2.B.Y);
 
-	bool res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
+	 res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
 	}
 	return res;
 }

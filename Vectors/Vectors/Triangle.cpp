@@ -385,15 +385,21 @@ std::ostream& Triangle::ins(std::ostream& print) const
 
 std::istream& Triangle::ext(std::istream& in)
 {
-	Point x(_Commands);
-	Point y(_Commands);
-	Point z(_Commands);
 
 	cout << endl << "--- Triangle Menu ---" << endl;
 	cout << ">Enter triangle cordinates (X,Y,Z)" << endl;
+
+	Point x(_Commands);
 	cin >> x;
+	_Commands = x._Commands;
+
+	Point y(_Commands);
 	cin >> y;
+	_Commands = y._Commands;
+
+	Point z(_Commands);
 	cin >> z;
+	_Commands = z._Commands;
 
 	return in;
 }
