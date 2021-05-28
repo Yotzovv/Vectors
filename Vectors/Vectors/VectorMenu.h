@@ -3,19 +3,19 @@
 #define VectorMenu_H
 
 #include "Vector.h"
+#include "Menu.h"
 
-class VectorMenu
+class VectorMenu : public Menu
 {
 public:
 	VectorMenu(std::queue<std::string> cmds);
 	VectorMenu();
 	void instantiate_vector();
-	void redirect_vector_menu(int option);
-	void print_vector_menu();
+	void redirect(int option);
+	void print_menu();
 
 private:
 	Vector _Vector;
-	std::queue<std::string> _Commands;
 };
 
 #endif

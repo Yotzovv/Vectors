@@ -79,7 +79,7 @@
       <Filter>Header Files\Menu</Filter>
     </ClCompile>
     <ClCompile Include="Menu.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Resource Files\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

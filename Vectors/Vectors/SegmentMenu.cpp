@@ -23,7 +23,7 @@ void SegmentMenu::instantiate_segment()
 	_Segment = segment;
 }
 
-void SegmentMenu::redirect_segment_menu(int option)
+void SegmentMenu::redirect(int option)
 {
 	switch (option)
 	{
@@ -47,7 +47,7 @@ void SegmentMenu::redirect_segment_menu(int option)
 	}
 }
 
-void SegmentMenu::print_segment_menu()
+void SegmentMenu::print_menu()
 {
 	instantiate_segment();
 
@@ -71,5 +71,5 @@ void SegmentMenu::print_segment_menu()
 		cout << option << endl;
 	}
 
-	redirect_segment_menu(option);
+	redirect(option);
 }

@@ -28,7 +28,7 @@ void VectorMenu::instantiate_vector()
 }
 
 
-void VectorMenu::redirect_vector_menu(int option)
+void VectorMenu::redirect(int option)
 {
 	switch (option) {
 		case 1:
@@ -115,7 +115,7 @@ void VectorMenu::redirect_vector_menu(int option)
 	}
 }
 
-void VectorMenu::print_vector_menu()
+void VectorMenu::print_menu()
 {
 	instantiate_vector();
 
@@ -149,5 +149,5 @@ void VectorMenu::print_vector_menu()
 		cout << option << endl;
 	}
 
-	redirect_vector_menu(option);
+	redirect(option);
 }

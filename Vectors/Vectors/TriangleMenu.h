@@ -3,16 +3,16 @@
 #define TriangleMenu_H
 
 #include "Triangle.h"
+#include "Menu.h"
 
-class TriangleMenu
+class TriangleMenu : public Menu
 {
 public:
 	TriangleMenu();
 	TriangleMenu(std::queue<std::string> cmds);
 	void instantiate_triangle();
-	void redirect_triangle_menu(int option);
-	void print_triangle_menu();
-	std::queue<std::string> _Commands;
+	void redirect(int option);
+	void print_menu();
 private:
 	Triangle _Triangle;
 };

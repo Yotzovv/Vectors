@@ -2,15 +2,14 @@
 #ifndef MainMenu_H
 #define MainMenu_H
 
-#include <queue>
-#include <string>
+#include "Menu.h"
 
-class MainMenu
+class MainMenu : public Menu
 {
 public:
-	std::queue<std::string> _Commands;
-	void redirectMain(int chose);
-	void print_main_menu();
+	MainMenu(std::queue<std::string> cmds);
+	void redirect(int chose);
+	void print_menu();
 };
 
 #endif
