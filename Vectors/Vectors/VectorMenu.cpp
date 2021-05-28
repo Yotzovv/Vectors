@@ -132,6 +132,7 @@ void VectorMenu::print_menu()
 	cout << "9. Scalar product of 2 vectors" << endl;
 	cout << "10. Vector product of 2 vectors" << endl;
 	cout << "11. Mixed Product of 3 vectors" << endl;
+	cout << "12. Go back" << endl;
 
 	cout << endl << ">: ";
 

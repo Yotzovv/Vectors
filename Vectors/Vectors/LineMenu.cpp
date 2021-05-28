@@ -114,6 +114,7 @@ void LineMenu::print_menu()
 	cout << "7. Check if two lines intersect" << endl;
 	cout << "8. Check if two lines are crossed" << endl;
 	cout << "9. Check if two lines are perpendicular" << endl;
+	cout << "10. Go back" << endl;
 
 	cout << endl << ">: ";
 

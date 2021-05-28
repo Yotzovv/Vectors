@@ -17,26 +17,36 @@ void MainMenu::redirect(int chose)
 {
 	switch (chose)
 	{
-	case 1:
-	{
-		PointMenu(_Commands).print_menu();
-		break;
-	}
-	case 2:
-		VectorMenu(_Commands).print_menu();
-		break;
-	case 3:
-		LineMenu(_Commands).print_menu();
-		break;
-	case 4:
-		SegmentMenu(_Commands).print_menu();
-		break;
-	case 5:
-		TriangleMenu(_Commands).print_menu();
-		break;
-	case 6:
-		TetrahedronMenu(_Commands).print_menu();
-		break;
+		case 1:
+		{
+			PointMenu(_Commands).print_menu();
+			break;
+		}
+		case 2:
+		{
+			VectorMenu(_Commands).print_menu();
+			break;
+		}
+		case 3:
+		{
+			LineMenu(_Commands).print_menu();
+			break;
+		}
+		case 4:
+		{
+			SegmentMenu(_Commands).print_menu();
+			break;
+		}
+		case 5:
+		{
+			TriangleMenu(_Commands).print_menu();
+			break;
+		}
+		case 6:
+		{
+			TetrahedronMenu(_Commands).print_menu();
+			break;
+		}
 	}
 }
 
