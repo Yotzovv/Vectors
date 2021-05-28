@@ -29,20 +29,20 @@ void SegmentMenu::redirect_segment_menu(int option)
 	{
 	case 1:
 	{
-		cout << _Segment.find_segment_length();
+		cout << "Segment length: " << _Segment.find_segment_length();
 		break;
 	}
 	case 2:
 	{
 		cout << "Finding middle point..." << endl;
-		cout << _Segment.find_segment_middle();
+		cout << "Middle point: " << _Segment.find_segment_middle();
 		break;
 	}
 	case 3:
 	{
 		Point pt(_Commands);
 		cin >> pt;
-		cout << (_Segment == pt);
+		cout << ((_Segment == pt) ? "Point lies on segment." : "Point doesn\'t lie on segment.");
 	}
 	}
 }
