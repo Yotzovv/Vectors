@@ -16,11 +16,8 @@ using namespace std;
 
 namespace fs = std::filesystem;
 
-void IOMenu::input_from_file(string line)
+IOMenu::IOMenu() : Menu()
 {
-	cout << "You chose " << line << endl;
-	//fputc(stoi(line), stdout);
-	//MainMenu().redirect(stoi(line));
 }
 
 vector<string> IOMenu::read_directory()
@@ -54,7 +51,6 @@ void IOMenu::read_file()
 		while (getline(myfile, line))
 		{
 			_Commands.push(line);
-			//cout << line << '\n';
 		}
 		myfile.close();
 	}
@@ -63,7 +59,7 @@ void IOMenu::read_file()
 		cout << "Unable to open file";
 	}
 
-	this->print_main_menu();
+	MainMenu(_Commands).print_menu();
 }
 
 void IOMenu::redirect(int chose)
@@ -75,7 +71,7 @@ void IOMenu::redirect(int chose)
 			break;
 		case 2:
 		{
-			MainMenu().print_main_menu();
+			MainMenu(_Commands).print_menu();
 			break;
 		}
 		case 3:

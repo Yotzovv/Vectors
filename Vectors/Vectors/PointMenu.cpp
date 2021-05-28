@@ -34,7 +34,7 @@ void PointMenu::check_if_equal()
 	cout << endl << (are_point_equal ? "Points are equal!" : "Points are not equal!");
 }
 
-void PointMenu::redirect_point_menu(int option)
+void PointMenu::redirect(int option)
 {
 	switch (option)
 	{
@@ -46,7 +46,7 @@ void PointMenu::redirect_point_menu(int option)
 	}
 }
 
-void PointMenu::print_point_menu()
+void PointMenu::print_menu()
 {
 	instantiate_point();
 
@@ -70,5 +70,5 @@ void PointMenu::print_point_menu()
 		cout << option;
 	}
 
-	redirect_point_menu(option);
+	redirect(option);
 }

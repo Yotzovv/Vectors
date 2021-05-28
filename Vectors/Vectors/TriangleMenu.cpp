@@ -26,7 +26,7 @@ void TriangleMenu::instantiate_triangle()
 	_Triangle = t;
 }
 
-void TriangleMenu::redirect_triangle_menu(int option)
+void TriangleMenu::redirect(int option)
 {
 	switch (option)
 	{
@@ -79,7 +79,7 @@ void TriangleMenu::redirect_triangle_menu(int option)
 	}
 }
 
-void TriangleMenu::print_triangle_menu()
+void TriangleMenu::print_menu()
 {
 	instantiate_triangle();
 
@@ -107,5 +107,5 @@ void TriangleMenu::print_triangle_menu()
 		cout << option << endl;
 	}
 
-	redirect_triangle_menu(option);
+	redirect(option);
 }

@@ -3,21 +3,19 @@
 #define PointMenu_H
 
 #include "Point.h"
-#include <queue>
-#include <string>
+#include "Menu.h"
 
-class PointMenu
+class PointMenu : public Menu
 {
 public:
 	PointMenu(std::queue<std::string> cmds);
 	void instantiate_point();
 	void check_if_equal();
-	void redirect_point_menu(int option);
-	void print_point_menu();
+	void redirect(int option);
+	void print_menu();
 
 private:
 	Point _Point;
-	std::queue<std::string> _Commands;
 };
 
 #endif

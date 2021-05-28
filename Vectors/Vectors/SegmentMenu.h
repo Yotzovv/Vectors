@@ -4,16 +4,16 @@
 
 #include "Segment.h"
 #include "SegmentMenu.h"
+#include "Menu.h"
 
-class SegmentMenu
+class SegmentMenu : public Menu
 {
 public:
 	SegmentMenu(std::queue<std::string> cmds);
 	SegmentMenu();
 	void instantiate_segment();
-	void redirect_segment_menu(int option);
-	void print_segment_menu();
-	std::queue<std::string> _Commands;
+	void redirect(int option);
+	void print_menu();
 private:
 	Segment _Segment;
 };

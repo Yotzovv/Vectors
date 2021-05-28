@@ -27,7 +27,7 @@ void TetrahedronMenu::instantiate_tetrahedron()
 	_Tetrahedron = th;
 }
 
-void TetrahedronMenu::redirect_tetrahedron_menu(int option)
+void TetrahedronMenu::redirect(int option)
 {
 	switch (option)
 	{
@@ -77,7 +77,7 @@ void TetrahedronMenu::redirect_tetrahedron_menu(int option)
 	}
 }
 
-void TetrahedronMenu::print_tetrahedron_menu()
+void TetrahedronMenu::print_menu()
 {
 	instantiate_tetrahedron();
 
@@ -106,5 +106,5 @@ void TetrahedronMenu::print_tetrahedron_menu()
 		cout << option << endl;
 	}
 
-	redirect_tetrahedron_menu(option);
+	redirect(option);
 }

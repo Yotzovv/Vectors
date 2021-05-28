@@ -24,7 +24,7 @@ void LineMenu::instantiate_line()
 	_Line = line;
 }
 
-void LineMenu::redirect_line_menu(int option)
+void LineMenu::redirect(int option)
 {
 	switch (option)
 	{
@@ -99,7 +99,7 @@ void LineMenu::redirect_line_menu(int option)
 	}
 }
 
-void LineMenu::print_line_menu()
+void LineMenu::print_menu()
 {
 	instantiate_line();
 
@@ -131,5 +131,5 @@ void LineMenu::print_line_menu()
 		cout << option << endl;
 	}
 
-	redirect_line_menu(option);
+	redirect(option);
 }

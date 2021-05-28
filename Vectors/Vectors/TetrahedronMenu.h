@@ -3,16 +3,16 @@
 #define TetrahedronMenu_H
 
 #include "Tetrahedron.h"
+#include "Menu.h"
 
-class TetrahedronMenu
+class TetrahedronMenu : public Menu
 {
 public:
 	TetrahedronMenu();
 	TetrahedronMenu(std::queue<std::string> cmds);
 	void instantiate_tetrahedron();
-	void redirect_tetrahedron_menu(int option);
-	void print_tetrahedron_menu();
-	std::queue<std::string> _Commands;
+	void redirect(int option);
+	void print_menu();
 private:
 	Tetrahedron _Tetrahedron;
 };

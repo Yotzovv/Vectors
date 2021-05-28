@@ -3,16 +3,16 @@
 #define LineMenu_H
 
 #include "Line.h"
+#include "Menu.h"
 
-class LineMenu
+class LineMenu : public Menu
 {
 public:
 	LineMenu(std::queue<std::string> cmds);
 	LineMenu();
 	void instantiate_line();
-	void redirect_line_menu(int option);
-	void print_line_menu();
-	std::queue<std::string> _Commands;
+	void redirect(int option);
+	void print_menu();
 private:
 	Line _Line;
 };
