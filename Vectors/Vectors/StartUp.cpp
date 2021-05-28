@@ -14,7 +14,7 @@ int main()
 
 	while (is_iterating)
 	{
-		IOMenu().print_io_menu();
+		IOMenu().print_menu();
 
 		bool is_invalid_input = true;
 

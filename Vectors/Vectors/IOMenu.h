@@ -14,7 +14,7 @@ public:
 	std::vector<std::string> read_directory();
 	void read_file();
 	void redirect(int chose);
-	void print_io_menu();
+	void print_menu();
 };
 
 #endif

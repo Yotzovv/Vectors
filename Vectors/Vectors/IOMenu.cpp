@@ -83,7 +83,7 @@ void IOMenu::redirect(int chose)
 	}
 }
 
-void IOMenu::print_io_menu()
+void IOMenu::print_menu()
 {
 	cout << endl << "--- Input Type Menu ---" << endl;
 	cout << "1. Use a file" << endl;
