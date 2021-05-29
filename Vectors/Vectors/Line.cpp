@@ -40,7 +40,7 @@ Line::Line(std::queue<std::string> cmds)
 /// <returns>Vector</returns>
 Vector Line::find_normal_vector(Line l)
 {
-	double k = -(n1 * A.X + n2 * A.Y + n3 * A.Z) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+	double k = -(n1 * l.n1 + n2 * l.n2 + n3 * l.n3) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
 	double resX = (this->n1 * k) + this->A.X;
 	double resY = (this->n2 * k) + this->A.Y;
