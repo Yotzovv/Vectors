@@ -10,6 +10,11 @@
 
 using namespace std;
 
+Vector::Vector(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
+}
+
 Vector::Vector(double x, double y, double z)
 {
 	n1 = x;
@@ -70,6 +75,7 @@ double Vector::get_vector_length()
 	return sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 }
 
+
 /// <summary>
 /// Uses Point classess
 /// TODO: Merge with get_direction 
@@ -77,7 +83,7 @@ double Vector::get_vector_length()
 /// </summary//>
 /// <returns></returns>
 
-double Vector::vector_direction()
+double Vector::vector_direction_by_pts()
 {
 	if (is_vector_null()) {
 		throw VectorLengthException();
@@ -91,7 +97,7 @@ double Vector::vector_direction()
 /// TODO: Merge with vector_direction
 /// </summary>
 /// <returns></returns>
-vector<double> Vector::get_direction()
+vector<double> Vector::get_direction_by_nums()
 {
 	try {
 
@@ -100,20 +106,22 @@ vector<double> Vector::get_direction()
 			throw VectorLengthException();
 		}
 
-		double v{}; //magnitude
-
+		double v; //magnitude
+		double a;
+		double b;
+		double c;
 
 		vector<double> directionthree;
 
-		n1 = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		a = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n2 = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		b = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		n3 = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		c = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
 
-		directionthree.push_back(n1);
-		directionthree.push_back(n2);
-		directionthree.push_back(n3);
+		directionthree.push_back(a);
+		directionthree.push_back(b);
+		directionthree.push_back(c);
 
 		vector<double> result = { directionthree.at(0), directionthree.at(1), directionthree.at(2) };
 		return result;
@@ -122,6 +130,23 @@ vector<double> Vector::get_direction()
 		std::cout << e.what() << std::endl;
 	}
 }
+
+void Vector::print_direction()
+{
+	if (n1 == 0 && n2 == 0 && n3 == 0)
+	{
+		double result = vector_direction_by_pts();
+		cout << result << endl;
+	}
+
+	vector<double> result = get_direction_by_nums();
+
+	for (auto num : result)
+	{
+		cout << num;
+	}
+}
+
 
 /// <summary>
 /// Determines if 2 vectors are parrallel
@@ -240,4 +265,113 @@ Vector operator^(const Vector& v1, const Vector& v2)
 	result.n3 = v1.n1 * v2.n2 - v1.n2 * v2.n1;
 
 	return result;
+}
+
+//overloads << operator
+ostream& Vector::ins(ostream& print) const
+{
+	if (n1 == n2 == n3 == 0)
+	{
+		print << A, B;
+	}
+	else
+	{
+		print << "X: " << n1;
+		print << "Y: " << n2;
+		print << "Z: " << n3;
+	}
+
+	return print;
+}
+
+//Overlaods >> opeartor
+istream& Vector::ext(istream& in)
+{
+	cout << endl << "--- Create Vector Menu ---" << endl;
+	cout << endl << ">Choose method of creation:" << endl;
+	cout << "1. Using 3 numbers" << endl;
+	cout << "2. Using cordinates" << endl;
+	cout << endl << ">: ";
+
+	int option;
+
+	if (_Commands.size() < 1)
+	{
+		cin >> option;
+	}
+	else
+	{
+		option = stoi(_Commands.front());
+		_Commands.pop();
+		cout << option;
+	}
+
+	switch (option)
+	{
+	case 1:
+		cout << endl << "You chose 3 numbers initialization!" << endl;
+		double x, y, z;
+
+		cout << "x: ";
+		if (_Commands.size() < 1)
+		{
+			cin >> x;
+		}
+		else
+		{
+			x = stoi(_Commands.front());
+			_Commands.pop();
+			cout << x << endl;
+		}
+
+		cout << "y: ";
+		if (_Commands.size() < 1)
+		{
+			cin >> y;
+		}
+		else
+		{
+			y = stoi(_Commands.front());
+			_Commands.pop();
+			cout << y << endl;
+		}
+
+		cout << "z: ";
+		if (_Commands.size() < 1)
+		{
+			cin >> z;
+		}
+		else
+		{
+			z = stoi(_Commands.front());
+			_Commands.pop();
+			cout << z << endl;
+		}
+
+		n1 = x;
+		n2 = y;
+		n3 = z;
+		break;
+	case 2:
+		cout << endl << "You chose point initializaiton!" << endl;
+		Point pt_x;
+		Point pt_y;
+
+		if (_Commands.size() > 0)
+		{
+			pt_x = Point(_Commands);
+			pt_y = Point(_Commands);
+		}
+
+		in >> pt_x;
+		_Commands = pt_x._Commands;
+		in >> pt_y;
+		_Commands = pt_y._Commands;
+
+		A = pt_x;
+		B = pt_y;
+		break;
+	}
+
+	return in;
 }

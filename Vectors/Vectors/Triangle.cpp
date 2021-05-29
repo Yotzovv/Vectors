@@ -5,6 +5,10 @@
 #include <math.h>
 #pragma once
 
+Triangle::Triangle()
+{
+}
+
 Triangle::Triangle(Point x, Point y, Point z)
 {
 	setX(x);
@@ -12,6 +16,11 @@ Triangle::Triangle(Point x, Point y, Point z)
 	setZ(z);
 
 	is_point_valid();
+}
+
+Triangle::Triangle(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
 }
 
 Point Triangle::getX()
@@ -92,30 +101,24 @@ double Triangle::get_mid_side(double a, double b, double c)
 		mid = c;
 	}
 
-	/*cout << a << endl;
-	cout << b << endl;
-	cout << c << endl;
-	cout << mid << endl;
-	cout << "here is the mid" << endl;*/
-
 	return mid;
 }
 
-bool Triangle::is_triangle_iscoleses(Point x, Point y, Point z)
+bool Triangle::is_triangle_isosceles()
 {
-	Vector vec(x, y);
-	Vector vec1(z, y);
-	Vector vec2(x, z);
+	Segment AB(this->getX(), this->getY());
+	Segment AC(this->getX(), this->getZ());
+	Segment BC(this->getY(), this->getZ());
 
-	double vec_lngth = vec.get_vector_length();
-	double vec1_lngth = vec1.get_vector_length();
-	double vec2_lngth = vec2.get_vector_length();
+	double length_AB = AB.find_segment_length();
+	double length_AC = AC.find_segment_length();
+	double length_BC = BC.find_segment_length();
 
-	if ((vec_lngth == vec1_lngth || vec_lngth == vec2_lngth) || (vec1_lngth == vec_lngth || vec1_lngth == vec2_lngth) || (vec2_lngth == vec_lngth || vec2_lngth == vec1_lngth))
+	if ((length_AB == length_AC) || (length_AB == length_BC) || (length_AC == length_BC))
 	{
 		return true;
 	}
-	else return false;
+	return false;
 }
 
 void Triangle::setX(Point x)
@@ -133,7 +136,7 @@ void Triangle::setZ(Point z)
 	Z = z;
 }
 
-Point Triangle::get_centroid(Point x, Point y, Point z)
+Point Triangle::get_incenter(Point x, Point y, Point z)
 {
 	Point centroid;
 
@@ -143,6 +146,16 @@ Point Triangle::get_centroid(Point x, Point y, Point z)
 	return centroid;
 }
 
+
+Point Triangle::get_incenter()
+{
+	Point centroid;
+
+	centroid.X = (X.X + Y.X + Z.X) / 3;
+	centroid.Y = (X.Y + Y.Y + Z.Y) / 3;
+
+	return centroid;
+}
 
 double Triangle::get_area()
 {
@@ -156,8 +169,8 @@ double Triangle::get_area()
 
 	//S = √p(p - a)(p - b)(p - c)
 	double p = (a + b + c) / 2;
-	double area = (double)sqrt(p*(p - a) * (p - b) * (p - c));
-	
+	double area = (double)sqrt(p * (p - a) * (p - b) * (p - c));
+
 	return area;
 }
 
@@ -170,7 +183,7 @@ double Triangle::get_area(Point x, Point y, Point z)
 	double a = s1.find_segment_length();
 	double b = s2.find_segment_length();
 	double c = s3.find_segment_length();
-			   
+
 	//S = √p(p - a)(p - b)(p - c)
 	double p = (a + b + c) / 2;
 	double area = (double)sqrt(p * (p - a) * (p - b) * (p - c));
@@ -194,20 +207,20 @@ double Triangle::get_perimeter()
 }
 
 
-bool Triangle::is_triangle_equilateral(Point x, Point y, Point z) {
+bool Triangle::is_triangle_equilateral() {
+	Segment AB(this->getX(), this->getY());
+	Segment AC(this->getX(), this->getZ());
+	Segment BC(this->getY(), this->getZ());
 
-	Vector vec(x, y);
-	Vector vec1(z, y);
-	Vector vec2(x, z);
+	double length_AB = AB.find_segment_length();
+	double length_AC = AC.find_segment_length();
+	double length_BC = BC.find_segment_length();
 
-	double vec_lngth = vec.get_vector_length();
-	double vec1_lngth = vec1.get_vector_length();
-	double vec2_lngth = vec2.get_vector_length();
-
-	if (vec_lngth == vec1_lngth == vec2_lngth) {
+	if ((length_AB == length_AC) && (length_AC == length_BC) && (length_AB == length_BC))
+	{
 		return true;
 	}
-	else return false;
+	return false;
 }
 
 bool Triangle::is_triangle_right(Point x, Point y, Point z) {
@@ -222,34 +235,90 @@ bool Triangle::is_triangle_right(Point x, Point y, Point z) {
 	double b = vec1.find_segment_length();
 	double c = vec2.find_segment_length();
 
-	mid = this->get_mid_side(a,b,c);
-
-	sum = (pow(mid, 2) + pow(min(min(a, b), c), 2));
-	if ((static_cast<int>(pow(max(max(a, b), c),2))) == static_cast<int>(sum)) {
-		return true;
-	}
-	
-	return false;
-}
-
-bool Triangle::is_triangle_acute(Point x, Point y, Point z) {
-
-	Segment vec(x, y);
-	Segment vec1(z, y);
-	Segment vec2(x, z);
-	double mid;
-	double sum; // of 2 shortest sides b'2 + c'2
-
-	double a = vec.find_segment_length();
-	double b = vec1.find_segment_length();
-	double c = vec2.find_segment_length();
-
 	mid = this->get_mid_side(a, b, c);
 
 	sum = (pow(mid, 2) + pow(min(min(a, b), c), 2));
-	
-	if (pow(max(max(a, b), c), 2) < sum) {
+	if ((static_cast<int>(pow(max(max(a, b), c), 2))) == static_cast<int>(sum)) {
 		return true;
+	}
+
+	return false;
+}
+
+bool Triangle::is_triangle_acute() {
+
+	Segment AB(this->getX(), this->getY());
+	Segment AC(this->getX(), this->getZ());
+	Segment BC(this->getY(), this->getZ());
+
+	double AB_length = AB.find_segment_length();
+	double AC_length = AC.find_segment_length();
+	double BC_length = BC.find_segment_length();
+
+	double AB_squared = pow(AB_length, 2);
+	double AC_squared = pow(AC_length, 2);
+	double BC_squared = pow(BC_length, 2);
+
+	//find the hypotenuse
+	//c^2 < a^2 + b^2
+	double longest_side = AB_length;
+	double compare;
+
+	if (AB_length < AC_length)
+	{
+		longest_side = AC_length;
+
+		if (AC_length < BC_length)
+		{
+			longest_side = BC_length;
+
+			compare = AB_squared + AC_squared;
+			if (BC_squared < compare)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		compare = AB_squared + BC_squared;
+		if (AC_squared < compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+	else if (AB_length < BC_length)
+	{
+		longest_side = BC_length;
+
+		compare = AB_squared + AC_squared;
+		if (BC_squared < compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		compare = AC_squared + BC_squared;
+		if (AB_squared < compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	return false;
@@ -257,42 +326,129 @@ bool Triangle::is_triangle_acute(Point x, Point y, Point z) {
 
 bool Triangle::is_triangle_obtuse(Point x, Point y, Point z)
 {
-	Segment vec(x, y);
-	Segment vec1(z, y);
-	Segment vec2(x, z);
-	double mid;
-	double sum; // of 2 shortest sides b'2 + c'2
+	Segment AB(this->getX(), this->getY());
+	Segment AC(this->getX(), this->getZ());
+	Segment BC(this->getY(), this->getZ());
 
-	double a = vec.find_segment_length();
-	double b = vec1.find_segment_length();
-	double c = vec2.find_segment_length();
+	double AB_length = AB.find_segment_length();
+	double AC_length = AC.find_segment_length();
+	double BC_length = BC.find_segment_length();
 
-	mid = this->get_mid_side(a, b, c);
+	double AB_squared = pow(AB_length, 2);
+	double AC_squared = pow(AC_length, 2);
+	double BC_squared = pow(BC_length, 2);
 
-	sum = (pow(mid, 2) + pow(min(min(a, b), c),2));
-	if (static_cast<int>(pow(max(max(a, b), c), 2)) > sum) {
-		return true;
+	//find the hypotenuse
+	//c^2 > a^2 + b^2
+	double longest_side = AB_length;
+	double compare;
+
+	if (AB_length < AC_length)
+	{
+		longest_side = AC_length;
+
+		if (AC_length < BC_length)
+		{
+			longest_side = BC_length;
+
+			compare = AB_squared + AC_squared;
+			if (BC_squared > compare)
+			{
+				return true;
+			}
+			else
+			{
+				return false;
+			}
+		}
+
+		compare = AB_squared + BC_squared;
+		if (AC_squared > compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+
+	}
+	else if (AB_length < BC_length)
+	{
+		longest_side = BC_length;
+
+		compare = AB_squared + AC_squared;
+		if (BC_squared > compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	else
+	{
+		compare = AC_squared + BC_squared;
+		if (AB_squared > compare)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	return false;
 }
 
 
+//TO BE DELETED
 void Triangle::get_triangle_type(Point x, Point y, Point z)
-{	
-	if (is_triangle_right(x, y, z)) 
+{
+	if (is_triangle_right(x, y, z))
 	{
 		cout << "the triangle is right." << endl;
 	}
-	
-	if (this->is_triangle_acute(x,y,z)) 
+
+	if (this->is_triangle_acute())
 	{
 		cout << "the triagnle is acute." << endl;
 	}
-	
-	if (this->is_triangle_obtuse(x,y,z)) 
+
+	if (this->is_triangle_obtuse(x, y, z))
 	{
 		cout << "the triangle is obtuse." << endl;
+	}
+}
+
+//use this one...
+void Triangle::get_triangle_type()
+{
+	if (is_triangle_right(X, Y, Z))
+	{
+		cout << "The triangle is right." << endl;
+	}
+
+	if (this->is_triangle_acute())
+	{
+		cout << "The triagnle is acute." << endl;
+	}
+
+	if (this->is_triangle_obtuse(X, Y, Z))
+	{
+		cout << "The triangle is obtuse." << endl;
+	}
+
+	if (this->is_triangle_equilateral())
+	{
+		cout << "The triangle is equilateral." << endl;
+	}
+
+	if (this->is_triangle_isosceles())
+	{
+		cout << "The triangle is isosceles." << endl;
 	}
 }
 
@@ -339,4 +495,35 @@ bool Triangle::operator==(Point point)
 	double c = seg2.find_segment_length();
 
 	return (seg == point) || (seg1 == point) || (seg2 == point);
+}
+
+std::ostream& Triangle::ins(std::ostream& print) const
+{
+	print << "-- Triangle Specifics --" << endl;
+	print << "X: " << X;
+	print << "Y: " << Y;
+	print << "Z: " << Z;
+
+	return print;
+}
+
+std::istream& Triangle::ext(std::istream& in)
+{
+
+	cout << endl << "--- Triangle Menu ---" << endl;
+	cout << ">Enter triangle cordinates (X,Y,Z)" << endl;
+
+	Point x(_Commands);
+	cin >> x;
+	_Commands = x._Commands;
+
+	Point y(_Commands);
+	cin >> y;
+	_Commands = y._Commands;
+
+	Point z(_Commands);
+	cin >> z;
+	_Commands = z._Commands;
+
+	return in;
 }

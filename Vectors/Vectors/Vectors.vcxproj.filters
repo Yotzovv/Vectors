@@ -16,51 +16,123 @@
     <Filter Include="Header Files\Exceptions">
       <UniqueIdentifier>{73f4f874-a4c5-47dc-880a-ace583ff26a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Exceptions">
+    <Filter Include="Header Files\Menu">
+      <UniqueIdentifier>{9ea0075f-0f42-4863-ba5c-f6a4ac1f5501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Figures">
+      <UniqueIdentifier>{8a16eeae-fde7-4bcf-ac1d-070f6a17f9ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Exceptions">
       <UniqueIdentifier>{d4e7f6d2-0cd1-4330-b06b-465bc7c756d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Menu">
+      <UniqueIdentifier>{dd44c885-6a4a-42cc-a94a-1b089d6a2612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Figures">
+      <UniqueIdentifier>{10a1ddf3-dd16-46ee-918d-199d61eeff76}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="IOMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="IOMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="LineMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MainMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Menu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="PointMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="SegmentMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="TetrahedronMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="TriangleMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorMenu.cpp">
+      <Filter>Source Files\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="Vector.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Line.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
     <ClCompile Include="Point.cpp">
-      <Filter>Resource Files</Filter>
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Segment.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Tetrahedron.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Triangle.cpp">
+      <Filter>Source Files\Figures</Filter>
+    </ClCompile>
+    <ClCompile Include="Element.cpp">
+      <Filter>Source Files\Figures</Filter>
     </ClCompile>
     <ClCompile Include="StartUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Vector.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Line.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Triangle.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Segment.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tetrahedron.cpp">
-      <Filter>Resource Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Point.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MainMenu.h">
+      <Filter>Header Files\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Vector.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="PointMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="LineMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="SegmentMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="TriangleMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="TetrahedronMenu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Menu.h">
+      <Filter>Header Files\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Element.h">
+      <Filter>Header Files\Figures</Filter>
     </ClInclude>
     <ClInclude Include="Line.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Figures</Filter>
     </ClInclude>
-    <ClInclude Include="Triangle.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Point.h">
+      <Filter>Header Files\Figures</Filter>
     </ClInclude>
     <ClInclude Include="Segment.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Figures</Filter>
     </ClInclude>
     <ClInclude Include="Tetrahedron.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Triangle.h">
+      <Filter>Header Files\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="Vector.h">
+      <Filter>Header Files\Figures</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

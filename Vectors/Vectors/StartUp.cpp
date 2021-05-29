@@ -1,5 +1,10 @@
 #include <iostream>
 #include "Point.h"
+#include "Triangle.h"
+#include "MainMenu.h"
+#include "Vector.h"
+#include "Line.h"
+#include "IOMenu.h"
 #include "Line.h"
 #include <vector>
 #include "Vector.h"
@@ -10,31 +15,29 @@ using namespace std;
 
 int main()
 {
+	bool is_iterating = true;
 
-	Point x(1, 0);
-	Point y(1, 5);
-	Point z(6, 0);
+	while (is_iterating)
+	{
+		IOMenu().print_menu();
 
-	Segment s1(x, y);
-	Segment s2(y, z);
-	Segment s3(z, x);
+		bool is_invalid_input = true;
 
-	double a = s1.find_segment_length();
-	double b = s3.find_segment_length();
-	double c = s2.find_segment_length();
-	
-	Triangle test = Triangle(x, y, z);
-	test.get_triangle_type(x, y, z);
+		while (is_invalid_input)
+		{
+			cout << endl << "Do you want to continue? (y/n)" << endl;
+			cout << ">: ";
 
-	cout << a << endl;
-	cout << b << endl;
-	cout << c << endl;
+			char answer;
+			cin >> answer;
 
-	/*double a{ 50.0 };
-	double b{ 50.0000309449 };
-	cout << boolalpha;
-	if (a == b) {
-		cout << "They're equal";
+			if (answer == 'y' || answer == 'n')
+			{
+				is_invalid_input = false;
+			}
+
+			is_iterating = answer == 'y';
+		}
 	}
-	cout << "They're not equal";*/
+
 }
