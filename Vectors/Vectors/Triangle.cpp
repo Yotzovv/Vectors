@@ -3,7 +3,6 @@
 #include <cmath>
 #include "Segment.h"
 #include <math.h>
-#pragma once
 
 Triangle::Triangle()
 {
@@ -36,6 +35,21 @@ Point Triangle::getY()
 Point Triangle::getZ()
 {
 	return this->Z;
+}
+
+void Triangle::setX(Point x)
+{
+	X = x;
+}
+
+void Triangle::setY(Point y)
+{
+	Y = y;
+}
+
+void Triangle::setZ(Point z)
+{
+	Z = z;
 }
 
 class EqualPointException : public std::exception {
@@ -121,20 +135,6 @@ bool Triangle::is_triangle_isosceles()
 	return false;
 }
 
-void Triangle::setX(Point x)
-{
-	X = x;
-}
-
-void Triangle::setY(Point y)
-{
-	Y = y;
-}
-
-void Triangle::setZ(Point z)
-{
-	Z = z;
-}
 
 Point Triangle::get_incenter(Point x, Point y, Point z)
 {

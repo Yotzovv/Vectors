@@ -3,12 +3,15 @@
 
 using namespace std;
 
+Point::Point()
+{
+}
+
 Point::Point(queue<string> cmds)
 {
 	_Commands = cmds;
 }
 
-Point::Point() {};
 
 Point::Point(double x, double y, double z)
 {

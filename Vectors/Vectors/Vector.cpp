@@ -94,7 +94,7 @@ double Vector::vector_direction_by_pts()
 
 // Uses n1,n2,n3
 // TODO: Merge with vector_direction
-vector<double> Vector::get_direction()
+vector<double> Vector::get_direction_by_nums()
 {
 	try {
 

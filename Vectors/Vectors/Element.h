@@ -4,6 +4,8 @@
 #define Element_hpp
 
 #include <iostream>
+#include <queue>
+#include <string>
 
 class Element {
 public:

@@ -1,3 +1,8 @@
+#pragma once
+
+#ifndef Point_hpp
+#define Point_hpp
+
 #include "Point.h"
 
 class Triangle : public Point {
@@ -35,3 +40,5 @@ private:
 	Point Y;
 	Point Z;
 };
+
+#endif
