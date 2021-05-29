@@ -23,5 +23,4 @@ public:
 	std::queue<std::string> _Commands;
 };
 
-
 #endif

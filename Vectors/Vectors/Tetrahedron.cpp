@@ -250,3 +250,23 @@ std::istream& Tetrahedron::ext(std::istream& in)
 
 	return in;
 }
+
+bool Tetrahedron::is_tetrahedron_regular() 
+{
+	Segment s1(A, B);
+	double a = s1.find_segment_length();
+	Segment s2{ A, D };
+	double b = s2.find_segment_length();
+	Segment s3{ B,C };
+	double c = s3.find_segment_length();
+	Segment s4{ C,D };
+	double d = s4.find_segment_length();
+
+	Triangle a1(A, B, D);
+	Triangle a2(B, C, D);
+	Triangle a3(C, A, D);
+
+	bool result = a1.is_triangle_equilateral(A, B, D) && a2.is_triangle_equilateral(B, C, D) && a3.is_triangle_equilateral(C, A, D);
+	
+	return result;
+}

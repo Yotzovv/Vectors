@@ -29,4 +29,5 @@ private:
 	Point B;
 	Point C;
 	Point D;
+	bool is_tetrahedron_regular();
 };

@@ -5,6 +5,11 @@
 #include "Vector.h"
 #include "Line.h"
 #include "IOMenu.h"
+#include "Line.h"
+#include <vector>
+#include "Vector.h"
+#include "Triangle.h"
+#include "Segment.h"
 
 using namespace std;
 
