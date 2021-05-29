@@ -92,12 +92,9 @@ double Vector::vector_direction_by_pts()
 	return atan((B.Y - A.Y) / (B.X - A.X)) * 180 / PI; // direction of a vector.		
 }
 
-/// <summary>
-/// Uses n1,n2,n3
-/// TODO: Merge with vector_direction
-/// </summary>
-/// <returns></returns>
-vector<double> Vector::get_direction_by_nums()
+// Uses n1,n2,n3
+// TODO: Merge with vector_direction
+vector<double> Vector::get_direction()
 {
 	try {
 
