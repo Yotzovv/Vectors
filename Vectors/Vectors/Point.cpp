@@ -59,7 +59,17 @@ Point::Point(double x, double y)
 bool Point::operator==(Point point)
 {
 	return (point.X == getX() && point.Y == getY() && point.Z == getZ());
-};
+}
+
+string Point::get_data()
+{
+	string output = "> Your Point\n"
+		"X: " + to_string(getX()) + '\n' +
+		"Y: " + to_string(getY()) + '\n' +
+		"Z: " + to_string(getZ()) + '\n';
+
+	return output;
+}
 
 //Overlaods >> operator
 std::istream& Point::ext(std::istream& in) 
@@ -191,10 +201,10 @@ std::istream& Point::ext(std::istream& in)
 //prints Point with << operator
 std::ostream& Point::ins(std::ostream& print)
 {
-	print << "> Your Point" << endl;
-	print << "X: " << getX() << endl;
-	print << "Y: " << getY() << endl;
-	print << "Z: " << getZ() << endl;
+	auto output = "> Your Point\n"
+		"X: " + to_string(getX()) + '\n' + 
+		"Y: " + to_string(getY()) + '\n' +
+		"Z: " + to_string(getZ()) +'\n';
 
 	return print;
 }
