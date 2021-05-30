@@ -6,6 +6,7 @@
 #include <iostream>
 #include <queue>
 #include <string>
+#include <string>
 
 class Element {
 public:
@@ -15,6 +16,7 @@ public:
     std::vector<std::string> getOutputs();
     void pushtToOutputs(std::string output);
     void setOutputs(std::vector<std::string> outputs);
+    virtual std::string get_data();
 
 private:
     std::vector<std::string> _Outputs;

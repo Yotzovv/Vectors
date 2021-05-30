@@ -19,7 +19,7 @@ void MainMenu::redirect(int chose)
 	{
 		case 1:
 		{
-			auto point_menu = PointMenu(_Commands);
+			PointMenu point_menu(_Commands);
 
 			point_menu.print_menu();
 			this->setOutputs(point_menu.getOutputs());
@@ -27,7 +27,10 @@ void MainMenu::redirect(int chose)
 		}
 		case 2:
 		{
-			VectorMenu(_Commands).print_menu();
+			VectorMenu vector_menu(_Commands);
+
+			vector_menu.print_menu();
+			this->setOutputs(vector_menu.getOutputs());
 			break;
 		}
 		case 3:

@@ -16,7 +16,7 @@ using namespace std;
 int main()
 {
 	bool is_iterating = true;
-	auto io_menu = IOMenu();
+	IOMenu io_menu;
 
 	while (is_iterating)
 	{

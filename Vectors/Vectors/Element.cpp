@@ -25,6 +25,11 @@ void Element::setOutputs(std::vector<std::string> outputs)
     _Outputs = outputs;
 }
 
+std::string Element::get_data()
+{
+    return std::string();
+}
+
 std::ostream& operator<<(std::ostream& out, const Element& rhs)
 {
     return rhs.ins(out);

@@ -18,13 +18,14 @@ public:
 	Point(double x, double y, double z);
 	Point(double x, double y);
 	bool operator==(Point point);
+	std::string get_data();
 	std::ostream& ins(std::ostream&);
 	std::istream& ext(std::istream&);
 	double X;
 	double Y;
 	double Z;
 private:
-
+	//TODO ^^^
 };
 
 #endif

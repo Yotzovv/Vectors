@@ -78,7 +78,7 @@ void PointMenu::print_menu()
 		setCmds(this->_Point._Commands);
 		option = stoi(this->getCmds().front());
 		_Commands.pop();
-		cout << option;
+		cout << option << endl;
 
 	}
 

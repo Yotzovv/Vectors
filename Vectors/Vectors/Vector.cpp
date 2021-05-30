@@ -254,6 +254,20 @@ Vector operator^(const Vector& v1, const Vector& v2)
 	return result;
 }
 
+string Vector::get_data()
+{
+	if (n1 == n2 == n3 == 0)
+	{
+		return A.get_data() + B.get_data();
+	}
+	else
+	{
+		return "X: " + to_string(n1) +
+		"\nY: " + to_string(n2) +
+		"\nZ: " + to_string(n3);
+	}
+}
+
 //overloads << operator
 ostream& Vector::ins(ostream& print) const
 {
@@ -274,11 +288,15 @@ ostream& Vector::ins(ostream& print) const
 //Overlaods >> opeartor
 istream& Vector::ext(istream& in)
 {
-	cout << endl << "--- Create Vector Menu ---" << endl;
-	cout << endl << ">Choose method of creation:" << endl;
-	cout << "1. Using 3 numbers" << endl;
-	cout << "2. Using cordinates" << endl;
-	cout << endl << ">: ";
+	auto output = "\n--- Create Vector Menu ---\n"
+	"\n>Choose method of creation:\n"
+	"\n1. Using 3 numbers\n"
+	"2. Using cordinates\n"
+	"\n>: ";
+
+	pushtToOutputs(output);
+
+	cout << output;
 
 	int option;
 
@@ -293,13 +311,21 @@ istream& Vector::ext(istream& in)
 		cout << option;
 	}
 
+	pushtToOutputs(to_string(option));
+
 	switch (option)
 	{
 	case 1:
-		cout << endl << "You chose 3 numbers initialization!" << endl;
+	{
+		auto msg = "\nYou chose 3 numbers initialization!\n";
+		pushtToOutputs(msg);
+
 		double x, y, z;
 
 		cout << "x: ";
+
+		pushtToOutputs("x: ");
+
 		if (_Commands.size() < 1)
 		{
 			cin >> x;
@@ -311,7 +337,11 @@ istream& Vector::ext(istream& in)
 			cout << x << endl;
 		}
 
+		pushtToOutputs(to_string(x));
+
 		cout << "y: ";
+		pushtToOutputs("y: ");
+
 		if (_Commands.size() < 1)
 		{
 			cin >> y;
@@ -323,7 +353,11 @@ istream& Vector::ext(istream& in)
 			cout << y << endl;
 		}
 
+		pushtToOutputs(to_string(y));
+
 		cout << "z: ";
+		pushtToOutputs("z: ");
+
 		if (_Commands.size() < 1)
 		{
 			cin >> z;
@@ -335,12 +369,18 @@ istream& Vector::ext(istream& in)
 			cout << z << endl;
 		}
 
+		pushtToOutputs(to_string(z));
+
 		n1 = x;
 		n2 = y;
 		n3 = z;
 		break;
+	}
 	case 2:
-		cout << endl << "You chose point initializaiton!" << endl;
+		auto msg_point = "\nYou chose point initialization!\n";
+		pushtToOutputs(msg_point);
+		cout << msg_point;
+
 		Point pt_x;
 		Point pt_y;
 
