@@ -3,6 +3,36 @@
 
 using namespace std;
 
+double Point::getX()
+{
+	return this->X;
+}
+
+double Point::getY()
+{
+	return this->Y;
+}
+
+double Point::getZ()
+{
+	return this->Z;
+}
+
+void Point::setX(double x)
+{
+	this->X = x;
+}
+
+void Point::setY(double y)
+{
+	this->Y = y;
+}
+
+void Point::setZ(double z)
+{
+	this->Z = z;
+}
+
 Point::Point()
 {
 }
@@ -15,30 +45,37 @@ Point::Point(queue<string> cmds)
 
 Point::Point(double x, double y, double z)
 {
-	X = x;
-	Y = y;
-	Z = z;
+	setX(x);
+	setY(y);
+	setZ(z);
 };
 
 Point::Point(double x, double y)
 {
-	X = x;
-	Y = y;
+	setX(x);
+	setY(y);
 };
 
 bool Point::operator==(Point point)
 {
-	return (point.X == X && point.Y == Y && point.Z == Z);
+	return (point.X == getX() && point.Y == getY() && point.Z == getZ());
 };
 
 //Overlaods >> operator
-std::istream& Point::ext(std::istream& in) {
-	cout << "\n=== Create Point Menu ===\n";
-	cout << ">Choose method of creation:\n";
-	cout << "\n1. Using cordinates (X,Y)";
-	cout << "\n2. Using 3 numbers (X,Y,Z)\n";
+std::istream& Point::ext(std::istream& in) 
+{
+	string output = "\n=== Create Point Menu ===\n"
+		">Choose method of creation:\n"
+		"\n1. Using cordinates (X,Y)"
+		"\n2. Using 3 numbers (X,Y,Z)\n";
+
+	cout << output;
+
+	pushtToOutputs(output);
 
 	cout << endl << ">: ";
+	pushtToOutputs(">: ");
+
 	int option;
 
 	if (_Commands.size() < 1)
@@ -60,6 +97,7 @@ std::istream& Point::ext(std::istream& in) {
 		double q, f;
 
 		cout << "X: ";
+		pushtToOutputs("X: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -70,9 +108,12 @@ std::istream& Point::ext(std::istream& in) {
 			q = stoi(_Commands.front());
 			_Commands.pop();
 			cout << q << endl;
+
+			pushtToOutputs((to_string(q) + "\n"));
 		}
 
 		cout << "Y: ";
+		pushtToOutputs("Y: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -83,14 +124,17 @@ std::istream& Point::ext(std::istream& in) {
 			f = stoi(_Commands.front());
 			_Commands.pop();
 			cout << f << endl;
+
+			pushtToOutputs(to_string(f) + "\n");
 		}
 
-		this->X = q;
-		this->Y = f;
+		setX(q);
+		setY(f);
 		break;
 	case 2:
 		double a, b, c;
 		cout << "X: ";
+		pushtToOutputs("X: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -101,9 +145,11 @@ std::istream& Point::ext(std::istream& in) {
 			a = stoi(_Commands.front());
 			_Commands.pop();
 			cout << a << endl;
+			pushtToOutputs(to_string(a) + "\n");
 		}
 
 		cout << "Y: ";
+		pushtToOutputs("Y: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -114,9 +160,11 @@ std::istream& Point::ext(std::istream& in) {
 			b = stoi(_Commands.front());
 			_Commands.pop();
 			cout << b << endl;
+			pushtToOutputs(to_string(b) + "\n");
 		}
 
 		cout << "Z: ";
+		pushtToOutputs("Z: ");
 		if (_Commands.size() < 1)
 		{
 			in >> c;
@@ -126,11 +174,12 @@ std::istream& Point::ext(std::istream& in) {
 			c = stoi(_Commands.front());
 			_Commands.pop();
 			cout << c << endl;
+			pushtToOutputs(to_string(c) + "\n");
 		}
 
-		this->X = a;
-		this->Y = b;
-		this->Z = c;
+		setX(a);
+		setY(b);
+		setZ(c);
 		break;
 	default:
 		break;
@@ -140,12 +189,12 @@ std::istream& Point::ext(std::istream& in) {
 }
 
 //prints Point with << operator
-std::ostream& Point::ins(std::ostream& print) const
+std::ostream& Point::ins(std::ostream& print)
 {
 	print << "> Your Point" << endl;
-	print << "X: " << X << endl;
-	print << "Y: " << Y << endl;
-	print << "Z: " << Z << endl;
+	print << "X: " << getX() << endl;
+	print << "Y: " << getY() << endl;
+	print << "Z: " << getZ() << endl;
 
 	return print;
 }

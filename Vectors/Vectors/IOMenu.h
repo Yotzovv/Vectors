@@ -15,6 +15,7 @@ public:
 	void read_file();
 	void redirect(int chose);
 	void print_menu();
+	void write_file();
 };
 
 #endif

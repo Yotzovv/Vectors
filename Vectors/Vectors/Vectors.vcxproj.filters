@@ -87,6 +87,12 @@
     <ClCompile Include="StartUp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="EqualPointException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VectorLengthException.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MainMenu.h">
@@ -133,6 +139,12 @@
     </ClInclude>
     <ClInclude Include="Vector.h">
       <Filter>Header Files\Figures</Filter>
+    </ClInclude>
+    <ClInclude Include="VectorLengthException.h">
+      <Filter>Header Files\Exceptions</Filter>
+    </ClInclude>
+    <ClInclude Include="EqualPointException.h">
+      <Filter>Header Files\Exceptions</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
