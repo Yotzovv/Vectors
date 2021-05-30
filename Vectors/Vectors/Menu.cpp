@@ -15,7 +15,21 @@ void Menu::redirect(int chose)
 
 void Menu::print_menu()
 {
+}
 
+std::queue<std::string> Menu::getCmds()
+{
+	return this->_Commands;
+}
+
+void Menu::pushToCmds(std::string cmd)
+{
+	this->_Commands.push(cmd);
+}
+
+void Menu::setCmds(std::queue<std::string> cmds)
+{
+	_Commands = cmds;
 }
 
 std::vector<std::string> Menu::getOutputs()

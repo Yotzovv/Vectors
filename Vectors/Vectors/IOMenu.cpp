@@ -85,6 +85,12 @@ void IOMenu::redirect(int chose)
 		cout << endl << "> Choose the source of the input." << endl;
 		cout << "> Will you read input from file or the console?" << endl;
 		cout << "> For file input you will need to store your files in \"Input\" folder" << endl;
+		break;
+	}
+	default:
+	{
+		cout << "Wrong input! Try again!" << endl;
+		break;
 	}
 	}
 }

@@ -6,16 +6,16 @@ using namespace std;
 
 PointMenu::PointMenu(std::queue<std::string> cmds)
 {
-	_Commands = cmds;
+	this->setCmds(cmds);
 }
 
 void PointMenu::instantiate_point()
 {
 	Point pt;
 
-	if (_Commands.size() > 0)
+	if (this->getCmds().size() > 0)
 	{
-		pt = Point(_Commands);
+		pt = Point(this->getCmds());
 	}
 
 	cin >> pt;
@@ -27,7 +27,7 @@ void PointMenu::instantiate_point()
 
 void PointMenu::check_if_equal()
 {
-	Point newP(_Commands);
+	Point newP(this->getCmds());
 
 	cin >> newP;
 
@@ -69,16 +69,17 @@ void PointMenu::print_menu()
 
 	int option;
 
-	if (_Commands.size() < 1)
+	if (this->getCmds().size() < 1)
 	{
 		cin >> option;
 	}
 	else
 	{
-		_Commands = this->_Point._Commands;
-		option = stoi(_Commands.front());
+		setCmds(this->_Point._Commands);
+		option = stoi(this->getCmds().front());
 		_Commands.pop();
 		cout << option;
+
 	}
 
 	pushtToOutputs(to_string(option));
