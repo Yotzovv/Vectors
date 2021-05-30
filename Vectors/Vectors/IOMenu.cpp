@@ -1,3 +1,4 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include "IOMenu.h"
 #include "MainMenu.h"
 #include <iostream>
@@ -11,6 +12,10 @@
 #include <string>
 #include <filesystem>
 #include <fstream>
+#include <ctime>
+#include <time.h>
+#include <stdio.h>
+#include <ctime>
 
 using namespace std;
 
@@ -113,7 +118,20 @@ void IOMenu::print_menu()
 
 void IOMenu::write_file()
 {
-	ofstream out_file("output.txt");
+	time_t rawtime;
+	struct tm* timeinfo;
+	char buffer[80];
+
+	time(&rawtime);
+	timeinfo = localtime(&rawtime);
+
+	strftime(buffer, sizeof(buffer), "%d%m%Y_%H%M%S.txt", timeinfo);
+	std::string str(buffer);
+
+	cout << str;
+
+
+	ofstream out_file("../Outputs/" + str);
 
 	for (auto output : getOutputs())
 	{
