@@ -4,12 +4,12 @@
 
 void Segment::set_startPt(Point pt)
 {
-	Start_pt = pt;
+	this->Start_pt = pt;
 }
 
 void Segment::set_endPt(Point pt)
 {
-	End_pt = pt;
+	this->End_pt = pt;
 }
 
 Point Segment::get_startPt()
@@ -24,6 +24,7 @@ Point Segment::get_endPt()
 
 Segment::Segment(std::queue<std::string> cmds)
 {
+	//??
 	_Commands = cmds;
 }
 
@@ -44,7 +45,8 @@ double Segment::find_segment_length()
 
 Point Segment::find_segment_middle()
 {
-	Point middle((Start_pt.X + End_pt.X) / 2, (Start_pt.Y + End_pt.Y) / 2);
+	//possible bug? test it
+	Point middle((get_startPt().X + get_endPt().X) / 2, (get_startPt().Y + get_endPt().Y) / 2);
 
 	return middle;
 }
@@ -96,6 +98,7 @@ bool Segment::operator==(Point point)
 
 std::ostream& Segment::ins(std::ostream& print) const
 {
+	//possible bug??
 	print << Start_pt, End_pt;
 
 	return print;

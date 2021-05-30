@@ -25,7 +25,7 @@ public:
 	double Y;
 	double Z;
 private:
-
+	//TODO ^^^
 };
 
 #endif
