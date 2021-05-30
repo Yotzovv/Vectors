@@ -7,17 +7,25 @@
 class Point : public Element
 {
 public:
+	double getX();
+	double getY();
+	double getZ();
+	void setX(double x);
+	void setY(double y);
+	void setZ(double z);
 	Point();
 	Point(std::queue<std::string> cmds);
-	double X;
-	double Y;
-	double Z;
 	Point(double x, double y, double z);
 	Point(double x, double y);
 	bool operator==(Point point);
-	std::ostream& ins(std::ostream&) const;
+	std::ostream& ins(std::ostream&);
 	std::istream& ext(std::istream&);
 	std::queue<std::string> _Commands;
+	double X;
+	double Y;
+	double Z;
+private:
+
 };
 
 #endif

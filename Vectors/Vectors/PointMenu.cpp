@@ -64,10 +64,11 @@ void PointMenu::print_menu()
 	}
 	else
 	{
-		_Commands = this->_Point._Commands;
+		setCmds(this->_Point._Commands);
 		option = stoi(_Commands.front());
 		_Commands.pop();
 		cout << option;
+
 	}
 
 	redirect(option);

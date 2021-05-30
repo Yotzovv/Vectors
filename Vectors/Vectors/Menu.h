@@ -14,6 +14,8 @@ public:
 	virtual void redirect(int chose);
 	virtual void print_menu();
 	std::queue<std::string> _Commands;
+	virtual std::queue<std::string> getCmds();
+	virtual void setCmds(std::queue<std::string> cmds);
 };
 
 #endif

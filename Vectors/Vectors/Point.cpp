@@ -3,6 +3,36 @@
 
 using namespace std;
 
+double Point::getX()
+{
+	return this->X;
+}
+
+double Point::getY()
+{
+	return this->Y;
+}
+
+double Point::getZ()
+{
+	return this->Z;
+}
+
+void Point::setX(double x)
+{
+	this->X = x;
+}
+
+void Point::setY(double y)
+{
+	this->Y = y;
+}
+
+void Point::setZ(double z)
+{
+	this->Z = z;
+}
+
 Point::Point()
 {
 }
@@ -15,20 +45,20 @@ Point::Point(queue<string> cmds)
 
 Point::Point(double x, double y, double z)
 {
-	X = x;
-	Y = y;
-	Z = z;
+	setX(x);
+	setY(y);
+	setZ(z);
 };
 
 Point::Point(double x, double y)
 {
-	X = x;
-	Y = y;
+	setX(x);
+	setY(y);
 };
 
 bool Point::operator==(Point point)
 {
-	return (point.X == X && point.Y == Y && point.Z == Z);
+	return (point.X == getX() && point.Y == getY() && point.Z == getZ());
 };
 
 //Overlaods >> operator
@@ -85,8 +115,8 @@ std::istream& Point::ext(std::istream& in) {
 			cout << f << endl;
 		}
 
-		this->X = q;
-		this->Y = f;
+		setX(q);
+		setY(f);
 		break;
 	case 2:
 		double a, b, c;
@@ -128,9 +158,9 @@ std::istream& Point::ext(std::istream& in) {
 			cout << c << endl;
 		}
 
-		this->X = a;
-		this->Y = b;
-		this->Z = c;
+		setX(a);
+		setY(b);
+		setZ(c);
 		break;
 	default:
 		break;
@@ -140,12 +170,12 @@ std::istream& Point::ext(std::istream& in) {
 }
 
 //prints Point with << operator
-std::ostream& Point::ins(std::ostream& print) const
+std::ostream& Point::ins(std::ostream& print)
 {
 	print << "> Your Point" << endl;
-	print << "X: " << X << endl;
-	print << "Y: " << Y << endl;
-	print << "Z: " << Z << endl;
+	print << "X: " << getX() << endl;
+	print << "Y: " << getY() << endl;
+	print << "Z: " << getZ() << endl;
 
 	return print;
 }
