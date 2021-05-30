@@ -3,6 +3,7 @@
 #include <cmath>
 #include "Segment.h"
 #include <math.h>
+#include "EqualPointException.h"
 
 Triangle::Triangle()
 {
@@ -52,17 +53,17 @@ void Triangle::setZ(Point z)
 	Z = z;
 }
 
-class EqualPointException : public std::exception {
-private:
-	std::string message_;
-public:
-	EqualPointException(const std::string& message) : message_(message) {
-		message_ = message;
-	}
-	const char* what() const noexcept override {
-		return message_.c_str();
-	}
-};
+//class EqualPointException : public std::exception {
+//private:
+//	std::string message_;
+//public:
+//	EqualPointException(const std::string& message) : message_(message) {
+//		message_ = message;
+//	}
+//	const char* what() const noexcept override {
+//		return message_.c_str();
+//	}
+//};
 
 bool Triangle::is_point_valid()
 {

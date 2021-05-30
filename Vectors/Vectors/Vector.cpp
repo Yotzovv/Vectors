@@ -5,6 +5,8 @@
 #include <exception>
 #include <vector>
 #include <math.h>
+#include "vector"
+#include "VectorLengthException.h"
 #define PI 3.14159265
 
 
@@ -36,13 +38,13 @@ Vector::Vector() {
 /// Custom Exception class
 /// TODO: Put it in a separate file
 /// </summary>
-class VectorLengthException : public exception
-{
-public:
-	virtual const char* what() const throw() {
-		return "Vector length exception thrown";
-	}
-};
+//class VectorLengthException : public exception
+//{
+//public:
+//	virtual const char* what() const throw() {
+//		return "Vector length exception thrown";
+//	}
+//};
 
 /// <summary>
 /// Checks if current vector is null
