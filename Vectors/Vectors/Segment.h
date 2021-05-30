@@ -9,10 +9,6 @@
 
 class Segment : public Line
 {
-private:
-	Point Start_pt;
-	Point End_pt;
-
 public:
 	void set_startPt(Point pt);
 	void set_endPt(Point pt);
@@ -26,6 +22,9 @@ public:
 	bool operator==(Point point);
 	std::ostream& ins(std::ostream&) const;
 	std::istream& ext(std::istream&);
+private:
+	Point Start_pt;
+	Point End_pt;
 };
 
 #endif
