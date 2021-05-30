@@ -10,6 +10,21 @@ std::istream& Element::ext(std::istream& in)
     return in;
 }
 
+std::vector<std::string> Element::getOutputs()
+{
+    return _Outputs;
+}
+
+void Element::pushtToOutputs(std::string output)
+{
+    _Outputs.push_back(output);
+}
+
+void Element::setOutputs(std::vector<std::string> outputs)
+{
+    _Outputs = outputs;
+}
+
 std::ostream& operator<<(std::ostream& out, const Element& rhs)
 {
     return rhs.ins(out);

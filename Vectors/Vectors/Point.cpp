@@ -32,13 +32,20 @@ bool Point::operator==(Point point)
 };
 
 //Overlaods >> operator
-std::istream& Point::ext(std::istream& in) {
-	cout << "\n=== Create Point Menu ===\n";
-	cout << ">Choose method of creation:\n";
-	cout << "\n1. Using cordinates (X,Y)";
-	cout << "\n2. Using 3 numbers (X,Y,Z)\n";
+std::istream& Point::ext(std::istream& in) 
+{
+	string output = "\n=== Create Point Menu ===\n"
+		">Choose method of creation:\n"
+		"\n1. Using cordinates (X,Y)"
+		"\n2. Using 3 numbers (X,Y,Z)\n";
+
+	cout << output;
+
+	pushtToOutputs(output);
 
 	cout << endl << ">: ";
+	pushtToOutputs(">: ");
+
 	int option;
 
 	if (_Commands.size() < 1)
@@ -60,6 +67,7 @@ std::istream& Point::ext(std::istream& in) {
 		double q, f;
 
 		cout << "X: ";
+		pushtToOutputs("X: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -70,9 +78,12 @@ std::istream& Point::ext(std::istream& in) {
 			q = stoi(_Commands.front());
 			_Commands.pop();
 			cout << q << endl;
+
+			pushtToOutputs((to_string(q) + "\n"));
 		}
 
 		cout << "Y: ";
+		pushtToOutputs("Y: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -83,6 +94,8 @@ std::istream& Point::ext(std::istream& in) {
 			f = stoi(_Commands.front());
 			_Commands.pop();
 			cout << f << endl;
+
+			pushtToOutputs(to_string(f) + "\n");
 		}
 
 		this->X = q;
@@ -91,6 +104,7 @@ std::istream& Point::ext(std::istream& in) {
 	case 2:
 		double a, b, c;
 		cout << "X: ";
+		pushtToOutputs("X: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -101,9 +115,11 @@ std::istream& Point::ext(std::istream& in) {
 			a = stoi(_Commands.front());
 			_Commands.pop();
 			cout << a << endl;
+			pushtToOutputs(to_string(a) + "\n");
 		}
 
 		cout << "Y: ";
+		pushtToOutputs("Y: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -114,9 +130,11 @@ std::istream& Point::ext(std::istream& in) {
 			b = stoi(_Commands.front());
 			_Commands.pop();
 			cout << b << endl;
+			pushtToOutputs(to_string(b) + "\n");
 		}
 
 		cout << "Z: ";
+		pushtToOutputs("Z: ");
 		if (_Commands.size() < 1)
 		{
 			in >> c;
@@ -126,6 +144,7 @@ std::istream& Point::ext(std::istream& in) {
 			c = stoi(_Commands.front());
 			_Commands.pop();
 			cout << c << endl;
+			pushtToOutputs(to_string(c) + "\n");
 		}
 
 		this->X = a;

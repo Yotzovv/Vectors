@@ -20,6 +20,8 @@ void PointMenu::instantiate_point()
 
 	cin >> pt;
 
+	setOutputs(pt.getOutputs());
+
 	this->_Point = pt;
 }
 
@@ -29,9 +31,15 @@ void PointMenu::check_if_equal()
 
 	cin >> newP;
 
+	setOutputs(newP.getOutputs());
+
 	bool are_point_equal = this->_Point == newP;
 
-	cout << endl << (are_point_equal ? "Points are equal!" : "Points are not equal!");
+	auto result = (are_point_equal ? "Points are equal!" : "Points are not equal!");
+
+	pushtToOutputs(result);
+
+	cout << endl << result;
 }
 
 void PointMenu::redirect(int option)
@@ -50,11 +58,14 @@ void PointMenu::print_menu()
 {
 	instantiate_point();
 
-	cout << endl << "--- Point Menu ---" << endl;
-	cout << "1. Check if points are equal" << endl;
-	cout << "2. Go back" << endl;
+	auto output = "\n--- Point Menu ---\n"
+		"1. Check if points are equal\n"
+		"2. Go back\n"
+		"\n>: ";
 
-	cout << endl << ">: ";
+	cout << output;
+
+	pushtToOutputs(output);
 
 	int option;
 
@@ -69,6 +80,8 @@ void PointMenu::print_menu()
 		_Commands.pop();
 		cout << option;
 	}
+
+	pushtToOutputs(to_string(option));
 
 	redirect(option);
 }

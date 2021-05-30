@@ -16,10 +16,11 @@ using namespace std;
 int main()
 {
 	bool is_iterating = true;
+	auto io_menu = IOMenu();
 
 	while (is_iterating)
 	{
-		IOMenu().print_menu();
+		io_menu.print_menu();
 
 		bool is_invalid_input = true;
 
@@ -34,6 +35,19 @@ int main()
 			if (answer == 'y' || answer == 'n')
 			{
 				is_invalid_input = false;
+			}
+
+			if (answer == 'n') 
+			{
+				cout << "Do you want to write everything to a file? (y/n)" << endl;
+				cout << ">: ";
+
+				cin >> answer;
+
+				if (answer == 'y')
+				{
+					io_menu.write_file();
+				}
 			}
 
 			is_iterating = answer == 'y';

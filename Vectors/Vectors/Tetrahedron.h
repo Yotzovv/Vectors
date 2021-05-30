@@ -23,7 +23,6 @@ public:
 	bool operator==(Point point);
 	std::ostream& ins(std::ostream&) const;
 	std::istream& ext(std::istream&);
-	std::queue<std::string> _Commands;
 private:
 	Point A;
 	Point B;

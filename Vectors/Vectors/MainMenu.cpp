@@ -19,7 +19,10 @@ void MainMenu::redirect(int chose)
 	{
 		case 1:
 		{
-			PointMenu(_Commands).print_menu();
+			auto point_menu = PointMenu(_Commands);
+
+			point_menu.print_menu();
+			this->setOutputs(point_menu.getOutputs());
 			break;
 		}
 		case 2:
