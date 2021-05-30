@@ -7,7 +7,6 @@
 #include <math.h>
 #include "vector"
 #include "VectorLengthException.h"
-#include "VectorLengthException.h"
 #define PI 3.14159265
 
 
@@ -40,7 +39,7 @@ Vector::Vector() {
 /// <returns></returns>
 bool Vector::is_vector_null()
 {
-	return n1 == n2 == n3;
+	return (n1 == n2) && (n1 == n3) && (n2 == n3);
 }
 
 /// <summary>
