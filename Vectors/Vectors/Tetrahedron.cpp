@@ -4,20 +4,9 @@
 #include "Triangle.h"
 #include "Segment.h"
 #include <math.h>
+#include "EqualPointException.h"
 
 using namespace std;
-
-class EqualPointException : public std::exception {
-private:
-	std::string message_;
-public:
-	EqualPointException(const std::string& message) : message_(message) {
-		message_ = message;
-	}
-	const char* what() const noexcept override {
-		return message_.c_str();
-	}
-};
 
 bool Tetrahedron::is_point_valid()
 {

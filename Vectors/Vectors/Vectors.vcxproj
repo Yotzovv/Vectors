@@ -141,6 +141,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Element.cpp" />
+    <ClCompile Include="EqualPointException.cpp" />
     <ClCompile Include="IOMenu.cpp" />
     <ClCompile Include="IOMenu.h" />
     <ClCompile Include="Line.cpp" />
@@ -157,10 +158,12 @@
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="TriangleMenu.cpp" />
     <ClCompile Include="Vector.cpp" />
+    <ClCompile Include="VectorLengthException.cpp" />
     <ClCompile Include="VectorMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Element.h" />
+    <ClInclude Include="EqualPointException.h" />
     <ClInclude Include="Line.h" />
     <ClInclude Include="LineMenu.h" />
     <ClInclude Include="MainMenu.h" />
@@ -174,6 +177,7 @@
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="TriangleMenu.h" />
     <ClInclude Include="Vector.h" />
+    <ClInclude Include="VectorLengthException.h" />
     <ClInclude Include="VectorMenu.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
