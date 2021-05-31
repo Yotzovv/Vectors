@@ -43,6 +43,11 @@ void SegmentMenu::redirect(int option)
 		Point pt(_Commands);
 		cin >> pt;
 		cout << ((_Segment == pt) ? "Point lies on segment." : "Point doesn\'t lie on segment.");
+		break;
+	}
+	default:
+	{
+		break;
 	}
 	}
 }

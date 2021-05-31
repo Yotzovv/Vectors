@@ -51,6 +51,8 @@ void IOMenu::read_file()
 
 	string line;
 	ifstream myfile("../Inputs/" + files[option - 1]);
+	_Commands = queue<string>();
+
 	if (myfile.is_open())
 	{
 		while (getline(myfile, line))

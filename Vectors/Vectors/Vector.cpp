@@ -7,7 +7,6 @@
 #include <math.h>
 #include "vector"
 #include "VectorLengthException.h"
-#include "VectorLengthException.h"
 #define PI 3.14159265
 
 
