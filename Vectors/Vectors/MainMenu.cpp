@@ -81,4 +81,6 @@ void MainMenu::print_menu()
 	}
 
 	redirect(chose);
+
+	_Commands = queue<string>();
 }
