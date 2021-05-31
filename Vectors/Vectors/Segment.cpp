@@ -24,7 +24,6 @@ Point Segment::get_endPt()
 
 Segment::Segment(std::queue<std::string> cmds)
 {
-	//??
 	_Commands = cmds;
 }
 
@@ -40,13 +39,13 @@ Segment::Segment(Point start_pt, Point end_pt)
 
 double Segment::find_segment_length()
 {
-	return (double)sqrt(pow(get_endPt().X - get_startPt().X, 2) + pow(get_endPt().Y - get_startPt().Y, 2) + pow(get_endPt().Z - get_startPt().Z, 2));
+	return (double)sqrt(pow(get_endPt().getX() - get_startPt().getX(), 2) + pow(get_endPt().getY() - get_startPt().getY(), 2) + pow(get_endPt().getZ() - get_startPt().getZ(), 2));
 }
 
 Point Segment::find_segment_middle()
 {
 	//possible bug? test it
-	Point middle((get_startPt().X + get_endPt().X) / 2, (get_startPt().Y + get_endPt().Y) / 2);
+	Point middle((get_startPt().getX() + get_endPt().getX()) / 2, (get_startPt().getY() + get_endPt().getY()) / 2);
 
 	return middle;
 }
@@ -58,30 +57,30 @@ bool Segment::operator==(Point point)
 	//(x - x1) / (x2 - x1) = (y - y1) / (y2 - y1)
 
 	//in case the X coordinate of all three points is equal only the Y coordinate should be checked
-	if ((point.X == get_startPt().X) &&
-		(point.X == get_endPt().X) &&
-		(get_startPt().X == get_endPt().X))
+	if ((point.getX() == get_startPt().getX()) &&
+		(point.getX() == get_endPt().getX()) &&
+		(get_startPt().getX() == get_endPt().getX()))
 	{
-		if ((point.Y > get_startPt().Y && point.Y > get_endPt().Y) || (point.Y < get_startPt().Y && point.Y < get_endPt().Y))
+		if ((point.getY() > get_startPt().getY() && point.getY() > get_endPt().getY()) || (point.getY() < get_startPt().getY() && point.getY() < get_endPt().getY()))
 		{
 			return false;
 		}
 		return true;
 	}
-	double left_side_equation = (point.X - get_startPt().X) / (get_endPt().X - get_startPt().X);
+	double left_side_equation = (point.getX() - get_startPt().getX()) / (get_endPt().getX() - get_startPt().getX());
 
 	//in case the Y coordinate of all three points is equal only the X coordinate should be checked
-	if ((point.Y == get_startPt().Y) &&
-		(point.Y == get_endPt().Y) &&
-		(get_startPt().Y == get_endPt().Y))
+	if ((point.getY() == get_startPt().getY()) &&
+		(point.getY() == get_endPt().getY()) &&
+		(get_startPt().getY() == get_endPt().getY()))
 	{
-		if ((point.X > get_startPt().X && point.X > get_endPt().X) || (point.X < get_startPt().X && point.X < get_endPt().X))
+		if ((point.getX() > get_startPt().getX() && point.getX() > get_endPt().getX()) || (point.getX() < get_startPt().getX() && point.getX() < get_endPt().getX()))
 		{
 			return false;
 		}
 		return true;
 	}
-	double right_side_equation = (point.Y - get_startPt().Y) / (get_endPt().Y - get_startPt().Y);
+	double right_side_equation = (point.getY() - get_startPt().getY()) / (get_endPt().getY() - get_startPt().getY());
 
 	/*calculations used to round the doubles to a 'normal' state
 	float value = (int)(var * 100 + .5);
@@ -123,4 +122,3 @@ std::istream& Segment::ext(std::istream& in)
 
 	return in;
 }
-

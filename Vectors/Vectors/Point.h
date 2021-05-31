@@ -21,10 +21,10 @@ public:
 	std::string get_data();
 	std::ostream& ins(std::ostream&);
 	std::istream& ext(std::istream&);
+private:
 	double X;
 	double Y;
 	double Z;
-private:
 	//TODO ^^^
 };
 

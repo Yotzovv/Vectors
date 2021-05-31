@@ -11,9 +11,9 @@ Triangle::Triangle()
 
 Triangle::Triangle(Point x, Point y, Point z)
 {
-	setX(x);
-	setY(y);
-	setZ(z);
+	set_triangle_X(x);
+	set_triangle_Y(y);
+	set_triangle_Z(z);
 
 	is_point_valid();
 }
@@ -23,32 +23,32 @@ Triangle::Triangle(std::queue<std::string> cmds)
 	_Commands = cmds;
 }
 
-Point Triangle::getX()
+Point Triangle::get_triangle_X()
 {
 	return this->X;
 }
 
-Point Triangle::getY()
+Point Triangle::get_triangle_Y()
 {
 	return this->Y;
 }
 
-Point Triangle::getZ()
+Point Triangle::get_triangle_Z()
 {
 	return this->Z;
 }
 
-void Triangle::setX(Point x)
+void Triangle::set_triangle_X(Point x)
 {
 	X = x;
 }
 
-void Triangle::setY(Point y)
+void Triangle::set_triangle_Y(Point y)
 {
 	Y = y;
 }
 
-void Triangle::setZ(Point z)
+void Triangle::set_triangle_Z(Point z)
 {
 	Z = z;
 }
@@ -109,9 +109,9 @@ double Triangle::get_mid_side(double a, double b, double c)
 
 bool Triangle::is_triangle_isosceles()
 {
-	Segment AB(this->getX(), this->getY());
-	Segment AC(this->getX(), this->getZ());
-	Segment BC(this->getY(), this->getZ());
+	Segment AB(get_triangle_X(), get_triangle_Y());
+	Segment AC(get_triangle_X(), get_triangle_Z());
+	Segment BC(get_triangle_Y(), get_triangle_Z());
 
 	double length_AB = AB.find_segment_length();
 	double length_AC = AC.find_segment_length();
@@ -125,12 +125,11 @@ bool Triangle::is_triangle_isosceles()
 }
 
 
-Point Triangle::get_incenter(Point x, Point y, Point z)
+Point Triangle::get_incenter(Point x, Point y, Point z) //to be deleted?
 {
 	Point centroid;
-
-	centroid.X = (x.X + y.X + z.X) / 3;
-	centroid.Y = (x.Y + y.Y + z.Y) / 3;
+	centroid.setX((x.getX() + y.getX() + z.getX()) / 3);
+	centroid.setY((x.getY() + y.getY() + z.getY()) / 3);
 
 	return centroid;
 }
@@ -140,17 +139,17 @@ Point Triangle::get_incenter()
 {
 	Point centroid;
 
-	centroid.X = (X.X + Y.X + Z.X) / 3;
-	centroid.Y = (X.Y + Y.Y + Z.Y) / 3;
+	centroid.setX((get_triangle_X().getX() + get_triangle_Y().getX() + get_triangle_Z().getX()) / 3);
+	centroid.setY((get_triangle_X().getY() + get_triangle_Y().getY() + get_triangle_Z().getY()) / 3);
 
 	return centroid;
 }
 
 double Triangle::get_area()
 {
-	Segment x(X, Y);
-	Segment y(Y, Z);
-	Segment z(Z, X);
+	Segment x(get_triangle_X(), get_triangle_Y());
+	Segment y(get_triangle_Y(), get_triangle_Z());
+	Segment z(get_triangle_Z(), get_triangle_X());
 
 	double a = x.find_segment_length();
 	double b = y.find_segment_length();
@@ -163,7 +162,7 @@ double Triangle::get_area()
 	return area;
 }
 
-double Triangle::get_area(Point x, Point y, Point z)
+double Triangle::get_area(Point x, Point y, Point z) //to be deleted?
 {
 	Segment s1(x, y);
 	Segment s2(y, z);
@@ -182,9 +181,9 @@ double Triangle::get_area(Point x, Point y, Point z)
 
 double Triangle::get_perimeter()
 {
-	Segment x(X, Y);
-	Segment y(Y, Z);
-	Segment z(Z, X);
+	Segment x(get_triangle_X(), get_triangle_Y());
+	Segment y(get_triangle_Y(), get_triangle_Z());
+	Segment z(get_triangle_Z(), get_triangle_X());
 
 	double a = x.find_segment_length();
 	double b = y.find_segment_length();
@@ -197,9 +196,9 @@ double Triangle::get_perimeter()
 
 
 bool Triangle::is_triangle_equilateral() {
-	Segment AB(this->getX(), this->getY());
-	Segment AC(this->getX(), this->getZ());
-	Segment BC(this->getY(), this->getZ());
+	Segment AB(get_triangle_X(), get_triangle_Y());
+	Segment AC(get_triangle_X(), get_triangle_Z());
+	Segment BC(get_triangle_Y(), get_triangle_Z());
 
 	double length_AB = AB.find_segment_length();
 	double length_AC = AC.find_segment_length();
@@ -212,7 +211,8 @@ bool Triangle::is_triangle_equilateral() {
 	return false;
 }
 
-bool Triangle::is_triangle_right(Point x, Point y, Point z) {
+bool Triangle::is_triangle_right(Point x, Point y, Point z) //?
+{
 
 	Segment vec(x, y);
 	Segment vec1(y, z);
@@ -236,9 +236,9 @@ bool Triangle::is_triangle_right(Point x, Point y, Point z) {
 
 bool Triangle::is_triangle_acute() {
 
-	Segment AB(this->getX(), this->getY());
-	Segment AC(this->getX(), this->getZ());
-	Segment BC(this->getY(), this->getZ());
+	Segment AB(get_triangle_X(), get_triangle_Y());
+	Segment AC(get_triangle_X(), get_triangle_Z());
+	Segment BC(get_triangle_Y(), get_triangle_Z());
 
 	double AB_length = AB.find_segment_length();
 	double AC_length = AC.find_segment_length();
@@ -315,9 +315,9 @@ bool Triangle::is_triangle_acute() {
 
 bool Triangle::is_triangle_obtuse(Point x, Point y, Point z)
 {
-	Segment AB(this->getX(), this->getY());
-	Segment AC(this->getX(), this->getZ());
-	Segment BC(this->getY(), this->getZ());
+	Segment AB(get_triangle_X(), get_triangle_Y());
+	Segment AC(get_triangle_X(), get_triangle_Z());
+	Segment BC(get_triangle_Y(), get_triangle_Z());
 
 	double AB_length = AB.find_segment_length();
 	double AC_length = AC.find_segment_length();
@@ -392,30 +392,10 @@ bool Triangle::is_triangle_obtuse(Point x, Point y, Point z)
 	return false;
 }
 
-
-//TO BE DELETED
-void Triangle::get_triangle_type(Point x, Point y, Point z)
-{
-	if (is_triangle_right(x, y, z))
-	{
-		cout << "the triangle is right." << endl;
-	}
-
-	if (this->is_triangle_acute())
-	{
-		cout << "the triagnle is acute." << endl;
-	}
-
-	if (this->is_triangle_obtuse(x, y, z))
-	{
-		cout << "the triangle is obtuse." << endl;
-	}
-}
-
 //use this one...
 void Triangle::get_triangle_type()
 {
-	if (is_triangle_right(X, Y, Z))
+	if (is_triangle_right(get_triangle_X(), get_triangle_Y(), get_triangle_Z()))
 	{
 		cout << "The triangle is right." << endl;
 	}
@@ -425,7 +405,7 @@ void Triangle::get_triangle_type()
 		cout << "The triagnle is acute." << endl;
 	}
 
-	if (this->is_triangle_obtuse(X, Y, Z))
+	if (this->is_triangle_obtuse(get_triangle_X(), get_triangle_Y(), get_triangle_Z()))
 	{
 		cout << "The triangle is obtuse." << endl;
 	}
@@ -444,10 +424,10 @@ void Triangle::get_triangle_type()
 //Checks if Point is inside triangle
 bool Triangle::operator<(Point pt)
 {
-	float total_area = get_area(this->X, this->Y, this->Z);
-	float area1 = get_area(pt, this->Y, this->Z);
-	float area2 = get_area(pt, this->X, this->Z);
-	float area3 = get_area(pt, this->X, this->Y);
+	float total_area = get_area(get_triangle_X(), get_triangle_Y(), get_triangle_Z());
+	float area1 = get_area(pt, get_triangle_Y(), get_triangle_Z());
+	float area2 = get_area(pt, get_triangle_X(), get_triangle_Z());
+	float area3 = get_area(pt, get_triangle_X(), get_triangle_Y());
 
 	if ((area1 + area2 + area3) <= total_area)
 	{
@@ -460,10 +440,10 @@ bool Triangle::operator<(Point pt)
 //Checks if Point is outside triangle
 bool Triangle::operator>(Point pt)
 {
-	float total_area = get_area(this->X, this->Y, this->Z);
-	float area1 = get_area(pt, this->Y, this->Z);
-	float area2 = get_area(pt, this->X, this->Z);
-	float area3 = get_area(pt, this->X, this->Y);
+	float total_area = get_area(get_triangle_X(), get_triangle_Y(), get_triangle_Z());
+	float area1 = get_area(pt, get_triangle_Y(), get_triangle_Z());
+	float area2 = get_area(pt, get_triangle_X(), get_triangle_Z());
+	float area3 = get_area(pt, get_triangle_X(), get_triangle_Y());
 
 	if ((area1 + area2 + area3) <= total_area)
 	{
@@ -475,9 +455,9 @@ bool Triangle::operator>(Point pt)
 
 bool Triangle::operator==(Point point)
 {
-	Segment seg(X, Y);
-	Segment seg1(Z, Y);
-	Segment seg2(X, Z);
+	Segment seg(get_triangle_X(), get_triangle_Y());
+	Segment seg1(get_triangle_Z(), get_triangle_Y());
+	Segment seg2(get_triangle_X(), get_triangle_Z());
 
 	double a = seg.find_segment_length();
 	double b = seg1.find_segment_length();
