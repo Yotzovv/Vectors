@@ -184,7 +184,7 @@ void Vector::print_direction()
 
 	for (auto num : result)
 	{
-		cout << num;
+		cout << num << endl;
 	}
 }
 
