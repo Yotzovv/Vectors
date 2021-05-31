@@ -12,6 +12,56 @@
 
 using namespace std;
 
+double Vector::get_vector_n1()
+{
+	return this->n1;
+}
+
+double Vector::get_vector_n2()
+{
+	return this->n2;
+}
+
+double Vector::get_vector_n3()
+{
+	return this->n3;
+}
+
+Point Vector::get_vector_A()
+{
+	return this->A;
+}
+
+Point Vector::get_vector_B()
+{
+	return this->B;
+}
+
+void Vector::set_vector_n1(double N1)
+{
+	this->n1 = N1;
+}
+
+void Vector::set_vector_n2(double N2)
+{
+	this->n2 = N2;
+}
+
+void Vector::set_vector_n3(double N3)
+{
+	this->n3 = N3;
+}
+
+void Vector::set_vector_A(Point a)
+{
+	this->A = a;
+}
+
+void Vector::set_vector_B(Point b)
+{
+	this->B = b;
+}
+
 Vector::Vector(std::queue<std::string> cmds)
 {
 	_Commands = cmds;
@@ -19,15 +69,15 @@ Vector::Vector(std::queue<std::string> cmds)
 
 Vector::Vector(double x, double y, double z)
 {
-	n1 = x;
-	n2 = y;
-	n3 = z;
+	this->set_vector_n1(x);
+	this->set_vector_n2(y);
+	this->set_vector_n3(z);
 };
 
 Vector::Vector(Point x, Point y)
 {
-	A = x;
-	B = y;
+	this->set_vector_A(x);
+	this->set_vector_B(y);
 };
 
 Vector::Vector() {
@@ -39,7 +89,9 @@ Vector::Vector() {
 /// <returns></returns>
 bool Vector::is_vector_null()
 {
-	return (n1 == n2) && (n1 == n3) && (n2 == n3);
+	return (get_vector_n1() == get_vector_n2())
+		&& (get_vector_n1() == get_vector_n3())
+		&& (get_vector_n2() == get_vector_n3());
 }
 
 /// <summary>
@@ -52,7 +104,9 @@ bool Vector::is_vector_null()
 /// <returns></returns>
 bool Vector::is_vector_null(int x, int y, int z)
 {
-	return n1 == n2 == n3;
+	return (get_vector_n1() == get_vector_n2())
+		&& (get_vector_n1() == get_vector_n3())
+		&& (get_vector_n2() == get_vector_n3());
 }
 
 /// <summary>
@@ -61,7 +115,7 @@ bool Vector::is_vector_null(int x, int y, int z)
 /// <returns></returns>
 double Vector::get_vector_length()
 {
-	return sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+	return sqrt(pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 }
 
 
@@ -78,7 +132,8 @@ double Vector::vector_direction_by_pts()
 		throw VectorLengthException();
 	}
 
-	return atan((B.Y - A.Y) / (B.X - A.X)) * 180 / PI; // direction of a vector.		
+	return atan((get_vector_B().getY() - get_vector_A().getY())
+		/ (get_vector_B().getX() - get_vector_A().getX())) * 180 / PI; // direction of a vector.		
 }
 
 // Uses n1,n2,n3
@@ -99,11 +154,11 @@ vector<double> Vector::get_direction_by_nums()
 
 		vector<double> directionthree;
 
-		a = n1 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		a = get_vector_n1() / sqrt(pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 
-		b = n2 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		b = get_vector_n2() / sqrt(pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 
-		c = n3 / sqrt(pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+		c = get_vector_n3() / sqrt(pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 
 		directionthree.push_back(a);
 		directionthree.push_back(b);
@@ -119,7 +174,7 @@ vector<double> Vector::get_direction_by_nums()
 
 void Vector::print_direction()
 {
-	if (n1 == 0 && n2 == 0 && n3 == 0)
+	if (get_vector_n1() == 0 && get_vector_n2() == 0 && get_vector_n3() == 0)
 	{
 		double result = vector_direction_by_pts();
 		cout << result << endl;
@@ -147,11 +202,13 @@ bool Vector::is_parallel(Vector v)
 			throw VectorLengthException();
 		}
 
-		if (is_vector_null(v.n1, v.n2, v.n3)) {
+		if (is_vector_null(v.get_vector_n1(), v.get_vector_n2(), v.get_vector_n3())) {
 			throw VectorLengthException();
 		}
 
-		return (v.n1 / n1 == v.n2 / n2 == v.n3 / n3);
+		return (v.get_vector_n1() / get_vector_n1() == v.get_vector_n2() / get_vector_n2())
+			&&(v.get_vector_n1() / get_vector_n1() == v.get_vector_n3() / get_vector_n3())
+			&&(v.get_vector_n2()/get_vector_n2() == v.get_vector_n3() / get_vector_n3());
 	}
 	catch (const exception& e) {
 		std::cout << e.what() << std::endl;
@@ -165,7 +222,7 @@ bool Vector::is_parallel(Vector v)
 /// <returns></returns>
 double Vector::operator*(const Vector& v)
 {
-	return v.n1 * n1 + v.n2 * n2 + v.n3 * n3;
+	return v.n1 * get_vector_n1() + v.n2 * get_vector_n2() + v.n3 * get_vector_n3(); //??
 }
 
 /// <summary>
@@ -182,7 +239,7 @@ bool Vector::is_vector_perpendicullar(const Vector& v)
 		if (is_vector_null()) {
 			throw VectorLengthException();
 		}
-		return v.n1 * n1 + v.n2 * n2 + v.n3 * n3 == 0;
+		return v.n1 * get_vector_n1() + v.n2 * get_vector_n2() + v.n3 * get_vector_n3() == 0;
 	}
 	catch (const std::exception& e)
 	{
@@ -194,9 +251,9 @@ bool Vector::is_vector_perpendicullar(const Vector& v)
 Vector Vector::operator+(const Vector& v)
 {
 	Vector result(0, 0, 0);
-	result.n1 = n1 + v.n1;
-	result.n2 = n2 + v.n2;
-	result.n3 = n3 + v.n3;
+	result.n1 = get_vector_n1() + v.n1;
+	result.n2 = get_vector_n2() + v.n2;
+	result.n3 = get_vector_n3() + v.n3;
 
 	return result;
 }
@@ -205,9 +262,9 @@ Vector Vector::operator+(const Vector& v)
 // a−v= (x, y, z)−(v1, v2, v3) = (x−v1, y−v2, z−v3)
 Vector Vector::operator-(const Vector& v) {
 	Vector result;
-	result.n1 = n1 - v.n1;
-	result.n2 = n2 - v.n2;
-	result.n3 = n3 - v.n3;
+	result.n1 = get_vector_n1() - v.n1;
+	result.n2 = get_vector_n2() - v.n2;
+	result.n3 = get_vector_n3() - v.n3;
 
 	return result;
 }
@@ -219,7 +276,7 @@ Vector Vector::operator-(const Vector& v) {
 // x1(y2*z3 - z2*y3) - y1(x2*z3 - z2*x3) + z1(x2*y3 - y2*x3)
 double Vector::operator()(const Vector& v2, const Vector v3)
 {
-	return n1 * (v2.n2 * v3.n3 - v2.n3 * v3.n2) - n2 * (v2.n1 * v3.n3 - v2.n3 * v3.n1) + n3 * (v2.n1 * v3.n2 - v2.n2 * v3.n1);
+	return get_vector_n1() * (v2.n2 * v3.n3 - v2.n3 * v3.n2) - get_vector_n2() * (v2.n1 * v3.n3 - v2.n3 * v3.n1) + get_vector_n3() * (v2.n1 * v3.n2 - v2.n2 * v3.n1);
 }
 
 /// <summary>
@@ -255,9 +312,9 @@ Vector operator^(const Vector& v1, const Vector& v2)
 
 string Vector::get_data()
 {
-	if (n1 == n2 == n3 == 0)
+	if ((n1 == n2) == (n3 == 0))
 	{
-		return A.get_data() + B.get_data();
+		return get_vector_A().get_data() + get_vector_B().get_data();
 	}
 	else
 	{
@@ -321,9 +378,9 @@ istream& Vector::ext(istream& in)
 
 		double x, y, z;
 
-		cout << "x: ";
+		cout << endl << "x: ";
 
-		pushtToOutputs("x: ");
+		pushtToOutputs("\nx: ");
 
 		if (_Commands.size() < 1)
 		{
@@ -370,7 +427,7 @@ istream& Vector::ext(istream& in)
 
 		pushtToOutputs(to_string(z));
 
-		n1 = x;
+		n1 = x; //??
 		n2 = y;
 		n3 = z;
 		break;
@@ -394,8 +451,8 @@ istream& Vector::ext(istream& in)
 		in >> pt_y;
 		_Commands = pt_y._Commands;
 
-		A = pt_x;
-		B = pt_y;
+		get_vector_A() = pt_x;
+		get_vector_B() = pt_y;
 		break;
 	}
 

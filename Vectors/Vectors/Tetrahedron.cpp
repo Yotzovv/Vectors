@@ -83,38 +83,38 @@ Point Tetrahedron::getD()
 
 void Tetrahedron::setA(Point a)
 {
-	A = a;
+	this->A = a;
 }
 
 void Tetrahedron::setB(Point b)
 {
-	B = b;
+	this->B = b;
 }
 
 void Tetrahedron::setC(Point c)
 {
-	C = c;
+	this->C = c;
 }
 
 void Tetrahedron::setD(Point d)
 {
-	D = d;
+	this->D = d;
 }
 
 bool Tetrahedron::is_tetrahedron_regular()
 {
-	Segment s1(A, B);
+	Segment s1(getA(), getB());
 	double a = s1.find_segment_length();
-	Segment s2(A, D);
+	Segment s2(getA(), getD());
 	double b = s2.find_segment_length();
-	Segment s3(B, C);
+	Segment s3(getB(), getC());
 	double c = s3.find_segment_length();
-	Segment s4(C, D);
+	Segment s4(getC(), getD());
 	double d = s4.find_segment_length();
 
-	Triangle a1(A, B, D);
-	Triangle a2(B, C, D);
-	Triangle a3(C, A, D);
+	Triangle a1(getA(), getB(), getD());
+	Triangle a2(getB(), getC(), getD());
+	Triangle a3(getC(), getA(), getD());
 
 	bool result = a1.is_triangle_equilateral() && a2.is_triangle_equilateral() && a3.is_triangle_equilateral();
 
@@ -124,12 +124,12 @@ bool Tetrahedron::is_tetrahedron_regular()
 bool Tetrahedron::is_ortogonal()
 {
 	//AB2+ CD’2 = AC’2 + BD’2 = AD’2 + BC’2
-	Segment s_ab(A, B);
-	Segment s_cd(C, D);
-	Segment s_bd(B, D);
-	Segment s_ac(A, C);
-	Segment s_bc(B, C);
-	Segment s_ad(A, D);
+	Segment s_ab(getA(), getB());
+	Segment s_cd(getC(), getD());
+	Segment s_bd(getB(), getD());
+	Segment s_ac(getA(), getC());
+	Segment s_bc(getB(), getC());
+	Segment s_ad(getA(), getD());
 
 	double ab = s_ab.find_segment_length();
 	double cd = s_cd.find_segment_length();
@@ -159,9 +159,9 @@ double Tetrahedron::find_surrounding_surface()
 
 double Tetrahedron::get_volume()
 {
-	Vector ab(A, B);
-	Vector ac(A, C);
-	Vector ad(A, D);
+	Vector ab(getA(), getB());
+	Vector ac(getA(), getC());
+	Vector ad(getA(), getD());
 
 	return ((ab ^ ac) * ad) / 6;
 }
@@ -192,13 +192,13 @@ bool Tetrahedron::operator>(Point pt)
 
 bool Tetrahedron::operator==(Point pt)
 {
-	Segment s1(A, B);
+	Segment s1(getA(), getB());
 	double a = s1.find_segment_length();
-	Segment s2{ A, D };
+	Segment s2(getA(), getD()); //was curly brackets {}
 	double b = s2.find_segment_length();
-	Segment s3{ B,C };
+	Segment s3(getB(), getC());
 	double c = s3.find_segment_length();
-	Segment s4{ C,D };
+	Segment s4(getC(), getD());
 	double d = s4.find_segment_length();
 
 	bool result = s1 == pt && s2 == pt && s3 == pt && s4 == pt;
@@ -232,10 +232,10 @@ std::istream& Tetrahedron::ext(std::istream& in)
 	cin >> d;
 	_Commands = d._Commands;
 
-	A = x;
-	B = y;
-	C = z;
-	D = d;
+	getA() = x;
+	getB() = y;
+	getC() = z;
+	getD() = d;
 
 	return in;
 }

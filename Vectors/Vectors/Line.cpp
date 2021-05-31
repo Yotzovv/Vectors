@@ -9,6 +9,34 @@
 #include <math.h>
 #define PI 3.14159265;
 
+Point Line::get_point_X()
+{
+	return	this->X;
+}
+
+Point Line::get_point_Y()
+{
+	return this->Y;
+}
+
+Vector Line::getVector()
+{
+	return this->vec;
+}
+
+void Line::set_point_X(Point x)
+{
+	this->X = x;
+}
+void Line::set_point_Y(Point y)
+{
+	this->Y = y;
+}
+void Line::setVector(Vector Vec)
+{
+	this->vec = Vec;
+}
+
 Line::Line()
 {
 }
@@ -20,7 +48,7 @@ Line::Line(Point X, Point Y) :Vector(X, Y)
 
 Line::Line(Vector vec, Point A) : Vector(vec)
 {
-	this->A = A;
+	this->get_point_X() = A;
 }
 
 Line::Line(Vector vec) : Vector(vec)
@@ -40,22 +68,22 @@ Line::Line(std::queue<std::string> cmds)
 /// <returns>Vector</returns>
 Vector Line::find_normal_vector(Line l)
 {
-	double k = -(n1 * l.n1 + n2 * l.n2 + n3 * l.n3) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+	double k = -(get_vector_n1() * l.get_vector_n1() + get_vector_n2() * l.get_vector_n2() + get_vector_n3() * l.get_vector_n3()) / (pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 
-	double resX = (this->n1 * k) + this->A.X;
-	double resY = (this->n2 * k) + this->A.Y;
-	double resZ = (this->n3 * k) + this->A.Z;
+	double resX = (get_vector_n1() * k) + get_vector_A().getX();
+	double resY = (get_vector_n2() * k) + get_vector_A().getY();
+	double resZ = (get_vector_n3() * k) + get_vector_A().getZ();
 
 	return Vector(resX, resY, resZ);
 }
 
 Vector Line::find_normal_vector()
 {
-	double k = -(n1 * A.X + n2 * A.Y + n3 * A.Z) / (pow(n1, 2) + pow(n2, 2) + pow(n3, 2));
+	double k = -(get_vector_n1() * get_vector_A().getX() + get_vector_n2() * get_vector_A().getY() + get_vector_n3() * get_vector_A().getZ()) / (pow(get_vector_n1(), 2) + pow(get_vector_n2(), 2) + pow(get_vector_n3(), 2));
 
-	double resX = (this->n1 * k) + this->A.X;
-	double resY = (this->n2 * k) + this->A.Y;
-	double resZ = (this->n3 * k) + this->A.Z;
+	double resX = (get_vector_n1() * k) + get_vector_A().getX();
+	double resY = (get_vector_n2() * k) + get_vector_A().getY();
+	double resZ = (get_vector_n3() * k) + get_vector_A().getZ();
 
 	return Vector(resX, resY, resZ);
 }
@@ -73,32 +101,32 @@ Vector Line::get_line_direction()
 bool Line::operator||(Vector v1)
 {
 	//(y1-y2)/(x1-x2)
-	double slope1 = (A.Y - B.Y) / (A.X - B.X);
-	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+	double slope1 = (get_vector_A().getY() - get_vector_B().getY()) / (get_vector_A().getX() - get_vector_B().getX());
+	double slope2 = (v1.get_vector_A().getY() - v1.get_vector_B().getY()) / (v1.get_vector_A().getX() - v1.get_vector_B().getX());
 
 	return slope1 == slope2;
 }
 
 
-bool operator==(const Line& l, const Line& l2)
+bool operator==(Line& l, Line& l2) //was const
 {
 	bool res;
 
-	if (l.n1 && l.n2 && l.n3 && l2.n1 && l2.n2 && l2.n3 > -9999)
+	if (l.get_vector_n1() && l.get_vector_n2() && l.get_vector_n3() && l2.get_vector_n1() && l2.get_vector_n2() && l2.get_vector_n3() > -9999)
 	{
-		double x = (double)(l.n1 / l2.n1);
-		double y = (double)(l.n2 / l2.n2);
-		double z = (double)(l.n3 / l2.n3);
+		double x = (double)(l.get_vector_n1() / l2.get_vector_n1());
+		double y = (double)(l.get_vector_n2() / l2.get_vector_n2());
+		double z = (double)(l.get_vector_n3() / l2.get_vector_n3());
 
 		res = (x == y) == (x == z) == (y == z);
 	}
 
 	else
 	{
-		double A = (double)(l.A.X / l2.A.X);
-		double B = (double)(l.A.Y / l2.A.Y);
-		double C = (double)(l.B.X / l2.B.X);
-		double D = (double)(l.B.Y / l2.B.Y);
+		double A = (double)(l.get_vector_A().getY() / l2.get_vector_A().getX());
+		double B = (double)(l.get_vector_A().getY() / l2.get_vector_A().getY());
+		double C = (double)(l.get_vector_B().getX() / l2.get_vector_B().getX());
+		double D = (double)(l.get_vector_B().getY() / l2.get_vector_B().getY());
 
 		res = (A == B) == (A == C) == (A == D) == (B == C) == (B == D) == (C == D);
 	}
@@ -107,8 +135,8 @@ bool operator==(const Line& l, const Line& l2)
 
 int orientation(Point p, Point q, Point r)
 {
-	int val = (q.Y - p.Y) * (r.X - q.X) -
-		(q.X - p.X) * (r.Y - q.Y);
+	int val = (q.getY() - p.getY()) * (r.getX() - q.getX()) -
+		(q.getX() - p.getX()) * (r.getY() - q.getY());
 
 	if (val == 0) return 0;  // colinear
 
@@ -116,18 +144,18 @@ int orientation(Point p, Point q, Point r)
 }
 
 bool isIntersecting(Point& p1, Point& p2, Point& q1, Point& q2) {
-	return (((q1.X - p1.X) * (p2.Y - p1.Y) - (q1.Y - p1.Y) * (p2.X - p1.X))
-		* ((q2.X - p1.X) * (p2.Y - p1.Y) - (q2.Y - p1.Y) * (p2.X - p1.X)) < 0)
+	return (((q1.getX() - p1.getX()) * (p2.getY() - p1.getY()) - (q1.getY() - p1.getY()) * (p2.getX() - p1.getX()))
+		* ((q2.getX() - p1.getX()) * (p2.getY() - p1.getY()) - (q2.getY() - p1.getY()) * (p2.getX() - p1.getX())) < 0)
 		&&
-		(((p1.X - q1.X) * (q2.Y - q1.Y) - (p1.Y - q1.Y) * (q2.X - q1.X))
-			* ((p2.X - q1.X) * (q2.Y - q1.Y) - (p2.Y - q1.Y) * (q2.X - q1.X)) < 0);
+		(((p1.getX() - q1.getX()) * (q2.getY() - q1.getY()) - (p1.getY() - q1.getY()) * (q2.getX() - q1.getX()))
+			* ((p2.getX() - q1.getX()) * (q2.getY() - q1.getY()) - (p2.getY() - q1.getY()) * (q2.getX() - q1.getX())) < 0);
 }
 
 bool Line::operator&&(Vector v1)
 {
 	//(y1-y2)/(x1-x2)
-	double slope1 = (A.Y - B.Y) / (A.X - B.X);
-	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+	double slope1 = (get_vector_A().getY() - get_vector_B().getY()) / (get_vector_A().getX() - get_vector_B().getX());
+	double slope2 = (v1.get_vector_A().getY() - v1.get_vector_B().getY()) / (v1.get_vector_A().getX() - v1.get_vector_B().getX());
 
 	//Equal swopes don't mean lines intersect for sure
 	if (slope1 != slope2)
@@ -135,30 +163,30 @@ bool Line::operator&&(Vector v1)
 		return false;
 	}
 
-	bool result = isIntersecting(A, B, v1.A, v1.B);
+	bool result = isIntersecting(A, B, v1.A, v1.B); // check
 
 	return result;
 }
 
-bool Line::operator|(const Line& l)
+bool Line::operator|(Line& l) //remove const before Line& - fixes not being able to use the l
 {
 	bool res;
 
-	if ((n1 && l.n1 && n2 && l.n2 && n3 && l.n3) == 0)
+	if ((get_vector_n1() && l.get_vector_n1() && get_vector_n2() && l.get_vector_n2() && get_vector_n3() && l.get_vector_n3()) == 0)
 	{
 		res = false;
 	}
 	else
 	{
-		res = ((n1 * l.n1) + (n2 * l.n2) + (n3 * l.n3)) == 0;
+		res = ((get_vector_n1() * l.get_vector_n1()) + (get_vector_n2() * l.get_vector_n2()) + (get_vector_n3() * l.get_vector_n3())) == 0;
 	}
 	return res;
 }
 
 double Line::find_angle_line(Vector v1)
 {
-	double slope1 = (A.Y - B.Y) / (A.X - B.X);
-	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+	double slope1 = (get_vector_A().getY() - get_vector_B().getY()) / (get_vector_A().getX() - get_vector_B().getX());
+	double slope2 = (v1.get_vector_A().getY() - v1.get_vector_B().getY()) / (v1.get_vector_A().getX() - v1.get_vector_B().getX());
 
 	double theta1 = atan(slope1) * (180.0 / 3.14);
 	double theta2 = atan(slope2) * (180.0 / 3.14);
@@ -170,8 +198,8 @@ double Line::find_angle_line(Vector v1)
 bool Line::operator!=(Vector v1)
 {
 	//(y1-y2)/(x1-x2)
-	double slope1 = (A.Y - B.Y) / (A.X - B.X);
-	double slope2 = (v1.A.Y - v1.B.Y) / (v1.A.X - v1.B.X);
+	double slope1 = (get_vector_A().getY() - get_vector_B().getY()) / (get_vector_A().getX() - get_vector_B().getX());
+	double slope2 = (v1.get_vector_A().getY() - v1.get_vector_B().getY()) / (v1.get_vector_A().getX() - v1.get_vector_B().getX());
 
 	return slope1 == slope2;
 }
@@ -185,9 +213,9 @@ bool Line::operator+(Point pt)
 	//(pt.Z - A.Z) / (B.Z - A.Z) = n
 	//l == m == n
 
-	double l = (pt.X - this->A.X) / (this->B.X - this->A.X);
-	double m = (pt.Y - this->A.Y) / (this->B.Y - this->A.Y);
-	double n = (pt.Z - this->A.Z) / (this->B.Z - this->A.Z);
+	double l = (pt.getX() - get_vector_A().getX()) / (get_vector_B().getX() - get_vector_A().getX());
+	double m = (pt.getY() - get_vector_A().getY()) / (get_vector_B().getY() - get_vector_A().getY());
+	double n = (pt.getZ() - get_vector_A().getZ()) / (get_vector_B().getZ() - get_vector_A().getZ());
 
 	if ((l == m) && (l == n) && (m == n))
 	{
@@ -196,7 +224,7 @@ bool Line::operator+(Point pt)
 	return false;
 }
 
-std::ostream& Line::ins(std::ostream& print) const
+std::ostream& Line::ins(std::ostream& print)  //removing const makes it work
 {
 	print << "Print Line" << endl;
 
@@ -204,7 +232,7 @@ std::ostream& Line::ins(std::ostream& print) const
 	Vector::ins(print);
 
 	print << "Lines Point" << endl;
-	print << A;
+	print << get_vector_A();
 
 	return print;
 }
@@ -276,8 +304,8 @@ std::istream& Line::ext(std::istream& in)
 		in >> pt_y;
 		_Commands = pt_y._Commands;
 
-		A = pt_x;
-		B = pt_y;
+		get_vector_A() = pt_x;
+		get_vector_B() = pt_y;
 		break;
 	}
 	}

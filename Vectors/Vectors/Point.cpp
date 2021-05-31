@@ -58,7 +58,7 @@ Point::Point(double x, double y)
 
 bool Point::operator==(Point point)
 {
-	return (point.X == getX() && point.Y == getY() && point.Z == getZ());
+	return (point.getX() == getX() && point.getY() == getY() && point.getZ() == getZ());
 }
 
 string Point::get_data()

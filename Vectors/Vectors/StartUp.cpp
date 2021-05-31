@@ -53,5 +53,4 @@ int main()
 			is_iterating = answer == 'y';
 		}
 	}
-
 }
